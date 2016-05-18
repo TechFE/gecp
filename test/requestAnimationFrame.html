@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>requestAnimationFrame 例子</title>
+    <style type="text/css">
+		#SomeElementYouWantToAnimate{
+			width: 20px;
+			height: 20px;
+			background-color: blue;
+		}
+    </style>
+</head>
+
+<body>
+	<div id="SomeElementYouWantToAnimate"></div>
+    <script type="text/javascript">
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+    var start = null;
+    var d = document.getElementById('SomeElementYouWantToAnimate');
+
+    function step(timestamp) {
+        if (start === null) start = timestamp;
+        var progress = timestamp - start;
+        d.style.left = Math.min(progress / 10, 200) + "px";
+        if (progress < 2000) {
+            requestAnimationFrame(step);
+        }
+    }
+    requestAnimationFrame(step);
+    console.log('okkkkkk');
+    </script>
+</body>
+
+</html>

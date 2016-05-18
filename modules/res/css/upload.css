@@ -1,0 +1,52 @@
+/*上传文件*/
+.upload{
+	position: absolute;
+	right: 8em;	
+}
+.upImg{
+	vertical-align: middle;
+}
+.upTil{
+	vertical-align: middle;
+	top:8em;
+}
+/*点击上传文件jquery*/
+.upClick{
+	background-color:#00aff0;
+}
+
+.mybutton{
+	position: relative;
+	display: inline-block;
+	background: #D0EEFF;
+	border: 1px solid #99D3F5;
+	border-radius: 4px;
+	padding: 4px 12px;
+	overflow: hidden;
+	color: #1E88C7;
+	/*margin-top: 4px;*/
+	text-decoration: none;
+	text-indent: 0;
+	line-height: 20px;
+}
+.file{
+	line-height: 15px;
+	margin-top: 4px;
+}
+.file span{
+	font-weight: normal;
+}
+.mybutton input {
+	position: absolute;
+	font-size: 10rem;
+	right: 0;
+	top: 0;
+	opacity: 0;
+}
+.mybutton:hover {
+	background: #AADFFD;
+	border-color: #78C3F3;
+	color: #004974;
+	text-decoration: none;
+	cursor: pointer;
+}

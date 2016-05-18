@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+</head>
+
+<body>
+	<div class="cls" id="div" data-x:"nihao" data-y:"你好">
+		123
+	</div>
+	<ul>
+		<li class="RMGC" data="hello">1</li>
+		<li class="RMGC">2</li>
+		<li class="RMGC">3</li>
+		<li class="RMGC">4</li>
+		<li class="RMGC">5</li>
+		<li class="RMGC">6</li>
+		<li class="RMGC">7</li>
+		<li class="RMGC">8</li>
+	</ul>
+	<script type="text/javascript">
+		// console.log(document.getElementById('div').data('data-x'));
+		// console.log($('.cls').data('data-x'));
+		console.log($('ul li').attr('data'));
+	</script>
+</body>
+</html>

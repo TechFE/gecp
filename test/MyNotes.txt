@@ -1,0 +1,3 @@
+var host = window.location.host;
+var protocal = window.location.protocol;
+var subHref = protocal +"//" +host;

@@ -1,0 +1,150 @@
+<div class="ultop">
+    <span class="ultitle">上传文件或专题</span>
+    <img class="ulclose" height="25" wight="25" src="img/close.svg" />
+</div>
+<div class="ulMain">
+    <div class="ulmain-top">
+        <input type="radio" class="uld-file" name="uldType" checked value="file">单文件上传&nbsp&nbsp&nbsp&nbsp</input>
+        <input type="radio" class="uld-subject" name="uldType" value="file">专题【多文件】上传</input>
+        <div class="fillin-sjname">
+            <label>请输入专题名: </label>
+            <input type="text" required>
+        </div>
+    </div>
+    <div class="ulmain-left">
+        <div class="sea-class1">
+            <span>*课程设计：</span>
+            <select name="cdcode" class="upload-cdcode" id="upload-cdcode">
+                <option value="0">--课程设计--</option>
+                <option value="BX">必修</option>
+                <option value="XX1">选修1</option>
+                <option value="XX2">选修2</option>
+                <option value="CDQT">其它</option>
+            </select>
+        </div>
+        <div class="sea-class2">
+            <span>*课程模块：</span>
+            <select name="cmcode" id="upload-cmcode">
+                <option value="0">--课程模块--</option>
+                <option value="ZRDL">自然地理</option>
+                <option value="RWDL">人文地理</option>
+                <option value="DQKX">地球科学基础</option>
+                <option value="QYFZ">区域发展</option>
+                <option value="ZHGA">资源环境与国家安全</option>
+                <option value="HYDL">海洋地理</option>
+                <option value="LYDL">旅游地理</option>
+                <option value="ZRZF">自然灾害与防治</option>
+                <option value="TWJC">天文学基础</option>
+                <option value="CXQG">城乡与区域规划</option>
+                <option value="HJBH">环境保护</option>
+                <option value="ZZDL">政治地理</option>
+                <option value="DXJY">地理信息技术应用</option>
+                <option value="YWKC">地理野外考察</option>
+                <option value="CSQT">其它</option>
+            </select>
+        </div>
+        <div class="sea-class3">
+            <span>&nbsp&nbsp所属年级：</span>
+            <select name="ssnj" class="upload-ssnj" id="upload-ssnj">
+                <option value="0">--所属年级--</option>
+                <option value="七年级">七年级&nbsp &nbsp</option>
+                <option value="八年级">八年级</option>
+                <option value="九年级">九年级</option>
+                <option value="高一">高一</option>
+                <option value="高二">高二</option>
+                <option value="高三">高三</option>
+            </select>
+        </div>
+        <div class="sea-class4">
+            <span>&nbsp&nbsp所属科室：</span>
+            <select name="ssks" class="upload-ssks" id="upload-ssks">
+                <option value="0">--所属科室--</option>
+                <option value="陈列室">陈列室&nbsp &nbsp</option>
+                <option value="观察室">观察室</option>
+                <option value="放映室">放映室</option>
+                <option value="拓展室">拓展室</option>
+                <option value="其它">其它</option>
+            </select>
+        </div>
+        <div class="sea-class5">
+            <span>&nbsp&nbsp资源类型：</span>
+            <select name="wjlx" id="upload-wjlx">
+                <option value="0">--资源类型--</option>
+                <option value="图片">图片&nbsp &nbsp &nbsp &nbsp</option>
+                <option value="文档">文档</option>
+                <option value="语音">语音</option>
+                <option value="视频">视频</option>
+                <option value="网站服务" class="website">网站服务</option>
+                <option value="其它">其它</option>
+            </select>
+        </div>
+        <div class="sea-class6">
+            <span>&nbsp&nbsp学业要求：</span>
+            <select name="sacode" id="upload-sacode">
+                <option value="0">--学业要求--</option>
+                <option value="RDGN">人地观念</option>
+                <option value="ZHSW">综合思维</option>
+                <option value="QYRZ">区域认知</option>
+                <option value="DLSJ">地理实践能力</option>
+            </select>
+        </div>
+        <div class="sea-class7">
+            <span>&nbsp&nbsp要求水平：</span>
+            <select name="salevel" id="upload-salevel">
+                <option value="0">--要求水平--</option>
+                <option value="SP1">水平1</option>
+                <option value="SP2">水平2</option>
+                <option value="SP3">水平3</option>
+                <option value="SP4">水平4</option>
+                <option value="SP5">水平5</option>
+            </select>
+        </div>
+        <div class="uld-geo-info">
+            <span class="">&nbsp&nbsp位置信息：</span>
+            <input type="text" class="geo-info" placeholder="请输入资源位置信息">
+        </div>
+        <div class="website-name-div">
+            <span class="">&nbsp&nbsp网站名称：</span>
+            <input type="text" class="website-name" placeholder="请输入网站服务名称">
+        </div>
+        <div class="website-url-div">
+            <span class="">&nbsp&nbsp网站服务：</span>
+            <input type="text" class="website-url" placeholder="请输入网站服务地址">
+        </div>
+        <!-- <div class="uld-geo-data">
+          <span class="">&nbsp&nbsp地理数据：</span>
+          <a class="a-upload">
+              <input type="file" value="上传地理数据" class="up-geo-data" id="up-geo-data">上传地理数据
+          </a>
+      </div> -->
+    </div>
+    <div class="ulmain-right">
+        <div class="uld-fm">
+            <span class="">资源封面：</span>
+            <a class="a-upload">
+                <input type="file" value="上传附件" class="upfile-pic" id="upfile-pic" accept="image/*">上传资源封面
+            </a>
+            <!-- <canvas class="file-pic"></canvas> -->
+            <div class="file-pic"></div>
+            <span class="glyphicon glyphicon-cloud-upload upfile-pic-default"></span>
+        </div>
+        <div class="uld-fj">
+            <span class="">附件：</span>
+            <a class="a-upload">
+                <input type="file" value="上传附件" class="upfile" id="upfile">上传附件
+            </a>
+            <label id="upstatus">&nbsp</label>
+            <div class="upfile-list-mes">
+            </div>
+        </div>
+        <div class="uld-bzxx">
+            <span>备注信息：</span>
+            <textarea rows="3" cols="27" id="bzxx"></textarea>
+        </div>
+    </div>
+    <div class="ulmain-bottom">
+        <button type="button" class="btn btn-primary" id="ulCal">取消</button>
+        <button type="button" class="btn btn-primary" id="ulQd">确定</button>
+        <!-- </form> -->
+    </div>
+</div>

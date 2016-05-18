@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单测试验证</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" required>
+        <label for="course-name">课程名称:</label>
+        <input type="text" class="course-name" name="course-name" required="required" pattern="^\d.*$" placeholder="输入整个课程名称... ...">
+        <br>
+        <select name="chapter"  id="chapter-select" required="required" pattern="^\D.*" >
+            <option value="">选择章</option>
+            <option value="ch1">第一章</option>
+            <option value="ch2">第二章</option>
+            <option value="ch3">第三章</option>
+            <option value="ch4">第四章</option>
+            <option value="ch5">第五章</option>
+            <option value="ch6">第六章</option>
+            <option value="ch7">第七章</option>
+            <option value="ch8">第八章</option>
+            <option value="ch9">第九章</option>
+            <option value="ch10">第十章</option>
+            <option value="ch11">第十一章</option>
+            <option value="ch12">第十二章</option>
+            <option value="ch13">第十三章</option>
+            <option value="ch14">第十四章</option>
+            <option value="ch15">第十五章</option>
+        </select>
+        <select  name="section" id="section-select" required>
+            <option value="">选择节</option>
+            <option value="sec1">第一节</option>
+            <option value="sec2">第二节</option>
+            <option value="sec3">第三节</option>
+            <option value="sec4">第四节</option>
+            <option value="sec5">第五节</option>
+            <option value="sec6">第六节</option>
+            <option value="sec7">第七节</option>
+            <option value="sec8">第八节</option>
+            <option value="sec9">第九节</option>
+            <option value="sec10">第十节</option>
+            <option value="sec11">第十一节</option>
+            <option value="sec12">第十二节</option>
+            <option value="sec13">第十三节</option>
+            <option value="sec14">第十四节</option>
+            <option value="sec15">第十五节</option>
+        </select>
+        <input type="text" required name='courseName' class="course-section-name" placeholder="输入该章节的课程名称... ...">
+        <input type="submit" value="保存"></input>
+    </form>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>

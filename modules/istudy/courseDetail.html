@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>课程进入</title>
+    <link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/courseDetail.css">
+</head>
+
+<body>
+    <div class="course-detail-wraper mainframe">
+        <div class="course-detail-top">
+            <div class="cd-return-area">课程学习 > 气温的时空分布及全球热量带</div>
+            <div class="course-detail-title">
+                气温的时空分布及全球热量带
+            </div>
+            <div class="course-detail-a">
+                <div>
+                    <!-- <img src="img/collect.png" /> -->
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                    <span>收藏</span>
+                </div>
+                <div>
+                    <!-- <img src="img/share.png" /> -->
+                    <span class="glyphicon glyphicon-share"></span>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+        <div class="course-detail-main
+">
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs course-detail-pane" role="tablist">
+                    <li role="presentation" class="active"><a href="#intro" aria-controls="home" role="tab" data-toggle="tab">介绍</a></li>
+                    <li role="presentation"><a href="#menu" aria-controls="profile" role="tab" data-toggle="tab">目录</a></li>
+                    <li role="presentation"><a href="#teacher" aria-controls="messages" role="tab" data-toggle="tab">教师</a></li>
+                    <li role="presentation"><a href="#assess" aria-controls="settings" role="tab" data-toggle="tab">评价</a></li>
+                    <button type="button" class="btn btn-primary attend-course">参加课程</button>
+                </ul>
+                <div class="tab-content course-tab-content">
+                    <div role="tabpanel" class="tab-pane cd-course-intro active" id="intro">
+                        <h4>课程介绍：
+                        </h4>
+                        <p>该课程是属于高一必修课程的内容，属于自然地理模块。课程通过三个实际的案例讲诉气温和全球热量带的关系，使同学们理解。</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="menu">
+                        <h4>第一章</h4>
+                        <p>第一节 导论</p>
+                        <p>第二节 气温的概念</p>
+                        <p>第三节 降水的概念</p>
+                        <h4>第一章</h4>
+                        <p>第一节</p>
+                        <p>第二节</p>
+                        <p>第三节</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="teacher">
+                        <h4>张大山</h4>
+                        <p>高级教师，从事地理教育15年</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="assess">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- course-detail-main -->
+        <div id="assess-module">   
+        </div>
+        <ul class="pagination" id="pagination1"></ul>
+    </div>
+    <!-- mainframe -->
+    <div id="footer"></div>
+    <script src="../../common/bootstrap/js/jquery.js"></script>
+    <script src="../../common/bootstrap/js/bootstrap.js"></script>
+    <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
+    <script type="text/javascript">
+    seajs.config({
+        base: "./common/",
+    });
+
+    seajs.use("./js/courseDetailMain"); //入口   /istudy/courseDetailMain.js
+    </script>
+</body>
+
+</html>

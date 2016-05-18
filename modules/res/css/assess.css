@@ -1,0 +1,138 @@
+.assess {
+    margin-top: 40px;
+    min-height: 30px;
+    margin-left: 10%;
+}
+
+.assess .assess-title {
+    font-size: 2.4rem;
+    border-bottom: solid 2px #337ab7;
+    margin-left: -10%;
+    margin-bottom: 15px;
+}
+
+.assess-input {
+    display: flex;
+}
+
+.pimg {
+    align-items: flex-start;
+    vertical-align: middle;
+    margin: 5px 12px 0 -74px;
+}
+
+.rating-star {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.assess-submit {
+    margin-left: 65.5%;
+}
+
+div[class^=star-div] {
+    display: inline-block;
+}
+
+.rating-star div {
+    height: 16px;
+    width: 16px;
+    background: url("../img/star_un.png");
+}
+
+.rating-star div:hover {
+    cursor: pointer;
+    background: url("../img/star_sle.png");
+}
+
+.assess-list-box {
+    min-height: 300px;
+    margin-top: 15px;
+}
+
+.assess-list-title {
+    font-family: '微软雅黑';
+    font-size: 1.6rem;
+    border-bottom: solid 1.6px #CCCCCC;
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+
+.assess-submit {
+    color: #000;
+    font-size: 14px;
+    padding: 6px 28px 6px 25px;
+    border: solid 1px #ccc;
+}
+
+.assess-submit:hover {
+    text-decoration: none;
+    background-color: #666699;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*动态生成评论列表*/
+
+.comments-divs {}
+
+.one-comments {
+    min-height: 77px;
+    margin: 10px 0 15px 0;
+    border-bottom: solid 1px #ccc;
+}
+
+.cicle-img,
+.comments-person-content {
+    display: inline-block;
+}
+
+.cicle-img {
+    position: absolute;
+    width: 70px;
+    height: 60px;
+    margin-left: 25px;
+    margin-top: 10px;
+    background-color: #ccc;
+    background: url(../img/person.png) no-repeat;
+}
+.another-person{
+    background: url(../img/person1.png) no-repeat; 
+}
+
+
+.comments-person-content {
+    /*position: absolute;*/
+    width: 89%;
+    min-height: 78px;
+    margin-left: 90px;
+}
+
+.comments-person {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 5px;
+    color: #5245AF;
+    font-size: 1.6rem;
+}
+
+.comments-content {
+    display: inline-block;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+}
+
+.comments-date {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 0;
+    margin-top: 14px;
+    margin-left: 10px;
+}
+
+.zan-img {
+    margin-top: -27px;
+    float: right;
+    margin-right: 41px
+}

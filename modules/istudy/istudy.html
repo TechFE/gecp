@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自主学习</title>
+    <link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/istudy.css">
+</head>
+
+<body>
+    <div class="istudy-wraper mainframe">
+        <div class="sea-top">
+            <p class="course-sea-title">课程检索:</p>
+            <button type="button" class="btn btn-primary tea-course-set">教师课程设置</button>
+        </div>
+        <div class="sea-main">
+            <div>
+                <span>按照年级查询:</span>
+                <select name="grade-sea">
+                    <option value="qb">全部</option>
+                    <option value="grade7">七年级</option>
+                    <option value="grade8">八年级</option>
+                    <option value="grade9">九年级</option>
+                    <option value="grade10">高一</option>
+                    <option value="grade11">高二</option>
+                    <option value="grade12">高三</option>
+                </select>
+            </div>
+            <div>
+                <span>按课程模块查询:</span>
+                <select name="grade-sea">
+                    <option value="qb" data-title="qb">全部</option>
+                    <option value="ZRDL" data-title="ZRDL">自然地理</option>
+                    <option value="RWDL" data-title="RWDL">人文地理</option>
+                    <option value="QYKX" data-title="QYKX">地球科学基础</option>
+                    <option value="QYFZ" data-title="QYFZ">区域发展</option>
+                    <option value="ZHGA" data-title="ZHGA">资源环境与国家安全</option>
+                    <option value="TWJC" data-title="TWJC">天文学基础</option>
+                    <option value="HYDL" data-title="HYDL">海洋地理</option>
+                    <option value="ZRZF" data-title="ZRZF">自然灾害与防治</option>
+                    <option value="LYDL" data-title="LYDL">旅游地理</option>
+                    <option value="CXQG" data-title="CXQG">城乡与区域规划</option>
+                    <option value="HJBH" data-title="HJBH">环境保护</option>
+                    <option value="ZZDL" data-title="ZZDL">政治地理</option>
+                    <option value="DXJY" data-title="DXJY">地理信息技术应用</option>
+                    <option value="YWKC" data-title="YWKC">地理野外考察</option>
+                    <option value="CMQT" data-title="CMQT">其它</option>
+                </select>
+            </div>
+            <div>
+            	<span>按照老师姓名查询:</span>
+            	<input type="text" placeholder="请输入老师姓名... ...">
+            </div>
+            <div>
+            	<span>按照课程名称查询:</span>
+            	<input type="text" placeholder="请输入课程名称... ...">
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary reset-sea btn-sm">重置</button>
+            <button type="button" class="btn btn-primary confirm-sea btn-sm">查询</button>
+        </div>
+        <!--主要内容-->
+        <div id="course-divs">
+        	
+        </div>
+    </div><!-- 最外层-->
+    <div id="footer"></div>
+    <script src="../../common/bootstrap/js/jquery.js"></script>
+    <script src="../../common/bootstrap/js/bootstrap.js"></script>
+    <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
+    <script type="text/javascript">
+    seajs.config({
+        base: "./common/",
+    });
+
+    seajs.use("./js/istudyMain"); //入口   /istudy/istudyMain.js
+    </script>
+</body>
+
+</html>

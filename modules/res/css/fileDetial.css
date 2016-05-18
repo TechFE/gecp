@@ -1,0 +1,273 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    font-family: '微软雅黑';
+    background-color: #F5F5F5;
+}
+
+.download-file-wrapper {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 52px;
+    /*float: left;*/
+    background-color: #FFF;
+    min-width: 1000px;
+}
+
+.download-file-wrapper .file-detail-title {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+    word-break: break-all;
+    font-family: "微软雅黑";
+}
+
+.subject-logo:after {
+    content: url(../img/subject.png);
+}
+.return-area{
+    margin-left: 8px;
+}
+.return-area,
+.return-area a {
+    font-size: 1.4rem;
+    color: #9d9d9d;
+}
+
+.return-area a {
+    cursor: pointer;
+}
+
+.left-right-pane {
+    display: flex;
+    margin-top: 15px;
+    /*margin-left: 20px;*/
+    margin-bottom: 20px;
+    min-height: 300px;
+}
+
+
+/*左边*/
+
+.left-file-pane {
+    margin-top: 10px;
+    margin-left: 45px;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-type-img-src {
+    margin-top: 20px;
+    width: 240px;
+    max-height: 200px;
+}
+
+.detial-uldname {
+    color: #337ab7;
+}
+
+.left-file-pane .uldname-div {
+    margin-top: 15px;
+}
+
+
+/*右边*/
+
+.right-file-pane {
+    margin-left: 80px;
+    flex: 1;
+}
+
+.file-messages-type .file-detial div {
+    margin-bottom: 10px;
+    font-size: 1.6rem
+}
+
+.file-detial div {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.file-detial div span {
+    font-family: '微软雅黑';
+    font-size: 1.6rem;
+}
+
+
+/*文件列表按钮*/
+
+.subject-list-btn {
+    display: none;
+    position: absolute;
+    font-size: 14px;
+    right: 20%;
+    top: 87px;
+    border: solid 1px #ccc;
+    padding: 6px 30px 6px 17px;
+}
+
+.subject-list-btn {
+    /*background: url(../img/down.png) no-repeat 78px 11px;*/
+    background-image: url(../img/down.png);
+    background-repeat: no-repeat;
+    background-position: 78px 11px;
+    background-color: #fff;
+    color: #000;
+}
+
+.subject-list-btnclk {
+    position: absolute;
+    font-size: 14px;
+    right: 271px;
+    top: 87px;
+    border: solid 1px #ccc;
+    padding: 6px 30px 6px 17px;
+    background-image: url(../img/up.png);
+    background-repeat: no-repeat;
+    background-position: 78px 11px;
+    background-color: #666699;
+    color: #fff;
+}
+
+.subject-list-btn:hover {
+    cursor: pointer;
+    background-color: #666699;
+}
+
+.subject-list-btnclk:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+}
+
+
+/*专题文件列表*/
+
+.sub-lists-div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    line-height: 2;
+    /*height: 530px;*/
+}
+
+.file-lists li:hover,
+.sublist-dld-logo:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.file-lists li {
+    list-style-type: none;
+    margin: 8px 0;
+}
+
+.file-list {
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.sublist-dld-logo {
+    position: absolute;
+    right: 270px;
+}
+
+
+/*用户下载收藏*/
+
+.user-behaviour {
+    position: relative;
+    margin-top: 15px;
+    padding-left: 28px;
+    /*left: 27px;*/
+}
+
+.user-behaviour div {
+    display: inline-block;
+    margin-right: 45px;
+}
+
+.user-behaviour .collect:before {
+    position: absolute;
+    content: url(../img/collect.png);
+    left: 0;
+}
+.user-behaviour .collect-clk:before {
+    position: absolute;
+    content: url(../img/collect-clk.png);
+    left: -5px;
+    top:-5px;
+}
+.collect-clk:hover,
+.collect:hover,
+.download-file-btn:hover,
+.to-website:hover {
+    cursor: pointer;
+    border-bottom: solid 1px blue;
+    color: blue;
+}
+.disable-used-style{
+    color:#ccc;
+    cursor: default;
+    border: none;
+}
+.user-behaviour .download-file-btn:before {
+    position: absolute;
+    content: url(../img/downl.png);
+    left: 77px;
+}
+
+.preview .file-pre:before {
+    position: absolute;
+    content: url(../img/preview.png);
+    top: -1px;
+    left: 147px;
+    width: 20px;
+    height: 20px;
+}
+.to-website:before{
+   position: absolute;
+    content: url(../img/toweb.png);
+    top: -1px;
+    left: 75px;
+    width: 20px;
+    height: 20px;  
+}
+.file-pre,
+.to-website {
+    color: #333;
+}
+
+.file-pre:hover,
+.to-website:hover{
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-bottom: solid 1px blue;
+    color: blue;
+}
+
+
+/* 评论部分  分模块*/
+.assess-module{
+    margin-top: 70px;
+}
+/*分页*/
+
+.pagination {
+    /*margin-right: 35%;*/
+    margin-left: 35%;
+}
+
+.pagination li a {
+    font-family: '宋体';
+    font-size: 1.4rem;
+}

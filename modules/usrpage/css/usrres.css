@@ -1,0 +1,102 @@
+html{
+	font-size: 62.5%;
+}
+body{
+	font-size: 1.6rem;
+}
+.usrres-top .usrres-title,
+.usrres-collect{
+	display: inline-block;
+	font-family: "微软雅黑";
+	font-size: 1.4rem;
+	color:#333;
+	margin-top: -11px;
+	padding-bottom: 10px;
+	z-index: 999;
+	margin-left: 15px;
+}
+.usrres-top .top-manager-btn{
+	float: right;
+}
+.usrres-top div[class^='usrres']:hover{
+	color:#337ab7;
+	border-bottom:solid 2px #337ab7 ;
+	cursor: pointer;
+}
+.usrres-top-click{
+	color:#337ab7;
+	border-bottom:solid 2px #337ab7 ;
+}
+/* .usrres-top .usrres-title{
+	color:#337ab7;
+	border-bottom:solid 2px #337ab7 ;
+} */
+.usrres-main{
+	border-top: solid 1px #ccc;
+	min-height: 500px;
+}
+.usrres-divs{
+	margin-top: 15px;
+}
+/*一个资源div*/
+.usrres-divs .usrres-onediv{
+	display: flex;
+	/*justify-content: center;*/
+	align-items: center;
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+	border-bottom: solid 1px #ccc;
+}
+.usrres-ckb{
+	width: 50px;
+}
+.usrres-img{
+	width:150px;
+}
+.usrres-img img{
+	/*border-radius: 5px;*/
+	width:120px;
+	/*height: 120px;*/
+}
+.usrres-messages{
+	flex:1;	
+}
+.usrres-messages .messages-top{
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 35px;
+
+	/*多行文本溢出*/
+	display: -webkit-box !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+}
+.subject-logo:after{
+	content: url(../../res/img/subject.png);
+}
+.messages-bottom div{
+	display: inline-block;
+	color:#787d82;
+	font-size: 14px;
+}
+.filename-hidden,
+.mes-fid,
+.mes-ftype{
+	display: none !important;
+}
+.messages-bottom span{
+	color:red;
+	font-size: 14px;
+}
+/*分页*/
+.pagination{
+	margin-left: 25%;
+}
+.pagination li a{
+	font-family: '宋体';
+	font-size: 1.4rem;
+}

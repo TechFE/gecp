@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下载文件</title>
+    <link rel="stylesheet" type="text/css" href="../../common/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fileDetial.css">
+</head>
+
+<body>
+    <!-- <div id="header"></div> -->
+    <div id="download-file-wrapper" class="download-file-wrapper mainframe">
+        <div class="return-area"></div>
+        <div class="left-right-pane">
+            <div class="left-file-pane">
+                <div class="file-type-img" id="file-type-img">
+                    <img src="img/type/docx.png" class="file-type-img-src" id="file-type-img-src" alt="图片加载中">
+                </div>
+                <div class="uldname-div">上 传 者： <span class="detial-uldname"></span></div>
+                <div>上传日期： <span class="detial-ulddate"></span></div>
+            </div>
+            <div class="right-file-pane">
+                <div class="file-detail-title" id="file-detail-title"> 文件名 </div>
+                <div class="subject-list-btn">文件列表</div>
+                <div class="main-file-messages">
+                    <div class="file-messages-type">
+                        <div class="file-detial">
+                            <div>课程标准&nbsp<span class="detial-kcbz"></span></div>
+                            <div>所属年级&nbsp<span class="detial-ssnj"></span></div>
+                            <div>所属科室&nbsp<span class="detial-ssks"></span></div>
+                            <div>文件类型&nbsp<span class="detial-wjlx"></span></div>
+                            <div>备注信息&nbsp<span class="detial-bzxx"></span></div>
+                            <div>定位信息&nbsp<a class="detial-loc">无</a></div>
+                        </div>
+                    </div>
+                    <div class="user-behaviour">
+                        <div class="collect">
+                            收藏
+                        </div>
+                        <div class="download-file-btn">
+                            下载
+                        </div>
+                        <div class="preview">
+                            <a class="file-pre" target="_blank"> 预览</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="assess-module"></div>
+        <ul class="pagination" id="pagination1"></ul>
+        <div id="footer"></div>
+    </div>
+    <script src="../../common/bootstrap/js/jquery.js"></script>
+    <script src="../../common/bootstrap/js/bootstrap.js"></script>
+    <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
+    <script type="text/javascript">
+    seajs.config({
+        base: "./common/",
+        /*alias: {
+            "jquery": "js/jquery.js"
+        } //在上面直接引用了*/
+    });
+
+    seajs.use("./js/fileDetialMain"); //入口   /home/home.js
+    </script>
+</body>
+
+</html>

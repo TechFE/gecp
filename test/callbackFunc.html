@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body onload="start()">
+    <script type="text/javascript">
+    function testCallback(callback) {
+        alert('come in!');
+        var num = 5;
+        callback(num);  //callback  --->  a
+    }
+    /** 
+     * 被回调的函数 
+     */
+    function a(num) {
+        alert('a');
+        alert(num);
+    }
+
+    /** 
+     * 开始测试方法 
+     */
+    function start() {
+        testCallback(a);
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+    margin: 0;
+    font-size: 1.6rem;
+    min-width: 1000px;
+    background-color: #f5f5f5;
+}
+
+.usr-top {
+    width: 100%;
+    height: 220px;
+}
+
+.usr-top img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 180px;
+}
+
+.usr-top .usr-name {
+    position: absolute;
+    top: 80px;
+    left: 270px;
+    color: #ffffff;
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: left;
+}
+
+.usr-top .usr-tx {
+    position: absolute;
+    top: 55px;
+    left: 70px;
+    width: 170px;
+    height: 170px;
+    background: url(../img/tx_l.jpg);
+    border: solid 2px #ffffff;
+    border-radius: 180px;
+}
+
+
+/*主页部分*/
+
+.usr-page-main {
+    display: flex;
+}
+
+
+/* 左边 */
+
+.usr-left-div {
+    width: 250px;
+    /*border:solid 1px;*/
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.usr-main-left div {
+    width: 180px;
+    height: 50px;
+    margin-bottom: 10px;
+    margin-left: -35px;
+}
+
+.usr-main-left img,
+.usr-main-left .menu {
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.usr-main-left p {
+    font-size: 1.8rem;
+}
+
+.usr-left-div > div {
+    position: fixed;
+    top: 223px;
+    left: 73px;
+}
+
+.usr-main-left div:hover {
+    background-color: #6BE28F;
+    cursor: pointer;
+    color: #fff;
+}
+
+.div-hover {
+    background-color: #6BE28F;
+    color: #fff;
+}
+
+
+/* 右边 */
+
+.usr-main-right {
+    flex: 1;
+    /*background-color:#337ab7;*/
+    min-height: 600px;
+}
+
+
+/*iframe*/
+
+.usr-main-right .usrframe {
+    width: 100%;
+    border-width: 0;
+}

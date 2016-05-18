@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 连接数据库</title>
+    <!-- <script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script> -->
+</head>
+
+<body>
+    <script type="text/javascript">
+    /*
+             操作本地数据库的最基本的步骤是：
+
+           第一步：openDatabase方法：创建一个访问数据库的对象。
+           第二步：使用第一步创建的数据库访问对象来执行transaction方法，通过此方法可以设置一个开启事务成功的事件响应方法，在事件响应方法中可以执行SQL.
+           第三步：通过executeSql方法执行查询，当然查询可以是：CRUD。
+                                        */
+
+    /*var dbHelper = (function(mod1){
+
+    })(window.dbHelper || {});*/
+    var dbHelper = {
+        init: function() {
+
+        },
+        initDatabase: function(dbName, dbVersion, dbDesc, dbSize) {
+            //打开数据库，或者直接连接数据库参数：数据库名称，版本，概述，大小
+            //如果数据库不存在那么创建之
+            // var db = openDatabase("myDb", "1.0", "it's to save demo data!", 1024 * 1024);
+            dbVersion = dbVersion || "1.0";
+            dbSize = dbSize || 1024 * 1024;
+            var db = openDatabase(dbName, dbVersion, dbDesc, dbSize);
+            return db;
+        },
+        initTable: function(dbName, tbName) {
+            var db = this.initDatabase(dbName);
+            if (!db) {
+                alert("您的浏览器不支持HTML5本地数据库");
+                return;
+            }
+            db.transaction(function(trans) { //启动一个事务，并设置回调函数
+                //执行创建表的Sql脚本
+                var sql = "create table if not exists Demo(uName text null,title text null,words text null)";
+                trans.executeSql(sql, [], function(trans, result) {}, function(trans, message) { //消息的回调函数
+                    alert(message);
+                });
+
+            });
+        },
+        insertTable: function(dbName,tbName) {
+            var db = this.initDatabase(dbName);
+            txtName = "zry";
+            txtTitle = "123";
+            txtWords = "hello word";
+            // var sql = "insert into"+tbName+"(uName,title,words) values(?,?,?) ";
+            var sql = "insert into Demo(uName,title,words) values(?,?,?) ";
+            //执行sql脚本，插入数据
+            db.transaction(function(trans) {
+                trans.executeSql(sql, [txtName,txtTitle,txtWords], function(ts, data) {}, function(ts, message) {
+                    alert(message);
+                });
+            });
+        }
+
+    };
+
+    // dbHelper.initTable("myDb");
+    dbHelper.insertTable("myDb","Demo");
+    </script>
+</body>
+
+</html>

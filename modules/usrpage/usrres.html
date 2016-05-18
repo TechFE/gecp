@@ -1,0 +1,96 @@
+<div class="usrres-top">
+    <div class="usrres-top-menu usrres-title">我的资源</div>
+    <div class="usrres-top-menu usrres-collect">我的收藏</div>
+    <div class="top-manager-btn">
+        <input type="button" value="下载" class="btn btn-primary btn-xs mg-download"></input>
+        <input type="button" value="删除" class="btn btn-primary btn-xs mg-delete"></input>
+        <input type="button" value="重命名" class="btn btn-primary btn-xs mg-rename"></input>
+        <input type="button" value="移至专题 >" class="btn btn-primary btn-xs mg-move2sub"></input>
+    </div>
+</div>
+<div class="usrres-main">
+    <div class="usrres-divs">
+        <!-- 一个 -->
+        <!--   <div class="usrres-onediv">
+              <input type="checkbox" class="usrres-ckb"></input>
+              <div class="usrres-img"><img src="../res/img/nr/1.png" width="130px" height="110px" lt=""></div>
+              <div class="usrres-messages">
+                  <div class="messages-top">
+                      资源文件名字
+                  </div>
+                  <div class="messages-bottom">
+                      <div class="mes-subject">自然地理</div>
+                      <div class="mes-wjgs">图片</div>
+                      <div class="mes-ssnj">八年级</div>
+                      <div class="mes-ssks">陈列室</div>
+                      <span>&nbsp&nbsp日期：</span>
+                      <div class="mes-date">2016/3/19</div>
+                  </div>
+              </div>
+          </div> -->
+        <!-- 一个End -->
+    </div>
+</div>
+<ul class="pagination" id="pagination1"></ul>
+<!-- 简单的模态框==alert -->
+<div class="modal fade" id="usrAlertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示：</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 主题内容部分 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default mymodal-confirm">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框End -->
+<div class="modal fade" id="usrTipModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示：</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 主题内容部分 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default mymodal-close" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="usrUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改文件名：</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 主题内容部分 -->
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">原文件名:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">修改为:</label>
+                        <input type="text" class="form-control" id="message-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default usrUpdateModal-confirm">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

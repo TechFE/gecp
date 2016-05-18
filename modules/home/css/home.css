@@ -1,0 +1,55 @@
+html{
+    font-size: 62.5%;
+}
+body{
+	margin-bottom: 20px;
+    padding-top: 50px;
+    color: #5a5a5a;
+    /*min-width: 1000px;*/
+    background-color: #F5F5F5;
+    
+}
+
+/*轮播下面的图片*/
+.img-circle{
+	width:200px;
+	height: 200px;
+}
+.summary{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.summary .row{
+    margin-top: 60px;
+}
+.summary .col-md-4{
+	margin-top: 20px;
+	text-align:center; 
+}
+
+/*tab*/
+ .feature-divider {
+    margin: 60px 0;
+ }
+
+.feature-image{
+	width: 400px;
+	height: 400px;
+}
+.feature-heading {
+    font-size: 5rem;
+    color: #2a6496;
+}
+ .feature-heading .text-muted {
+    font-size: 2.8rem;
+ }
+
+.tab-content{
+	margin-bottom: 100px;
+}
+
+.hover{
+    cursor: pointer;
+    color: #FFF;
+}
+

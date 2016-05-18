@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>预览窗口</title>
+    <link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/home.css" rel="stylesheet"> -->
+    <link href="css/previewPage.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div id="header"></div> -->
+    <div class="main-wrapper mainframe">
+        <div class="main-content">
+            <!--  -->
+            <div class="pdf-online">
+                <div class="pdf-control">
+                    <button id="prev" class="btn-primary btn-sm">前一页</button>
+                    <button id="next" class="btn-primary btn-sm">下一页</button>
+                    &nbsp; &nbsp;
+                    <div>
+                        <span>页数: <span id="page_num"></span> / <span id="page_count"></span></span>
+                    </div>
+                </div>
+                <canvas id="the-canvas" style=" width:100%;border:1px solid #ccc;" />
+            </div>
+            <!--  -->
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="../../common/bootstrap/js/jquery.js"></script>
+    <script src="../../common/bootstrap/js/bootstrap.js"></script>
+    <!-- <script type="text/javascript" src="../common/js/cookie.js"></script> -->
+    <script type="text/javascript" src="../../common/js/pdf.js"></script>
+    <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
+    <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
+    <!-- <script type="text/javascript" src="js/previewPage.js"></script> -->
+    <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
+    <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
+    <script type="text/javascript">
+    seajs.config({
+        base: "./common/",
+        // alias: {
+        //     "jquery": "js/jquery.js"
+        // } //在上面直接引用了
+    });
+
+    //加载入口模块
+    /*seajs.use(["./hello"], function(hello) {
+        new Hello();
+    });*/
+
+    seajs.use("./js/previewPageMain"); //入口   /home/home.js
+    </script>
+</body>
+
+</html>

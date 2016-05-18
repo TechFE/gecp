@@ -1,0 +1,64 @@
+body {
+    width: 100%;
+    min-height: 600px;
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*title*/
+
+.logo-div {
+    /*position: absolute;*/
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+
+/*登录*/
+
+.login-contanier {
+    min-height: 330px;
+    width: 360px;
+    margin:0 auto;
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 60px;
+    border-radius: 5px;
+}
+.checkbox{
+    /*float: right;*/
+    position: relative;
+    top:0;
+    margin-left: 210px;
+}
+
+.control-label {
+    color: #101F38;
+}
+
+.login-in {
+    /*float: right;*/
+    background-color: #337ab7;
+    padding: 5px 60px 5px 60px;
+    margin-left: 90px;
+}
+
+.login-register {
+    margin-top: 30px;
+    margin-right: 25px;
+}
+
+.register {
+    float: right;
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+.register:hover {
+    cursor: pointer;
+}

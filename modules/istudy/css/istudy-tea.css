@@ -1,0 +1,239 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin-top: 60px;
+    font-family: '微软雅黑';
+    background-color: #f5f5f5;
+}
+
+.istudy-tea-wraper {
+    margin: 0 auto;
+    width: 85%;
+    min-height: 600px;
+}
+
+.course-top {
+    height: 30px;
+    border-bottom: 2px solid #edf1f2;
+}
+
+.course-top p {
+    display: inline-block;
+}
+
+.istudy-page {
+    float: right;
+    margin-top: -8px;
+}
+
+.course-tea-title {
+    font-family: '微软雅黑';
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #286090;
+}
+
+
+/* 课程信息录入主要内容 */
+
+.course-info {
+    width: 98%;
+    margin: 0 auto;
+    margin-top: -15px;
+}
+
+.course-info .row {
+    margin-top: 20px;
+}
+
+.course-info .row .col-md {
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.course-info .row > div:nth-child(1) {
+    margin-right: 2%;
+}
+
+.course-info-top {
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    border-bottom: solid 1px #F8E7C8;
+}
+
+.course-info .row div {
+    display: inline-block;
+    background-color: #fff;
+}
+
+.course-div .course-info-top {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-family: '宋体';
+    color: #756C5E;
+}
+
+.course-info .row >div {
+    border: 1px solid #ddd;
+    position: relative;
+    padding: 15px;
+}
+
+.course-info textarea {
+    font-size: 12px;
+}
+
+.course-info .row .col-md > p {
+    float: right;
+    color: #CDCDCD;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.course-set {
+    margin-top: 11px;
+    margin-bottom: 10px;
+}
+
+.course-upload {
+    /*top: -145px;*/
+}
+
+.course-set-div select {
+    margin-right: 10px;
+    margin-bottom: 8px;
+    width: 14.5%;
+    height: 26px;
+    font-size: 1.0rem;
+}
+.course-info-module input[type='date']{
+    width: 29.5%;
+
+}
+.a-course {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    display: inline;
+    zoom: 1;
+    word-break:keep-all;
+}
+
+.a-course input {
+    position: absolute;
+    font-size: 10px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    height: 30px;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-course:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+
+/* .course-pic {
+    position: absolute;
+    position: relative;
+    border: solid 1px #ccc;
+    width: 240px;
+    height: 135px;
+    margin-left: 85px;
+    top: 13px;
+    left: 1px;
+    border-radius: 5px;
+} */
+
+.course-upload-div {
+    margin-top: 5px;
+    min-height: 160px;
+    width: 100%;
+}
+
+.course-upload-div select {
+    width: 15%;
+}
+
+.course-upload-div input {
+    /*margin-left: 25px;*/
+    width: 35%;
+}
+
+.course-upload-div a {
+    margin-right: 8px;
+}
+
+.course-uld-sumbit {
+    margin-top: 25px;
+    float: right;
+}
+
+.course-uld-finished {
+    margin-top: -15px;
+}
+
+.course-uld-finished p {
+    line-height: 1.0;
+    font-size: 1.0rem;
+}
+
+
+/* 课程测试 */
+
+.course-test-title {
+    font-size: 1.6rem;
+    font-family: '宋体';
+    color: #756C5E;
+}
+.course-test-title select{
+    font-family: '微软雅黑';
+	font-size: 1.4rem;
+	color: #333;
+	background-color: #f5f5f5;
+}
+.course-test-div textarea{
+	margin-bottom: 5px;
+}
+.course-test-div input[type='text']{
+	border: 0;
+	border-bottom: solid 1px #ccc;
+	width: 50%;
+	margin-bottom: 10px;
+}
+#ct-radio-right-answer{
+	width: 40px;
+}
+.course-test-div .submit-btn{
+	float: right;
+
+}
+/*.course-test-div button{
+	float: right;
+	margin-left: 15px;
+}*/
+#ct-checkbox-right-answer{
+	width: 20%;
+}
+
+#footer{
+	margin-top: 20px;
+}
+@media screen and (max-width: 600px) {
+    
+}
