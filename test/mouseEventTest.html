@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    .p2 {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <p class="p1">hover测试</p>
+    <p class="p2">hover测试2</p>
+    <script src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.p1').hover(function() {
+            /* Stuff to do when the mouse enters the element */
+            console.log(event);  //不写也有
+            var e = event || window.event;
+            var x = e.clientX;
+            var y = e.clientY;
+            console.log(x);
+            $(this).css({
+                'cursor': 'pointer',
+                'color': 'blue'
+            });
+
+
+        }, function() {
+            /* Stuff to do when the mouse leaves the element */
+            $(this).css({
+                'cursor': 'default',
+                'color': '#333'
+            });
+            $('.p2').css('display', 'none');
+        });
+    });
+
+    $('.p1').mouseover(function(event) {
+        var e = event || window.event;
+        var x = e.clientX;
+        var y = e.clientY;
+        console.log(x);
+        $('.p2').css({
+            'display': 'block',
+            'position': 'absolute',
+            'left': x + 'px'
+        });
+    });
+    </script>
+</body>
+
+</html>
