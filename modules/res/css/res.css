@@ -448,20 +448,20 @@ hr{
 .ulclose {
     float: right;
 }
-
+.ulclose:hover{
+    cursor: pointer;
+}
 .ulMain {
     position: absolute;
     margin: 15px 30px 30px 70px;
-    margin-top: 15px;
     overflow: hidden;
 }
 
-.ulMain div {
-    /*margin-bottom: 10px;*/
-}
+
 
 .ulmain-top {
-    min-height: 42px;
+    /*margin-top: 5px;*/
+    height: 45px;
 }
 
 .ulmain-top input {
@@ -469,13 +469,15 @@ hr{
 }
 
 .fillin-sjname {
-    /*display: none;*/
     display: inline-block;
     visibility: hidden;
-    /*visibility: visible;*/
-    margin-left: 60px;
+    margin-top: -2px;
+    font-size: 1.4rem;
+    margin-left: 40px;
 }
-
+.fillin-sjname input{
+    height: 23px;
+}
 
 /* 左边 */
 
@@ -559,6 +561,10 @@ select option:first-child {
     text-overflow: ellipsis;*/
     margin-bottom: 0;
 }
+.upfile-list-mes .glyphicon-remove:hover{
+    cursor: pointer;
+    color: blue;
+}
 .uld-geo-info input,
 .website-url,
 .website-name{
@@ -573,7 +579,9 @@ select option:first-child {
 .uld-bzxx span {
     vertical-align: top;
 }
-
+#upstatus{
+    font-size: 1.2rem;
+}
 
 /*底部*/
 

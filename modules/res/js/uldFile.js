@@ -40,9 +40,6 @@ define(function(require, exports, module) {
                 $('.uploadDetial').css('left', cW);
             });
             // 关闭按钮
-            $(".ulclose").hover(function() {
-                $(this).css("cursor", "pointer");
-            });
             $('.ulclose').click(function() {
                 $('.uploadDetial').fadeOut('slow', function() {
                     $('.uploadbg').css('display', 'none');
@@ -74,8 +71,9 @@ define(function(require, exports, module) {
             /*首先判断是文件还是专题*/
             var subjectName = '';
             var ftype = '1';
-            var files, filePath;
-            $('.uld-subject').on('click', function(event) { //专题
+            var files, fileInput, fileLists = [],
+                filePath;
+            $('.uld-subject').on('click', function(event) { //专题,多文件
                 $('.fillin-sjname').fadeIn('slow', function() {
                     $(this).css('visibility', 'visible');
                 });
@@ -95,21 +93,62 @@ define(function(require, exports, module) {
             });
 
             /*上传文件*/
-            files = document.getElementById('upfile').files; //filelist
-            console.log(files);
-            console.log(files.length);
+            fileInput = document.getElementById('upfile');
+            files = fileInput.files; //filelist
+
+            // var args = Array.prototype.slice.call(arguments);
             $('.upfile').on('change', function(event) {
-                files = document.getElementById('upfile').files; //应该重新获取
-                console.log(files.length);
-                if (files.length !== 0) {
-                    var html;
-                    for (var i = 0; i < files.length; i++) {
-                        console.log(files[i].name);
-                        html = "<p>" + files[i].name + "<span class='glyphicon glyphicon-remove'></span></p>";
-                    }
-                    $('.upfile-list-mes').html(html);
+
+                files = fileInput.files; //应该重新获取
+                console.log(files);
+                if (ftype === '2') {
+                    files = Array.prototype.slice.call(files); //全部转化为数组
+                    fileLists = fileLists.concat(files);
+
+                    console.log(fileLists);
                 }
+                /*应该保存该fileList，可以继续添加*/
+
+                if (files.length !== 0) {
+                    var html = '';
+                    for (var i = 0; i < files.length; i++) {
+                        html += "<p>" + files[i].name + "&nbsp&nbsp<span class='glyphicon glyphicon-remove'></span></p>";
+                    }
+                    if (ftype === '1') {
+                        $('.upfile-list-mes').html(html);
+                    } else {
+                        $('.upfile-list-mes').append(html);
+                    }
+                }
+                $("#upstatus").html("&nbsp&nbsp文件已准备好！点击确定上传");
             });
+
+            $('.upfile-list-mes .glyphicon-remove').eq(0).hover(function(event) {
+                // var e = event||window.event;
+                // console.log(e.clientX);
+                // console.log(e.clientY);
+                // console.log('1');
+                $(this).css({
+                    'cursor': 'pointer',
+                    'color': 'blue'
+                });
+            }, function() {
+                $(this).css({
+                    'cursor': 'default',
+                    'color': '#337AB7'
+                });
+            });
+            
+            /*点击叉号可以删除要上传的文件*/
+            $('.upfile-list-mes').on('click', '.glyphicon-remove', function(event) {
+                console.log($(this).parent().index());
+                var ind = $(this).parent().index();
+                $(this).parent().css('display', 'none');
+
+                fileLists.splice(ind,1);
+                console.log(fileLists);
+            });
+            /************************************************************************************/
             //确定===>传入数据库
             $('#ulQd').click(function() {
 
@@ -166,24 +205,21 @@ define(function(require, exports, module) {
                 }
                 var filename = "";
                 if (wjlx !== '网站服务') { //网站服务不用上传文件了
-                    if (files.length === 0) {
+                    if (fileLists.length === 0) {
                         alertDialogShow('请选择要上传的附件！');
                         return;
-                    }
-                    if (files.length !== 0) {
-                        for (var i = 0; i < files.length - 1; i++) {
-                            filename += files[i].name + ";";
+                    }else {
+                        for (var i = 0; i < fileLists.length - 1; i++) {
+                            filename += fileLists[i].name + ";";
                         }
-                        filename += files[files.length - 1].name;
+                        filename += fileLists[fileLists.length - 1].name;
                         //console.log(filename);
                         $('#upstatus').text("正在上传，请稍后......");
-                    } else {
-                        // alert("没有文件上传!");
-                    }
+                    } 
 
                     filePath = 'user'; //上传服务器的文件夹
 
-                    var gUploadFile = new gEcnu.Upload(files, filePath);
+                    var gUploadFile = new gEcnu.Upload(fileLists, filePath);
                     gUploadFile.processAscyn(function() {
                         $('#upstatus').text("上传成功!");
                         flag = flag + 1;
@@ -198,7 +234,7 @@ define(function(require, exports, module) {
 
                 /*上传封面到服务器上*/
                 var picFileName = '';
-                var uldPicFile = function() {
+                var uldPicFile = (function() {
                     var picFile = document.getElementById('upfile-pic').files[0];
                     if (picFile) {
                         picFileName = picFile.name ? picFile.name : '';
@@ -214,8 +250,7 @@ define(function(require, exports, module) {
 
                     }
 
-                };
-                uldPicFile();
+                })();
                 /***********文件上传End*************************/
                 /**************字段存入数据库中********************/
                 var params = {
@@ -231,7 +266,8 @@ define(function(require, exports, module) {
 
                     },
                     'processFailed': function() {
-                        console.log('数据库上传' + flag);
+                        alertDialogShow('资源上传失败！');
+                        return;
                     }
                 });
                 sqlServices.processAscyn("ADD", "gecp2", "uploadFile2", params);
@@ -381,7 +417,6 @@ define(function(require, exports, module) {
                 'z-index': '999'
             }); //注意位置，已经压缩为150*height【自适应】
 
-            //console.log($('#picFile').attr('src'));
         });
         $('.uploadDetial').on('change', '#upload-cmcode', function(event) {
             if ($(this).children('option:checked').val() !== "0") {
@@ -390,10 +425,6 @@ define(function(require, exports, module) {
                 $('.sea-class2 span').css('color', 'red');
             }
         });
-        $(".uploadDetial").on("change", ".upfile", function() {
-            $("#upstatus").html("文件已准备好！");
-        });
-
 
     });
 
