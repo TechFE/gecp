@@ -5,7 +5,7 @@
          /*验证是否登录*/
          var cookie = require('../../../common/js/cookie');
          var username = cookie.getCookie('username');
-         if (username == "") {
+         if (!username) {
              parent.location.assign(location.protocol + "//" + location.host + "/gecp/modules/login/login.html");
          }
          $('.usr-name').text(username + " 用户中心");
@@ -38,7 +38,6 @@
          console.log(usrCenterMenu);
          switch (sessionStorage.getItem('usrCenterMenu')) {
              case '我的资源':
-                 console.log('okkk');
                  $('.usr-myres').click();
                  break;
              case '我的主页':
@@ -48,8 +47,22 @@
                  $('.usr-mycourse').click();
                  break;
          }
+         //刷新回归
+         $('.usr-main-left').on('click', '.menu', function(event) {
+             switch ($.trim($(this).text())) {
+                 case '我的资源':
+                     sessionStorage.setItem('usrCenterMenu','我的资源');
+                     break;
+                 case '我的主页':
+                     sessionStorage.setItem('usrCenterMenu','我的主页');
+                     break;
+                 case '我的课程':
+                     sessionStorage.setItem('usrCenterMenu','我的课程');
+                     break;
+             }
+
+         });
 
      });
-     // module.exports = usrpage;
 
  });

@@ -35,6 +35,17 @@ define(function(require, exports, module) {
         // usrresManager.init();
     }
 
+    /**
+     * 点击进入详情--进行修改
+     */
+    var editDetail = (function() {
+        $('.usrres-divs').on('click', '.usrres-onediv', function(event) {
+            var fid = $(this).attr('data-fid');
+            var config = require('../../../common/js/prjConfig');
+            var subHref = config.subHref();
+            location.href = subHref + '/modules/res/fileDetial.html?fid=' + fid + '&filename=""&action=edit';
+        });
+    })();
 
     var queryUsrDB = {
         /**
@@ -131,7 +142,7 @@ define(function(require, exports, module) {
             var datai = data[i];
             if (datai) {
                 var fileTitle = "";
-                var fileRealName = datai.filename || datai.fileName||'';
+                var fileRealName = datai.filename || datai.fileName || '';
                 if (datai.fileRename && datai.fileRename != 'null') {
                     fileTitle = datai.fileRename;
                 } else {
@@ -168,7 +179,7 @@ define(function(require, exports, module) {
                 var cdName = datai.cdName ? datai.cdName : " ";
                 var cmName = datai.cmName ? datai.cmName : " ";
 
-                html = '<div class="usrres-onediv">' +
+                html = '<div class="usrres-onediv" data-fid=' + datai.fid + '>' +
                     '<input type="checkbox" class="usrres-ckb"></input>' +
                     fileImgHtml +
                     '<div class="usrres-messages">' +

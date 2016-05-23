@@ -59,6 +59,16 @@ define(function(require, exports, module) {
                 return encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' + '/picFile/' + picName);
             }
         },
+        /**
+         * [alertDialogShow alert]
+         * @param  {[string]} value [alert的内容]
+         */
+        alertDialog: function(value) {
+            var alertDialog = require('../subpages/alertDialog.html');
+            $('body').append(alertDialog);
+            $('#alertModal').modal('show');
+            $('.modal-body').text(value);
+        }
     };
 
     module.exports = prjUtil;

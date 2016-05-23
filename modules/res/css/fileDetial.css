@@ -292,7 +292,20 @@ body {
     color: blue;
 }
 
-
+.edit-btns{
+    display: none;
+    float: right;
+}
+.addfile-input{
+    position: absolute;
+    top: 390px;
+}
+.right-file-pane .file-detail-title-edit{
+    height: 40px;
+}
+.right-file-pane input{
+    height: 30px;
+}
 /* 评论部分  分模块*/
 
 .assess-module {
