@@ -120,6 +120,7 @@ div[class^=star-div] {
 .comments-content {
     display: inline-block;
     margin-left: 10px;
+    word-break: break-all;
     text-overflow: ellipsis;
 }
 

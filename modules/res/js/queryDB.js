@@ -35,7 +35,7 @@
                 };
                 sqlServices1.processAscyn("SQLQUERY", "gecp2", lyrOrSQL);
             },
-            queryDB2Page: function(queryFilter, pageNum) {
+            queryDB2Page: function(queryFilter, pageNum,callbackFunc) {
 
                 queryFilter = queryFilter ? queryFilter : '1=1'; //queryFilter为空的话 1=1
                 var sortItemSession = sessionStorage.getItem('sortItem');
@@ -43,7 +43,7 @@
                 // var lyrVal = '((uploadFile2 join cDesign on uploadFile2.cdCode = cDesign.cdCode) as ud left join cMoudle on ud.cmCode=cMoudle.cmCode) as a left join fComments on a.fid = fComments.uldFileId';
                 // var fieldsVal = 'fid,fPicFileName,ftype,subjectName,uldname,a.cdCode cdCode,cdName,a.cmCode cmCode,cmName,clCode,saCode,ssnj,ssks,wjlx,date,filename,fileRename,bzxx,fcomments,uldFileId,sum(fcRate) fcRate';
                 var lyrVal = 'ratesDownloads';//数据库中的视图
-                var fieldsVal = 'fid,fPicFileName,ftype,subjectName,uldname,cdCode,cdName,cmCode,cmName,clCode,saCode,ssnj,ssks,wjlx,geoInfo,date,filename,fileRename,bzxx,fcomments,uldFileId,fcRate,rateNums,downloadNums';
+                var fieldsVal = 'fid,fPicFileName,ftype,subjectName,uldname,cdCode,cdName,cmCode,cmName,clCode,saCode,ssnj,ssks,wjlx,geoInfo,webSiteName,webSiteUrl,date,filename,fileRename,bzxx,fcomments,uldFileId,fcRate,rateNums,downloadNums';
                 if (sortItemSession) {
                     switch (sortItemSession) {
                         case "timeDown": //升序
@@ -70,13 +70,19 @@
 
                 var sqlServices = new gEcnu.WebSQLServices.SQLServices({
                     'processCompleted': function(data) {
-                        //回掉函数返回的数据   15条数据
-                        var resContent = require('./content');
-                        var lookStyle = sessionStorage.getItem('lookStyle');
-                        if (lookStyle == "small") {
-                            resContent.createResSmallContent(data); //资源列表生成
-                        } else {
-                            resContent.createResBigContent(data); //资源列表生成
+                        if(data&&callbackFunc){
+                            callbackFunc(data);
+                        }
+                        if(!callbackFunc){ //没有回掉函数-生成资源列表
+                            //回掉函数返回的数据   15条数据
+                            var resContent = require('./content');
+                            var lookStyle = sessionStorage.getItem('lookStyle');
+                            if (lookStyle == "small") {
+                                resContent.createResSmallContent(data); //资源列表生成
+                            } else {
+                                resContent.createResBigContent(data); //资源列表生成
+                            }
+                            
                         }
                     },
                     'processFailed': function() {

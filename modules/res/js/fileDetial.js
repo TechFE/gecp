@@ -2,26 +2,29 @@
     by zry
     2016-3-1
 */
-// $(document).ready(function() {
 define(function(require, exports, module) {
     /**********************************************************************/
-    window.GECP = {};
-    window.GECP.fd = {};
     var cookie = require('../../../common/js/cookie');
     var username = cookie.getCookie('username'); //用户名
+    var userId = localStorage.getItem('userId');
     var config = require('../../../common/js/prjConfig');
     var collctDB = require('./collectByDBOpr');
-    var cdName = sessionStorage.getItem('cdName');
-    var cmName = sessionStorage.getItem('cmName');
-    var fid = sessionStorage.getItem('fid');
-    var userId = localStorage.getItem('userId');
-    var isCollectFile = sessionStorage.getItem('isCollectFile');
-    var userBeahivourId = sessionStorage.getItem('userBeahivourId');
+    var queryDB = require('./queryDB');
     var _downloadFile = require('./downloadFile');
 
-    // function fileDetial() {
+    var isCollectFile = sessionStorage.getItem('isCollectFile');
+    var userBeahivourId = sessionStorage.getItem('userBeahivourId');
 
-    // }
+    // var fid = sessionStorage.getItem('fid');
+    // var cdName = sessionStorage.getItem('cdName');
+    // var cmName = sessionStorage.getItem('cmName');
+    var searchVals = location.search.split('&');
+    var fid = searchVals[0].slice(5);
+    console.log(fid);
+    if (searchVals[2]) {
+        var action = searchVals[2].slice(7);
+    }
+
     /**
      * [downloadbyType 跟据文件类型选择方法进行下载]
      * @param  {[type]} fileAllName [文件名全称]
@@ -38,33 +41,47 @@ define(function(require, exports, module) {
 
     /*文件详情和文件类型图标填充*/
     var fileDetialSource = {
-        init: function() {
-            this.fileDetialName();
-            var picName = sessionStorage.getItem('fPicFileName');
-            if (picName && username) {
+        init: function(data0) {
+            this.fileDetialName(data0);
+            var picName = data0.fPicFileName;
+            if (picName) {
                 var picFileURL = gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' + '/picFile/' + picName;
                 $('.file-type-img-src').css({
                     'width': '240px',
                 });
                 $('.file-type-img-src').attr("src", picFileURL);
             } else {
-                this.fileTypeImage(sessionStorage.getItem('fileName'));
+                this.fileTypeImage(data0.filename); //没有封面
             }
         },
-        fileDetialName: function() {
-            var fileRename = sessionStorage.getItem('fileRename'),
-                downloadFileName = sessionStorage.getItem('fileName'),
-                uldNameDetail = sessionStorage.getItem('uldName'),
-                uldDateDetail = sessionStorage.getItem('uldDate'),
-                // kcbzDataDetail = sessionStorage.getItem('kcbz'),
+        fileDetialName: function(data0) {
+            var cdName, cmName, downloadFileName, fileRename,
+                uldNameDetail,
+                uldDateDetail,
+                ssnjDataDetail,
+                ssksDataDetail,
+                wjlxDataDetail,
+                ftype,
+                subjectName,
+                geoInfo,
+                webSiteUrl,
+                bzxxDataDetail;
+            cdName = data0.cdName;
+            cmName = data0.cmName;
+            downloadFileName = data0.filename;
+            fileRename = data0.fileRename;
+            uldNameDetail = data0.uldname;
+            uldDateDetail = data0.date;
+            uldDateDetail = data0.date;
+            ssnjDataDetail = data0.ssnj;
+            ssksDataDetail = data0.ssks;
+            wjlxDataDetail = data0.wjlx;
+            ftype = data0.ftype;
+            subjectName = data0.subjectName;
+            geoInfo = data0.geoInfo;
+            webSiteUrl = data0.webSiteUrl;
+            bzxxDataDetail = data0.bzxx;
 
-                ssnjDataDetail = sessionStorage.getItem('ssnj'),
-                ssksDataDetail = sessionStorage.getItem('ssks'),
-                wjlxDataDetail = sessionStorage.getItem('wjlx'),
-                ftype = sessionStorage.getItem('ftype'),
-                subjectName = sessionStorage.getItem('subjectName'),
-                webSiteUrl = sessionStorage.getItem('webSiteUrl'),
-                bzxxDataDetail = sessionStorage.getItem('bzxx');
             if (fileRename && fileRename != 'null') {
                 downloadFileName = fileRename;
             }
@@ -73,18 +90,17 @@ define(function(require, exports, module) {
             ssksDataDetail = ssksDataDetail && ssksDataDetail != "0" ? ssksDataDetail : "无";
             wjlxDataDetail = wjlxDataDetail && wjlxDataDetail != "0" ? wjlxDataDetail : "无";
             bzxxDataDetail = bzxxDataDetail && bzxxDataDetail != "0" ? bzxxDataDetail : "无";
-            GECP.fd.downloadFileName = downloadFileName;
-            GECP.fd.subjectName = subjectName;
-            GECP.fd.ftype = ftype;
             var uBehaviourHtml = '';
-            if(wjlxDataDetail==='网站服务'){
+            if (wjlxDataDetail === '网站服务') {
                 uBehaviourHtml = '<div class="collect">收藏</div>' +
-                '<div class="to-website-div"> <a class="to-website" target="_blank" href="'+webSiteUrl+'"> 进入网站</a></div>';
+                    '<div class="to-website-div"> <a class="to-website" target="_blank" href="' + webSiteUrl + '"> 进入网站</a></div>' +
+                    '<div class="user-behaviour-website-share ub-share">分享</div>';
                 // '<div class="download-file-btn">分享 </div>' ;
-            }else{
-               uBehaviourHtml= '<div class="collect">收藏</div>' +
-                '<div class="download-file-btn">下载 </div>' +
-                '<div class="preview"> <a class="file-pre" target="_blank"> 预览</a></div>';
+            } else {
+                uBehaviourHtml = '<div class="collect">收藏</div>' +
+                    '<div class="download-file-btn">下载 </div>' +
+                    '<div class="preview"> <a class="file-pre" target="_blank"> 预览</a></div>' +
+                    '<div class="user-behaviour-share ub-share">分享</div>';
             }
             var html = ' <div class="file-detial">' +
                 '<div>课程标准&nbsp&nbsp&nbsp&nbsp<span class="detial-kcbz"></span></div>' +
@@ -92,12 +108,13 @@ define(function(require, exports, module) {
                 '<div>所属科室&nbsp&nbsp&nbsp&nbsp<span class="detial-ssks"></span></div>' +
                 '<div>文件类型&nbsp&nbsp&nbsp&nbsp<span class="detial-wjlx"></span></div>' +
                 '<div>备注信息&nbsp&nbsp&nbsp&nbsp<span class="detial-bzxx"></span></div>' +
-                '<div>定位信息&nbsp&nbsp&nbsp&nbsp<a class="detial-loc">无</a></div>' +
+                '<div>定位信息&nbsp&nbsp&nbsp&nbsp<a class="detial-loc"></a></div>' +
                 '</div>' +
                 '</div>' +
                 '<div class="user-behaviour">' +
-                 uBehaviourHtml+
+                uBehaviourHtml +
                 '</div>';
+
             $('.main-file-messages').html(html);
 
             if (ftype == "2") {
@@ -129,6 +146,7 @@ define(function(require, exports, module) {
             $('.detial-ssks').html(ssksDataDetail);
             $('.detial-wjlx').html(wjlxDataDetail);
             $('.detial-bzxx').html(bzxxDataDetail);
+            $('.detial-loc').html(geoInfo);
         },
         /**
          * [fileTypeImage 文件类型图片插图]
@@ -190,8 +208,8 @@ define(function(require, exports, module) {
          * [subjectFileList 专题文件的列表]
          * @return {[type]} [description]
          */
-        subjectFileList: function() {
-            var sfl = window.GECP.fd.downloadFileName;
+        subjectFileList: function(downloadFileName) {
+            var sfl = downloadFileName;
             // var sflArray = sfl.split(/\.\w*;/gi);
             var sflArray = sfl.split(";");
             var flHtml = "<div class='sub-lists-div'><ul class='file-lists'>";
@@ -206,82 +224,162 @@ define(function(require, exports, module) {
 
     /****************************************************************************************/
     $(function() {
-        if (!username) {
-            parent.location.assign(config.subHref() + "/modules/login/login.html");
+        if (!action && !username) { //action不为share时候不是分享的就不用跳进登陆页
+            location.assign(config.subHref() + "/modules/login/login.html");
         }
 
-        /*初始化 返回 资源详情页资源介绍部分*/
-        var fileName = sessionStorage.getItem('fileName').slice(0, 35);
-        fileDetialSource.init(); //封面和详情
-        $('.return-area').append('<a class="return-res">资源</a> > <a>' + cdName + '</a> > <a>' + cmName + '</a> > <a class="return-filename">' + fileName + '</a>'); //返回
-        $('.return-area').find('a:lt(3)').on("click", function(event) {
-            /* Act on the event */
-            window.location.href = "res.html";
-        });
-        $('.main-file-messages').on('click', '.user-behaviour div:first', function(event) {
-            console.log('收藏');
-            if ($(this).hasClass('collect-clk')) {
-                collctDB.removeCollect(userBeahivourId);
-                $(this).addClass('collect');
-                $(this).removeClass('collect-clk');
-            } else {
-                collctDB.addCollect(userId, username, fid);
-                $(this).addClass('collect-clk');
-                $(this).removeClass('collect');
-            }
-        });
-        var whereArgs = 'userId=' + userId + ' and userCollectFileId =' + fid;
-        collctDB.queryCollect(whereArgs); //看看是否被收藏了
-        if (isCollectFile == "1") { //如果被收藏了
-            $('.user-behaviour div:first').addClass('collect-clk');
-            // $('.collect-clk').text('已收藏');
-            // $('.user-behaviour div:first').removeClass('collect');
-        }
+        var queryFilter = 'fid=' + fid;
+        queryDB.queryDB2Page(queryFilter, -1, getFileDetail);
         /**
-         *分类别处理 是专题还是一般文件
+         * [getFileDetail 回掉函数]
+         * @param  {[type]} data [查询数据库返回数据]
          */
-        var fileRename = sessionStorage.getItem('fileRename');
-        if (window.GECP.fd.ftype == "2") { //如果是专题的话
-            // fileDetialSource.subjectFileList(); //专题文件列表
-            $('.file-detail-title').addClass('subject-logo');
-            $('.return-filename').html(window.GECP.fd.subjectName);
-            // $('.file-type-img-src').attr("src", "img/type/subject.png");
-            $('.subject-list-btn').css('display', 'block');
-            /* [点击 文件列表]*/
-            $('.subject-list-btn').on('click', function(event) {
-                if ($(this).hasClass('subject-list-btn')) {
-                    $(this).addClass('subject-list-btnclk');
-                    $(this).removeClass('subject-list-btn');
-                    fileDetialSource.subjectFileList();
+        function getFileDetail(data) { //var getFileDetail = function(data) {}这个写法注意顺序
+            console.log(data);
+            var cdName = data[0].cdName || '',
+                cmName = data[0].cmName || '',
+                downloadFileName = data[0].filename,
+                fileRename = data[0].fileRename,
+                ftype = data[0].ftype,
+                subjectName = data[0].subjectName;
+
+            /*初始化 返回 资源详情页资源介绍部分*/
+            var searchFileName;
+            if (fileRename && fileRename !== 'null') {
+                searchFileName = fileRename;
+            } else {
+                searchFileName = downloadFileName;
+            }
+            searchFileName = searchFileName.slice(0, 40);
+            fileDetialSource.init(data[0]); //封面和详情
+            cdName = cdName === "null" ? '其它' : cdName;
+            cmName = cmName === "null" ? '其它' : cmName;
+            console.log(cmName);
+            $('.return-area').append('<a class="return-res">资源</a> > <a>' + cdName + '</a> > <a>' + cmName + '</a> > <a class="return-filename">' + searchFileName + '</a>'); //返回
+            $('.return-area').find('a:lt(3)').on("click", function(event) {
+                window.location.href = "res.html";
+            });
+            /**
+             *分类别处理 是专题还是一般文件
+             */
+            if (ftype == "2") { //如果是专题的话
+                $('.file-detail-title').addClass('subject-logo');
+                $('.return-filename').html(subjectName);
+                // $('.file-type-img-src').attr("src", "img/type/subject.png");
+                $('.subject-list-btn').css('display', 'block');
+                /* [点击 文件列表]*/
+                $('.subject-list-btn').on('click', function(event) {
+                    if ($(this).hasClass('subject-list-btn')) {
+                        $(this).addClass('subject-list-btnclk');
+                        $(this).removeClass('subject-list-btn');
+                        fileDetialSource.subjectFileList(downloadFileName);
+                    } else {
+                        $(this).addClass('subject-list-btn');
+                        $(this).removeClass('subject-list-btnclk');
+                        fileDetialSource.fileDetialName(data[0]);
+                    }
+                });
+
+                $('.main-file-messages').on('click', '.file-list', function(event) {
+                    downloadbyType($(this).text(), fileRename);
+                    addData2UbDownload();
+                });
+                $('.main-file-messages').on('click', '.sublist-dld-logo', function(event) {
+                    downloadbyType($(this).prev('.file-list').text(), fileRename);
+                    addData2UbDownload();
+                });
+
+            } else { //非专题
+                $('.download-file-btn').on('click', function(event) {
+                    downloadbyType(downloadFileName, fileRename);
+                    addData2UbDownload();
+                });
+                $('.preview .file-pre').attr('href', 'previewPage.html?fid=' + fid + '&downloadFileName=' + downloadFileName);
+            }
+
+            collectEvents();
+        } /*回掉函数结束*/
+
+
+
+        var collectEvents = function() {
+            $('.main-file-messages').on('click', '.user-behaviour div:first', function(event) {
+                console.log('收藏');
+                if ($(this).hasClass('collect-clk')) {
+                    sessionStorage.setItem('isCollectFile', '0');
+                    collctDB.removeCollect(userBeahivourId);
+                    $(this).addClass('collect');
+                    $(this).removeClass('collect-clk');
                 } else {
-                    $(this).addClass('subject-list-btn');
-                    $(this).removeClass('subject-list-btnclk');
-                    fileDetialSource.fileDetialName();
+                    sessionStorage.setItem('isCollectFile', '1');
+                    collctDB.addCollect(userId, username, fid);
+                    $(this).addClass('collect-clk');
+                    $(this).removeClass('collect');
                 }
             });
+            if (isCollectFile == "1") { //如果被收藏了
+                $('.user-behaviour div:first').addClass('collect-clk');
+            }
+        };
 
-            $('.main-file-messages').on('click', '.file-list', function(event) {
-                downloadbyType($(this).text(), fileRename);
-                addData2UbDownload();
+        $('.main-file-messages').on('click', '.detial-loc', function(event) {
+            var geoLoc = $.trim($(this).text());
+            console.log(geoLoc);
+            /*使用百度地图解析地址*/
+
+            $('.bgModal').fadeIn('slow', function() {
+                $(this).css('display', 'block');
             });
-            $('.main-file-messages').on('click', '.sublist-dld-logo', function(event) {
-                downloadbyType($(this).prev('.file-list').text(), fileRename);
-                addData2UbDownload();
+            $('.geo-info-modal').slideUp('slow', function() {
+                $(this).css('display', 'block');
             });
 
-        } else { //非专题
-            $('.download-file-btn').on('click', function(event) {
-                downloadbyType(sessionStorage.getItem('fileName'), fileRename);
-                addData2UbDownload();
+            var BDMapHtml = require('../subs/BDMapLoc.html');
+            $('.geo-info-modal').html(BDMapHtml);
+            require('../css/BDMapLoc.css');
+            //百度地图处理逻辑代码
+            var myBDMap = require('./BDMapLoc');
+            var map = myBDMap.initLayout();
+            myBDMap.geocoderLocName(map, geoLoc);
+
+            $('.geo-info-modal').on('click', '.close-bdmap', function(event) {
+                $('.bgModal').fadeOut('slow', function() {
+                    $(this).css('display', 'none');
+                });
+                $('.geo-info-modal').slideUp('slow', function() {
+                    $(this).css('display', 'none');
+                });
             });
-            $('.preview .file-pre').attr('href', 'previewPage.html');
-        }
+        });
+
+        /*插件实现复制到粘贴板*/
+        $(".main-file-messages")
+            .on("copy", ".ub-share", function( /* ClipboardEvent */ e) {
+                var shareUrl = location.href;
+                if (!/\&action=share$/.test(shareUrl)) {
+                    shareUrl += "&action=share";
+                }
+                e.clipboardData.clearData();
+                e.clipboardData.setData("text/plain", shareUrl);
+                alertDialogShow('地址已经复制到粘贴板了，现在可以去分享啦！');
+                e.preventDefault();
+            });
         /**
          * [addData2UbDownload 下载时候 添加数据到数据库]
          */
         function addData2UbDownload() {
             var dbTool = require('./dbOpr');
             dbTool.addData2UbDownload(userId, username, fid);
+        }
+        /**
+         * [alertDialogShow alert]
+         * @param  {[string]} value [alert的内容]
+         */
+        function alertDialogShow(value) {
+            var alertDialog = require('../../../common/subpages/alertDialog.html');
+            $('body').append(alertDialog);
+            $('#alertModal').modal('show');
+            $('.modal-body').text(value);
         }
 
     });

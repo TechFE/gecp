@@ -27,9 +27,11 @@ body {
 .subject-logo:after {
     content: url(../img/subject.png);
 }
-.return-area{
+
+.return-area {
     margin-left: 8px;
 }
+
 .return-area,
 .return-area a {
     font-size: 1.4rem;
@@ -179,75 +181,109 @@ body {
     position: absolute;
     right: 270px;
 }
-
+.detial-loc:hover{
+    cursor: pointer;
+    color: blue;
+}
 
 /*用户下载收藏*/
 
 .user-behaviour {
     position: relative;
     margin-top: 15px;
-    padding-left: 28px;
-    /*left: 27px;*/
+    padding-left: 26px;
+    height: 25px;
 }
 
 .user-behaviour div {
     display: inline-block;
-    margin-right: 45px;
+    margin-right: 40px;
+}
+.user-behaviour div:last-child{
+    margin-left: 10px;
+}
+.preview{
+    padding-right: 15px;
+    border-right: solid 2px #f5f5f5;
 }
 
 .user-behaviour .collect:before {
     position: absolute;
     content: url(../img/collect.png);
-    left: 0;
+    left: 4px;
 }
+
 .user-behaviour .collect-clk:before {
     position: absolute;
     content: url(../img/collect-clk.png);
     left: -5px;
-    top:-5px;
+    top: -5px;
 }
-.collect-clk:hover,
-.collect:hover,
-.download-file-btn:hover,
-.to-website:hover {
-    cursor: pointer;
-    border-bottom: solid 1px blue;
-    color: blue;
-}
-.disable-used-style{
-    color:#ccc;
+
+.disable-used-style {
+    color: #ccc;
     cursor: default;
     border: none;
 }
+
 .user-behaviour .download-file-btn:before {
     position: absolute;
     content: url(../img/downl.png);
-    left: 77px;
+    left: 70px;
+    top: -1px;
 }
 
 .preview .file-pre:before {
     position: absolute;
     content: url(../img/preview.png);
     top: -1px;
-    left: 147px;
-    width: 20px;
-    height: 20px;
+    left: 136px;
 }
-.to-website:before{
-   position: absolute;
+.to-website-div{
+    margin-left: 5px;
+    padding-right: 20px;
+    border-right: solid 2px #f5f5f5;
+
+}
+.to-website:before {
+    position: absolute;
     content: url(../img/toweb.png);
     top: -1px;
     left: 75px;
-    width: 20px;
-    height: 20px;  
 }
+
+.user-behaviour-share:before{
+    position: absolute;
+    content: url(../img/share.png);
+    top: -1px;
+    left: 230px;
+}
+.user-behaviour-website-share:before{
+    position: absolute;
+    content: url(../img/share.png);
+    top: -1px;
+    left: 203px;
+}
+
+.collect-clk:hover,
+.collect:hover,
+.download-file-btn:hover,
+.to-website:hover,
+.user-behaviour-share:hover,
+.user-behaviour-website-share:hover,
+.ub-share:hover{
+    cursor: pointer;
+    border-bottom: solid 1px blue;
+    color: blue;
+}
+
 .file-pre,
 .to-website {
     color: #333;
 }
 
 .file-pre:hover,
-.to-website:hover{
+.to-website:hover {
     text-decoration: none;
     cursor: pointer;
     padding-bottom: 3px;
@@ -257,9 +293,12 @@ body {
 
 
 /* 评论部分  分模块*/
-.assess-module{
+
+.assess-module {
     margin-top: 70px;
 }
+
+
 /*分页*/
 
 .pagination {
@@ -270,4 +309,25 @@ body {
 .pagination li a {
     font-family: '宋体';
     font-size: 1.4rem;
+}
+
+.geo-info-modal{
+    display: none;
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    width: 80%;
+    height: 600px;
+    background-color: #fff;
+    z-index: 999;
+}
+.bgModal{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 1050px;
+    background-color: #000;
+    opacity: 0.5;
 }

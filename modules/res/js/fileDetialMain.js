@@ -4,7 +4,8 @@ define(function(require) {
 
     /*评价模块*/
     var assessModue = require('./assessModule');
-    var fid = sessionStorage.getItem('fid');
+    var searchVals = location.search.split('&');
+    var fid = searchVals[0].slice(5);
     var tableFields = {};
     tableFields.fidValue = fid;
     tableFields.id = "fcId";//表中对应的字段名

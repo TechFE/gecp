@@ -234,7 +234,7 @@ define(function(require, exports, module) {
     }
     /**
      * [alertDialogShow alert]
-     * @param  {[string]} value [aler4t的内容]
+     * @param  {[string]} value [alert的内容]
      */
     function alertDialogShow(value) {
         var alertDialog = require('../../../common/subpages/alertDialog.html');

@@ -72,10 +72,10 @@ define(function(require, exports, module) {
         console.log(data);
         if (data[0]) {
             sessionStorage.setItem('isCollectFile', '1'); //是收藏的资源
-            sessionStorage.setItem('userBeahivourId', data[0].UBID); //是收藏的资源
+            sessionStorage.setItem('userBeahivourId', data[0].UBID); 
         } else {
-            sessionStorage.setItem('isCollectFile', '0'); //是收藏的资源
-            sessionStorage.setItem('userBeahivourId', '-1'); //是收藏的资源
+            sessionStorage.setItem('isCollectFile', '0'); 
+            // sessionStorage.setItem('userBeahivourId', '-1'); 
         }
     }
     module.exports = collctDB;

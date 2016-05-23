@@ -4,12 +4,26 @@ define(function(require, exports, module) {
 
     var navheader = {
         init: function() {
+            var self = this;
             this.layout();
             this.loginRegister();
             this.changePage();
             this.loginInOut();
             this.usrcenter();
-            this.toGlobalSearchPage();
+
+            $('.global-search').on('click', function(event) {
+                self.toGlobalSearchPage();
+            });
+            /*enter键*/
+            $('.global-search-text').on('change', function(event) {
+                $('.global-search-text').keydown(function(event) {
+                    if (event.keyCode) {
+                        if (event.keyCode == 13) {
+                            self.toGlobalSearchPage();
+                        }
+                    }
+                });
+            });
         },
 
         layout: function() {
@@ -48,21 +62,19 @@ define(function(require, exports, module) {
             var usrCenter = new UsrCenter(); //进入用户中心
         },
         toGlobalSearchPage: function() {
-            $('.global-search').on('click', function(event) {
-                var gSearchText = $('.global-search-text').val();
-                if (gSearchText) {
-                    var gSearchTextArray = gSearchText.split(' ');
-                    var gSearchTextCombine = "";
-                    for (var i = 0, len = gSearchTextArray.length - 1; i < len; i++) {
-                        gSearchTextCombine += gSearchTextArray[i] + '+';
-                    }
-                    gSearchTextCombine = gSearchTextCombine + gSearchTextArray[len];
-                    // console.log(gSearchText);
-                    location.href = subHref + '/common/subpages/globalSearch.html?query=' + gSearchTextCombine;
-                }else{
-                    location.href = subHref + '/common/subpages/globalSearch.html';
+            var gSearchText = $('.global-search-text').val();
+            if (gSearchText) {
+                var gSearchTextArray = gSearchText.split(' ');
+                var gSearchTextCombine = "";
+                for (var i = 0, len = gSearchTextArray.length - 1; i < len; i++) {
+                    gSearchTextCombine += gSearchTextArray[i] + '+';
                 }
-            });
+                gSearchTextCombine = gSearchTextCombine + gSearchTextArray[len];
+                // console.log(gSearchText);
+                location.href = subHref + '/common/subpages/globalSearch.html?query=' + gSearchTextCombine;
+            } else {
+                location.href = subHref + '/common/subpages/globalSearch.html';
+            }
         },
         class2Highlight: function(classEle) {
 

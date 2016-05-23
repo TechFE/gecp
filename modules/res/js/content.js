@@ -241,60 +241,54 @@ define(function(require, exports, module) {
         // var cookie = require('../../../common/js/cookie');
         // var username = cookie.getCookie('username');
         var config = require('../../../common/js/prjConfig');
+        var fid, filename;
         if (username == "") {
             parent.location.assign(config.subHref() + "/modules/login/login.html");
         }
 
         $('#contentDiv').on('click', '.content-one', function(event) {
-            var fid = $(this).attr('data-fid');
+            fid = $(this).attr('data-fid');
+            isCollected();
             queryDB.queryByTb_Fields('uploadFile2', 'fid', fid, setData);
         });
         $('#contentDiv').on('click', '.usrres-onediv', function(event) {
-            var fid = $(this).attr('data-fid');
+            fid = $(this).attr('data-fid');
+            isCollected();
             queryDB.queryByTb_Fields('uploadFile2', 'fid', fid, setData);
         });
 
+        /**
+         * [isCollected 检查文件是否被收藏]
+         */
+        function isCollected() {
+            var collctDB = require('./collectByDBOpr');
+            var userId = localStorage.getItem('userId');
+            var whereArgs = 'userId=' + userId + ' and userCollectFileId =' + fid;
+            collctDB.queryCollect(whereArgs); //看看是否被收藏了
+        }
 
         /**
          * [setData setDataGetName回掉函数]
          * @param {[type]} data [查询数据库返回的数据]
          */
         function setData(data) {
-            sessionStorage.setItem('fileName', data[0].FILENAME);
-            sessionStorage.setItem('fileRename', data[0].FILERENAME);
-            sessionStorage.setItem('uldName', data[0].ULDNAME);
-            sessionStorage.setItem('uldDate', data[0].DATE);
-            sessionStorage.setItem('ssnj', data[0].SSNJ);
-            sessionStorage.setItem('ssks', data[0].SSKS);
-            sessionStorage.setItem('wjlx', data[0].WJLX);
-            sessionStorage.setItem('bzxx', data[0].BZXX);
-            sessionStorage.setItem('fcomments', data[0].FCOMMENTS);
-            sessionStorage.setItem('fid', data[0].FID);
-            sessionStorage.setItem('ftype', data[0].FTYPE);
-            sessionStorage.setItem('subjectName', data[0].SUBJECTNAME);
-            sessionStorage.setItem('fPicFileName', data[0].FPICFILENAME);
-            sessionStorage.setItem('webSiteUrl', data[0].WEBSITEURL);
-            var cdCode = data[0].CDCODE;
-            queryDB.queryByTb_Fields('cDesign', 'cdCode', cdCode, setDataGetName);
-            var cmCode = data[0].CMCODE;
-            queryDB.queryByTb_Fields('cMoudle', 'cmCode', cmCode, setDataGetName);
-            var clCode = data[0].CLCODE;
-            queryDB.queryByTb_Fields('coreLiteracy', 'clCode', clCode, setDataGetName);
-            var saCode = data[0].SACODE;
-            queryDB.queryByTb_Fields('schoolAch', 'saCode', saCode, setDataGetName);
-        }
-
-        function setDataGetName(data) {
-            if (data[0].CDNAME) {
-                sessionStorage.setItem('cdName', data[0].CDNAME);
-            } else if (data[0].CMNAME) {
-                sessionStorage.setItem('cmName', data[0].CMNAME);
-            } else if (data[0].CLNAME) {
-                sessionStorage.setItem('clName', data[0].CLNAME);
-            } else if (data[0].SANAME)
-                sessionStorage.setItem('saName', data[0].SANAME);
-            //全部执行结束
-            parent.location.assign(config.subHref() + "/modules/res/fileDetial.html");
+            var searchFileName;
+            filename = data[0].FILENAME;
+            fileRename = data[0].FILERENAME;
+            subjectName = data[0].SUBJECTNAME;
+            wjlx = data[0].WJLX;
+                console.log(wjlx);
+            if (wjlx==='网站服务') {
+                searchFileName="网站服务";
+            }else{
+                console.log('ok');
+                if (fileRename&&fileRename!=='null') {
+                    searchFileName = fileRename;
+                } else {
+                    searchFileName = filename;
+                }
+            }
+            parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName);
         }
     });
 
