@@ -327,20 +327,22 @@ define(function(require, exports, module) {
             console.log(geoLoc);
             /*使用百度地图解析地址*/
 
-            $('.bgModal').fadeIn('slow', function() {
-                $(this).css('display', 'block');
-            });
-            $('.geo-info-modal').slideUp('slow', function() {
-                $(this).css('display', 'block');
-            });
+            if (geoLoc && geoLoc !== 'null') {
+                $('.bgModal').fadeIn('slow', function() {
+                    $(this).css('display', 'block');
+                });
+                $('.geo-info-modal').slideUp('slow', function() {
+                    $(this).css('display', 'block');
+                });
 
-            var BDMapHtml = require('../subs/BDMapLoc.html');
-            $('.geo-info-modal').html(BDMapHtml);
-            require('../css/BDMapLoc.css');
-            //百度地图处理逻辑代码
-            var myBDMap = require('./BDMapLoc');
-            var map = myBDMap.initLayout();
-            myBDMap.geocoderLocName(map, geoLoc);
+                var BDMapHtml = require('../subs/BDMapLoc.html');
+                $('.geo-info-modal').html(BDMapHtml);
+                require('../css/BDMapLoc.css');
+                //百度地图处理逻辑代码
+                var myBDMap = require('./BDMapLoc');
+                var map = myBDMap.initLayout();
+                myBDMap.geocoderLocName(map, geoLoc);
+            }
 
             $('.geo-info-modal').on('click', '.close-bdmap', function(event) {
                 $('.bgModal').fadeOut('slow', function() {

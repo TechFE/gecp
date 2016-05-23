@@ -54,24 +54,31 @@ define(function(require, exports, module) {
             });
         },
         queryFilter2GetDB: function() {
-            var searchTxtSplit = location.search.split('&');
-            var searchTxt = searchTxtSplit[0].slice(7);
-            var searchClass = searchTxtSplit[1].slice(6); //查询的类型
-            var searchTxtArray = searchTxt.split('+');
-            var queryFilter1 = "",
-                searchText, pageSearchText = "";
-            for (var i = 0, len = searchTxtArray.length - 1; i < len; i++) {
-                searchText = decodeURIComponent(searchTxtArray[i]);
-                pageSearchText += searchText + " ";
-                queryFilter1 += " filename like '%" + searchText + "%' or fileRename like '%" + searchText + "%' or subjectName like '%" + searchText + "%' or";
-            }
-            var searchTextLast = decodeURIComponent(searchTxtArray[len]);
-            pageSearchText += searchTextLast;
-            $('.page-global-search-text').val(pageSearchText);
-            queryFilter1 += " filename like '%" + searchTextLast + "%' or fileRename like '%" + searchTextLast + "%' or subjectName like '%" + searchTextLast + "%'";
-            if (searchClass === 'res') { //查询的是资源
+            var pageSearchText = "";
+            if(!location.search){//空
                 this.searchFromDB(queryFilter1, -1, pageSearchText, 'getAllNums'); //===>查找全部数据，并且初始化分页
+            }else{
+                var searchTxtSplit = location.search.split('&');
+                var searchTxt = searchTxtSplit[0].slice(7);
+                var searchClass = searchTxtSplit[1].slice(6); //查询的类型
+                var searchTxtArray = searchTxt.split('+');
+                var queryFilter1 = "",
+                    searchText;
+                for (var i = 0, len = searchTxtArray.length - 1; i < len; i++) {
+                    searchText = decodeURIComponent(searchTxtArray[i]);
+                    pageSearchText += searchText + " ";
+                    queryFilter1 += " filename like '%" + searchText + "%' or fileRename like '%" + searchText + "%' or subjectName like '%" + searchText + "%' or";
+                }
+                var searchTextLast = decodeURIComponent(searchTxtArray[len]);
+                pageSearchText += searchTextLast;
+                $('.page-global-search-text').val(pageSearchText);
+                queryFilter1 += " filename like '%" + searchTextLast + "%' or fileRename like '%" + searchTextLast + "%' or subjectName like '%" + searchTextLast + "%'";
+                pageSearchText = (pageSearchText&&pageSearchText!=='undefined')?pageSearchText:'';
+                if (searchClass === 'res') { //查询的是资源
+                    this.searchFromDB(queryFilter1, -1, pageSearchText, 'getAllNums'); //===>查找全部数据，并且初始化分页
+                }
             }
+
 
         },
         clickSearchResultMenu: function() {

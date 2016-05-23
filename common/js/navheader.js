@@ -74,7 +74,7 @@ define(function(require, exports, module) {
                 // console.log(gSearchText);
                 location.href = subHref + '/common/subpages/globalSearch.html?query=' + gSearchTextCombine+'&class=res';
             } else {
-                location.href = subHref + '/common/subpages/globalSearch.html&class=res';
+                location.href = subHref + '/common/subpages/globalSearch.html';
             }
         },
         class2Highlight: function(classEle) {
