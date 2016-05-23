@@ -176,17 +176,23 @@ define(function(require, exports, module) {
                 whereArgsBysearchText = '';
             });
 
+            //根据输入的内容就行搜索
+            //资源名字
             $('.res-search-icon').on('click', function(event) {
-
                 var searchText = $.trim($('.res-search-text').val());
-                console.log(searchText);
-                //根据输入的内容就行搜索
-                //资源名字
                 whereArgsBysearchText = " filename like '%" + searchText + "%' or fileRename like '%" + searchText + "%' or subjectName like '%" + searchText + "%'";
-
                 var searchTextWhere = whereArgs + whereArgsBysearchText;
                 content.initLayout(searchTextWhere);
-
+            });
+            $('.res-search-text').keydown(function(event) {
+                if (event.keyCode) {
+                    if (event.keyCode == 13) {
+                        var searchText = $.trim($('.res-search-text').val());
+                        whereArgsBysearchText = " filename like '%" + searchText + "%' or fileRename like '%" + searchText + "%' or subjectName like '%" + searchText + "%'";
+                        var searchTextWhere = whereArgs + whereArgsBysearchText;
+                        content.initLayout(searchTextWhere);
+                    }
+                }
             });
         }
         /**

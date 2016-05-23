@@ -28,7 +28,7 @@ body {
 
 .page-global-search {
     color: #fff;
-    padding: 13px;
+    padding: 12px 13px 14px 13px;
     background-color: #337AB7;
 }
 
@@ -51,7 +51,6 @@ body {
 }
 
 .search-result-menu li {
-	margin-left: 15px;
 	margin-right: 15px;
 	padding:20px 30px 20px 30px;
     display: inline-block;
@@ -70,6 +69,9 @@ body {
 	/*background-color: #FCDBDB;*/
 }
 /*搜索结果*/
+.search-result-div{
+    min-height: 300px;
+}
 .usrres-onediv {
     /*height: 0px;*/
     margin-top: 5px;
@@ -82,26 +84,28 @@ body {
     width: 50px;
 }
 
-/*.usrres-onediv .usrres-img {
+.usrres-onediv .usrres-img {
     position: absolute;
+    margin-left: 8px;
+    margin-top: 6px;
     width: 150px;
-}*/
+}
 
-/*.usrres-img img {
+.usrres-img img {
     border-radius: 5px;
-    width: 160px;
-    height: 100px;
-}*/
+    width: 140px;
+    height: 75px;
+}
 
 .usrres-messages {
-    margin-left: 15px;
+    margin-left: 170px;
 }
 
 .usrres-messages .messages-top {
     font-size: 1.6rem;
     color: #337ab7;
     padding-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     /*多行文本溢出*/
     display: -webkit-box !important;
     overflow: hidden;
@@ -112,7 +116,7 @@ body {
 }
 
 .subject-logo:after {
-    content: url(../../res/img/subject.png);
+    content: url(../../modules/res/img/subject.png);
 }
 .messages-bottom{
     padding-bottom: 10px;
@@ -150,6 +154,13 @@ body {
     /*box-shadow: 1px -1px 38px 10px rgba(0, 0, 0, 0.2);*/
 }
 
+.pagination{
+    margin-left: 25%;
+}
+.pagination li a{
+    font-family: '宋体';
+    font-size: 1.4rem;
+}
 /* 底 */
 #footer{
 	margin-top: 30px;

@@ -15,15 +15,16 @@ define(function(require, exports, module) {
                 self.toGlobalSearchPage();
             });
             /*enter键*/
-            $('.global-search-text').on('change', function(event) {
-                $('.global-search-text').keydown(function(event) {
-                    if (event.keyCode) {
-                        if (event.keyCode == 13) {
-                            self.toGlobalSearchPage();
-                        }
+            // $('.global-search-text').on('change', function(event) {
+            $('.global-search-text').keydown(function(event) {
+                if (event.keyCode) {
+                    if (event.keyCode == 13) {
+                        self.toGlobalSearchPage();
                     }
-                });
+                }
             });
+
+            // });
         },
 
         layout: function() {
@@ -71,9 +72,9 @@ define(function(require, exports, module) {
                 }
                 gSearchTextCombine = gSearchTextCombine + gSearchTextArray[len];
                 // console.log(gSearchText);
-                location.href = subHref + '/common/subpages/globalSearch.html?query=' + gSearchTextCombine;
+                location.href = subHref + '/common/subpages/globalSearch.html?query=' + gSearchTextCombine+'&class=res';
             } else {
-                location.href = subHref + '/common/subpages/globalSearch.html';
+                location.href = subHref + '/common/subpages/globalSearch.html&class=res';
             }
         },
         class2Highlight: function(classEle) {

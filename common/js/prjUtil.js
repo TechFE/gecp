@@ -49,7 +49,16 @@ define(function(require, exports, module) {
 
                 };
             };
-        }
+        },
+        /**
+         * [getPicFile 得到资源封面]
+         * @return {[type]} [description]
+         */
+        getPicFileURL: function(picName) {
+            if (picName) {
+                return encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' + '/picFile/' + picName);
+            }
+        },
     };
 
     module.exports = prjUtil;
