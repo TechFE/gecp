@@ -42,21 +42,48 @@ define(function(require, exports, module) {
                     prjUtil.alertDialog("对不起！修改失败");
                 }
             });
+            var Params={};
+            if(obj.ftype === '1'){
+                 Params = {
+                    'Fields': ["fid", "fileRename", "cdCode", "cmCode", "ssnj", "ssks", "wjlx", "bzxx", "geoInfo"],
+                    'Data': [
+                        [obj.fid, obj.fileTitleEdit, obj.cdCodeEdit, obj.cmCodeEdit, obj.ssnjEdit, obj.ssksEdit, obj.wjlxEdit, obj.bzxxEdit, obj.LocEdit],
+                    ]
+                };
+            }else if(obj.ftype === '2'){
+                Params = {
+                    'Fields': ["fid", "subjectName", "cdCode", "cmCode", "ssnj", "ssks", "wjlx", "bzxx", "geoInfo"],
+                    'Data': [
+                        [obj.fid, obj.sjTitleEdit, obj.cdCodeEdit, obj.cmCodeEdit, obj.ssnjEdit, obj.ssksEdit, obj.wjlxEdit, obj.bzxxEdit, obj.LocEdit],
+                    ]
+                };
+            }
+            sqlservice.processAscyn(gEcnu.ActType.UPDATE, 'gecp2', 'uploadFile2', Params);
+        },
+        updateUploadFile2ByFid: function(fieldsObj, id) {
+            var sqlservice = new gEcnu.WebSQLServices.SQLServices({
+                'processCompleted': function() {
+                   
+                },
+                'processFailed': function() {
+                    prjUtil.alertDialog("对不起！修改失败");
+                }
+            });
             var Params = {
-                'Fields': ["fid", "fileRename", "cdCode", "cmCode", "ssnj", "ssks", "wjlx", "bzxx", "geoInfo"],
+                'Fields': ["fid", fieldsObj.field],
                 'Data': [
-                    [obj.fid, obj.fileTitleEdit, obj.cdCodeEdit, obj.cmCodeEdit, obj.ssnjEdit, obj.ssksEdit, obj.wjlxEdit, obj.bzxxEdit, obj.LocEdit],
+                    [id, fieldsObj.data],
                 ]
             };
             sqlservice.processAscyn(gEcnu.ActType.UPDATE, 'gecp2', 'uploadFile2', Params);
         },
-        delRecordById: function(fields,id) {
+        delRecordById: function(fields, id) {
             var sqlservice = new gEcnu.WebSQLServices.SQLServices({
                 'processCompleted': function() {
                     prjUtil.alertDialog("删除资源成功");
-                    setTimeout(function(){
+                    setTimeout(function() {
                         location.reload();
-                    },800);
+                    }, 800);
                 },
                 'processFailed': function() {
                     prjUtil.alertDialog("对不起！删除资源失败");

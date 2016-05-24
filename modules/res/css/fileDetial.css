@@ -291,15 +291,60 @@ body {
     border-bottom: solid 1px blue;
     color: blue;
 }
-
+/******************************************/
 .edit-btns{
     display: none;
     float: right;
 }
-.addfile-input{
+.files-pan,
+.files-pan-del{
     position: absolute;
-    top: 390px;
+    top: 170px;
+    right: 8%;
+    width: 390px;
+    /*width: 200px;*/
+    padding: 5px;
+    min-height: 200px;
+    color: #fff;
+    background-color: #449d44;
 }
+.files-pan .file-lists,
+.files-pan-del .file-lists-del{
+    margin-bottom: 25px;
+    overflow: auto;
+    height: 200px;
+}
+.addfile-input,
+.delfile-input{
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    margin-top: 5px;
+    border-top: solid 1px #fff;
+}
+.files-pan p,
+.files-pan-del p{
+    margin: 0;
+}
+.files-pan .triangle{
+    position: absolute;
+    right: 100px;
+    top: 225px;
+    font-size: 30px;
+    color: #449d44;
+}
+.files-pan-del  .triangle-del{
+    position: absolute;
+    right: 20px;
+    top: 225px;
+    font-size: 30px;
+    color: #449d44;
+}
+.delfile-icon:hover{
+    cursor: pointer;
+    color: #337AB7;
+}
+/******************************************/
 .right-file-pane .file-detail-title-edit{
     height: 40px;
 }

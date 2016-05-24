@@ -55,8 +55,8 @@
             <button type="button" class="btn btn-primary res-edit-btn">修改</button>
             <button type="button" class="btn btn-primary res-edit-qd-btn">确认修改</button>
             <button type="button" class="btn btn-primary res-delete-btn">删除资源</button>
-            <button type="button" class="btn btn-primary res-addfile-btn">新增文件</button>
-            <button type="button" class="btn btn-primary res-delfile-btn">删除文件</button>
+            <button type="button" class="btn btn-primary res-addfile-btn res-addfile">新增文件</button>
+            <button type="button" class="btn btn-primary res-delfile-btn res-delfile">删除文件</button>
         </div>
         <div id="assess-module"></div>
         <ul class="pagination" id="pagination1"></ul>
@@ -75,16 +75,13 @@
     <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
     <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
     <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F84BggVwVPc4koOeox6xu9gEqtVhTaIq"></script>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F84BggVwVPc4koOeox6xu9gEqtVhTaIq"></script> -->
     <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
     <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
     <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
     <script type="text/javascript">
     seajs.config({
         base: "./common/",
-        /*alias: {
-            "jquery": "js/jquery.js"
-        } //在上面直接引用了*/
     });
 
     seajs.use("./js/fileDetialMain"); //入口   /home/home.js
