@@ -3,6 +3,7 @@
 /*登录验证*/
 define(function(require, exports, module) {
     var cookie = require('../../../common/js/cookie');
+    var prjUtil = require('../../../common/js/prjUtil');
     $('.login-in').click(function() {
         var username = $.trim($('.login-username').val());
         if (username == "" || username == null) {
@@ -34,7 +35,7 @@ define(function(require, exports, module) {
                 var userId = data[0].uid;
                 var identity = data[0].identity;
                 localStorage.setItem('userId',userId);
-                localStorage.setItem('identity',identity);
+                localStorage.setItem('identity',prjUtil.sampleEncode(identity));
                 if (pwd == user_pwd) {
                     cookie.setCookie('username', username, 7);
                     window.location.href = "../../index.html";

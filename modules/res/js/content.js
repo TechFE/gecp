@@ -7,6 +7,7 @@ define(function(require, exports, module) {
     // $(document).ready(function() {
     var queryDB = require('./queryDB');
     var cookie = require('../../../common/js/cookie');
+    var prjUtil = require('../../../common/js/prjUtil');
     var username = cookie.getCookie('username');
     var resContent = {
         initLayout: function(queryFilter) {
@@ -277,18 +278,27 @@ define(function(require, exports, module) {
             fileRename = data[0].FILERENAME;
             subjectName = data[0].SUBJECTNAME;
             wjlx = data[0].WJLX;
-                console.log(wjlx);
-            if (wjlx==='网站服务') {
-                searchFileName="网站服务";
-            }else{
+            console.log(wjlx);
+            if (wjlx === '网站服务') {
+                searchFileName = "网站服务";
+            } else {
                 console.log('ok');
-                if (fileRename&&fileRename!=='null') {
+                if (fileRename && fileRename !== 'null') {
                     searchFileName = fileRename;
                 } else {
                     searchFileName = filename;
                 }
             }
-            parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName);
+            var identity = localStorage.getItem('identity');
+            if (identity) {
+                identity = prjUtil.sampleDecode(identity);
+            }
+
+            if (identity === '管理员') {
+                parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName+"&action=edit");
+            }else{
+                parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName);
+            }
         }
     });
 

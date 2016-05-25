@@ -16,16 +16,14 @@ define(function(require, exports, module) {
     var isCollectFile = sessionStorage.getItem('isCollectFile');
     var userBeahivourId = sessionStorage.getItem('userBeahivourId');
 
-    // var fid = sessionStorage.getItem('fid');
-    // var cdName = sessionStorage.getItem('cdName');
-    // var cmName = sessionStorage.getItem('cmName');
     var searchVals = location.search.split('&');
     var fid = searchVals[0].slice(5);
     var action;
+
     if (searchVals[2]) {
         action = searchVals[2].slice(7);
     }
-    console.log(action);
+
     /**
      * [downloadbyType 跟据文件类型选择方法进行下载]
      * @param  {[type]} fileAllName [文件名全称]
@@ -306,12 +304,12 @@ define(function(require, exports, module) {
                     downloadbyType(downloadFileName, fileRename);
                     addData2UbDownload();
                 });
-                $('.preview .file-pre').attr('href', 'previewPage.html?fid=' + fid + '&downloadFileName=' + downloadFileName);
+                $('.preview .file-pre').attr('href', 'previewPage.html?fid=' + fid + '&fn=' + downloadFileName);
             }
 
             collectEvents();
             if (action === 'edit') {
-                var editEvents = require('./editEvents');//修改
+                var editEvents = require('./editEvents'); //修改
                 editEvents(data0); //编辑
             }
         } /*回掉函数结束*/
@@ -378,8 +376,14 @@ define(function(require, exports, module) {
         $(".main-file-messages")
             .on("copy", ".ub-share", function( /* ClipboardEvent */ e) {
                 var shareUrl = location.href;
-                if (!/\&action=share$/.test(shareUrl)) {
-                    shareUrl += "&action=share";
+                var reg = /\&action=((?:\S)*)$/gi;
+                if (reg.test(shareUrl)) {
+                    var length = RegExp.$1.length;
+                    shareUrl = shareUrl.slice(0,-length)+'share';
+                    // shareUrl.replace(RegExp.$1,"share");
+                    console.log(shareUrl);
+                }else{
+                    shareUrl = shareUrl +"&action=share";
                 }
                 e.clipboardData.clearData();
                 e.clipboardData.setData("text/plain", shareUrl);

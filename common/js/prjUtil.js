@@ -68,7 +68,19 @@ define(function(require, exports, module) {
             $('body').append(alertDialog);
             $('#alertModal').modal('show');
             $('.modal-body').text(value);
-        }
+        },
+        /**
+         * [sampleEncode 简单的加密算法]
+         */
+        sampleEncode:function(value){
+            return btoa(encodeURIComponent(value));
+        },
+        /**
+         * [sampleEncode 简单的解密算法]
+         */
+        sampleDecode:function(value){
+            return decodeURIComponent(atob(value));
+        },
     };
 
     module.exports = prjUtil;

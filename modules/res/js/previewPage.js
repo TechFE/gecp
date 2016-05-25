@@ -235,9 +235,11 @@ define(function(require, exports, module) {
     function previewPage() {
         var cookie = require('../../../common/js/cookie');
         var username = cookie.getCookie('username'); //用户名
-        var fileName = sessionStorage.getItem('fileName');
-        console.log(fileName);
-        var fileType = fileName.slice(-3);
+        var fileName = location.search.split('&')[1].slice(3);
+        var lastDotInd = fileName.lastIndexOf('.');
+        console.log(lastDotInd);
+        // var fileType = fileName.slice(-3);
+        var fileType = fileName.slice(lastDotInd+1);
         console.log(fileType);
         var filePath = gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' +'/';
         var fileURL = filePath + fileName;
