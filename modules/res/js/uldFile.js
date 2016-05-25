@@ -69,37 +69,85 @@ define(function(require, exports, module) {
         uploadFile: function() {
             /***************上传文件或者专题****************************/
             /*首先判断是文件还是专题*/
-            var subjectName = '',
-                fileLists;
-            var ftype = '1'; //1-单文件 2-多文件
-            var fileInputModule = require('./fileInputModule'); /*上传文件模块*/
-
+            var subjectName = '';
+            var ftype = '1';
+            var files, fileInput, fileLists = [],
+                filePath;
             $('.uld-subject').on('click', function(event) { //专题,多文件
                 $('.fillin-sjname').fadeIn('slow', function() {
                     $(this).css('visibility', 'visible');
                 });
                 $('.uld-fj input').attr('multiple', 'multiple');
                 ftype = '2';
-
             });
+            $('.uploadDetial').on('change', '.fillin-sjname input', function(event) {
+                subjectName = $('.fillin-sjname input').val();
+                console.log(subjectName);
+            });
+
             $('.uld-file').on('click', function(event) { //专题
                 $('.fillin-sjname').fadeOut('slow', function() {
                     $(this).css('visibility', 'hidden');
                 });
                 $('.uld-fj input').removeAttr('multiple');
-                ftype = '1';
             });
 
-            $('.uploadDetial').on('change', '.fillin-sjname input', function(event) {
-                subjectName = $('.fillin-sjname input').val();
+            /*上传文件*/
+            fileInput = document.getElementById('upfile');
+            files = fileInput.files; //filelist
+
+            // var args = Array.prototype.slice.call(arguments);
+            $('.upfile').on('change', function(event) {
+
+                files = fileInput.files; //应该重新获取
+                console.log(files);
+                if (ftype === '2') {
+                    files = Array.prototype.slice.call(files); //全部转化为数组
+                    fileLists = fileLists.concat(files);
+
+                    console.log(fileLists);
+                }
+                /*应该保存该fileList，可以继续添加*/
+
+                if (files.length !== 0) {
+                    var html = '';
+                    for (var i = 0; i < files.length; i++) {
+                        html += "<p>" + files[i].name + "&nbsp&nbsp<span class='glyphicon glyphicon-remove'></span></p>";
+                    }
+                    if (ftype === '1') {
+                        $('.upfile-list-mes').html(html);
+                    } else {
+                        $('.upfile-list-mes').append(html);
+                    }
+                }
+                $("#upstatus").html("&nbsp&nbsp文件已准备好！点击确定上传");
             });
 
-            $('.upfile').on('click', function(event) {
-                fileLists = fileInputModule.inputBaseEvents(ftype);
+            $('.upfile-list-mes .glyphicon-remove').eq(0).hover(function(event) {
+                // var e = event||window.event;
+                // console.log(e.clientX);
+                // console.log(e.clientY);
+                // console.log('1');
+                $(this).css({
+                    'cursor': 'pointer',
+                    'color': 'blue'
+                });
+            }, function() {
+                $(this).css({
+                    'cursor': 'default',
+                    'color': '#337AB7'
+                });
             });
-            /*上传文件模块*/
+            
+            /*点击叉号可以删除要上传的文件*/
+            $('.upfile-list-mes').on('click', '.glyphicon-remove', function(event) {
+                console.log($(this).parent().index());
+                var ind = $(this).parent().index();
+                $(this).parent().css('display', 'none');
 
-
+                fileLists.splice(ind,1);
+                console.log(fileLists);
+            });
             /************************************************************************************/
             //确定===>传入数据库
             $('#ulQd').click(function() {
@@ -155,8 +203,35 @@ define(function(require, exports, module) {
                     }
                     // $('#upload-wjlx .website').attr('checked', 'checked');
                 }
+                var filename = "";
+                if (wjlx !== '网站服务') { //网站服务不用上传文件了
+                    if (fileLists.length === 0) {
+                        alertDialogShow('请选择要上传的附件！');
+                        return;
+                    }else {
+                        for (var i = 0; i < fileLists.length - 1; i++) {
+                            filename += fileLists[i].name + ";";
+                        }
+                        filename += fileLists[fileLists.length - 1].name;
+                        //console.log(filename);
+                        $('#upstatus').text("正在上传，请稍后......");
+                    } 
 
-                var filename = fileInputModule.up2FileServer(fileLists, fieldsObj); //上传附件到服务器
+                    filePath = 'user'; //上传服务器的文件夹
+
+                    var gUploadFile = new gEcnu.Upload(fileLists, filePath);
+                    gUploadFile.processAscyn(function() {
+                        $('#upstatus').text("上传成功!");
+                        flag = flag + 1;
+                        console.log('文件上传' + flag);
+                    }, function() {
+                        $('#upstatus').text("上传失败!");
+                        console.log('文件上传' + flag);
+                    });
+                } else {
+                    filename = webSiteName;
+                }
+
                 /*上传封面到服务器上*/
                 var picFileName = '';
                 var uldPicFile = (function() {
