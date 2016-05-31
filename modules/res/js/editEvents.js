@@ -79,12 +79,13 @@ define(function(require, exports, module) {
                 '</select>';
             $('.detial-ssnj').html(ssnjHtml);
             var ind2 = 0;
-            $('.detial-ssnj option').each(function(index, el) {
+            $('.detial-ssnj-edit option').each(function(index, el) {
                 if ($(this).text() === detialSsnj) {
                     ind2 = index;
+                    console.log(ind2);
                 }
             });
-            $('detial-ssnj-edit option').eq(ind2).attr('selected', 'true');
+            $('.detial-ssnj-edit option').eq(ind2).attr('selected', 'true');
 
             var detialSsks = $('.detial-ssks').text();
             var ssksHtml = '<select name="ssks" class="detial-ssks-edit">' +
@@ -97,12 +98,12 @@ define(function(require, exports, module) {
                 '</select>';
             $('.detial-ssks').html(ssksHtml);
             var ind3 = 0;
-            $('.detial-ssnj option').each(function(index, el) {
+            $('.detial-ssks-edit option').each(function(index, el) {
                 if ($(this).text() === detialSsks) {
                     ind3 = index;
                 }
             });
-            $('detial-ssks-edit option').eq(ind3).attr('selected', 'true');
+            $('.detial-ssks-edit option').eq(ind3).attr('selected', 'true');
 
             var detialWjlx = $('.detial-wjlx').text();
             var wjlxHtml = '<select name="wjlx" class="detial-wjlx-edit">' +
@@ -121,7 +122,7 @@ define(function(require, exports, module) {
                     ind4 = index;
                 }
             });
-            $('detial-wjlx-edit option').eq(ind4).attr('selected', 'true');
+            $('.detial-wjlx-edit option').eq(ind4).attr('selected', 'true');
 
 
             var detialBzxx = $('.detial-bzxx').text();
@@ -324,6 +325,9 @@ define(function(require, exports, module) {
             }
             $('.edit-btns').on('click', '.delfile-icon', function(event) {
                 var ind = $(this).parent().index();
+                var fileName = $(this).parent().text();
+                // prjUtil.delFileServer(fileName);//文件同名问题
+
                 $(this).parent().css('display', 'none');
 
                 var filenameArray = data0.filename.split(';');

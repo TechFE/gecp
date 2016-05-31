@@ -176,6 +176,8 @@ body {
     -moz-box-orient: vertical;
     -ms-box-orient: vertical;
     -webkit-line-clamp: 1;
+    -moz-line-clamp: 1;
+    -ms-line-clamp: 1;
 }
 
 .sublist-dld-logo {

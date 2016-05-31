@@ -264,7 +264,6 @@ define(function(require, exports, module) {
             fileDetialSource.init(data0); //封面和详情
             cdName = cdName === "null" ? '其它' : cdName;
             cmName = cmName === "null" ? '其它' : cmName;
-            console.log(cmName);
             $('.return-area').append('<a class="return-res">资源</a> > <a>' + cdName + '</a> > <a>' + cmName + '</a> > <a class="return-filename">' + searchFileName + '</a>'); //返回
             $('.return-area').find('a:lt(3)').on("click", function(event) {
                 window.location.href = "res.html";

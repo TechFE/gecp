@@ -12,6 +12,18 @@ define(function(require, exports, module) {
             d = parseInt(d) < 10 ? '0' + d : d;
             return '' + y + '-' + m + '-' + d;
         },
+        getStandardClock: function() {
+            var time = new Date();
+            var h = time.getHours();
+            var min = time.getMinutes();
+            var s = time.getSeconds();
+            var ms = time.getMilliseconds();
+            h = parseInt(h) < 10 ? '0' + h : h;
+            min = parseInt(min) < 10 ? '0' + min : min;
+            s = parseInt(s) < 10 ? '0' + s : s;
+            ms = parseInt(ms) < 10 ? '0' + ms : ms;
+            return '' + h + '-' + min + '-' + s+ '-' + ms;
+        },
         getCharLen: function() {
             /**
              * [gblen 获得字符串长度]
@@ -51,12 +63,40 @@ define(function(require, exports, module) {
             };
         },
         /**
-         * [getPicFile 得到资源封面]
-         * @return {[type]} [description]
+         * [getPicFile 利用FileServer得到资源封面]
+         * @return {[type]} [图片的地址]
          */
         getPicFileURL: function(picName) {
             if (picName) {
                 return encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' + '/picFile/' + picName);
+            }
+        },
+        /**
+         * [delFileServer 利用FileServer删除文件]
+         */
+        delFileServer: function(fileName, path) {
+            path = (path) ? path : 'upload/user/';
+            console.log(path + fileName);
+            if (fileName) {
+                $.ajax({
+                        url: gEcnu.config.geoserver + 'fileserver',
+                        type: 'POST', //不能使用GET
+                        async: false,
+                        // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                        data: {
+                            'req': 'delete',
+                            'fn': path + fileName,
+                        }
+                    })
+                    .done(function() {
+                        console.log("success");
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                    .always(function() {
+                        console.log("complete");
+                    });
             }
         },
         /**
@@ -72,13 +112,13 @@ define(function(require, exports, module) {
         /**
          * [sampleEncode 简单的加密算法]
          */
-        sampleEncode:function(value){
+        sampleEncode: function(value) {
             return btoa(encodeURIComponent(value));
         },
         /**
          * [sampleEncode 简单的解密算法]
          */
-        sampleDecode:function(value){
+        sampleDecode: function(value) {
             return decodeURIComponent(atob(value));
         },
     };

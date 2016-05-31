@@ -101,12 +101,13 @@ define(function(require, exports, module) {
 
                 files = fileInput.files; //应该重新获取
                 console.log(files);
-                if (ftype === '2') {
+                // if (ftype === '2') {
                     files = Array.prototype.slice.call(files); //全部转化为数组
                     fileLists = fileLists.concat(files);
 
                     console.log(fileLists);
-                }
+                    console.log(fileLists.length);
+                // }
                 /*应该保存该fileList，可以继续添加*/
 
                 if (files.length !== 0) {
@@ -231,7 +232,7 @@ define(function(require, exports, module) {
                 } else {
                     filename = webSiteName;
                 }
-
+                
                 /*上传封面到服务器上*/
                 var picFileName = '';
                 var uldPicFile = (function() {

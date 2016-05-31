@@ -22,8 +22,9 @@
                      var usrresHtml = require('../usrres.html');
                      require('../css/usrres.css');
                      $('.usr-main-right').html(usrresHtml);
-                     var Usrres = require('./usrres');
-                     var usrres = new Usrres();
+                     var Usrres = require('./usrres');//执行jquery封装的回掉函数
+                     // Usrres.init();
+                     // var usrres = new Usrres();
                      break;
                  case '我的主页':
                      var usrhomepageHtml = require('../usrhomepage.html');

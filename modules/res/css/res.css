@@ -99,9 +99,12 @@ body {
     font-size: 1.4rem;
     margin-left: 25px;
 }
+
+
 /*.kcmk-div ul li{
     margin-left: 27px!important;
 }*/
+
 #search-class1 {
     margin-top: 8px;
 }
@@ -113,7 +116,7 @@ body {
 
 #searDiv .selected {
     color: #337AB7;
-    background-color:  #f5f5f5;
+    background-color: #f5f5f5;
     font-weight: bolder;
 }
 
@@ -261,13 +264,16 @@ body {
     box-shadow: 0 0 1px 3px #337ab7;
     /*box-shadow: 1px -1px 38px 10px rgba(0, 0, 0, 0.2);*/
 }
-.content-one{
+
+.content-one {
     font-size: 1.4rem;
     color: #999999;
 }
-.content-one span[class^='glyphicon']{
+
+.content-one span[class^='glyphicon'] {
     font-size: 1.2rem;
 }
+
 .cont-img {
     width: 100%;
     height: 135px;
@@ -278,18 +284,25 @@ body {
     color: #333;
     line-height: 16px;
     font-size: 14px;
-    /*font-weight: bold;*/
     display: -webkit-box !important;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
     word-break: break-all;
+   /* word-wrap: break-word;
     -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
     -webkit-line-clamp: 1;
+    -moz-line-clamp: 1;
+    -ms-line-clamp: 1;*/
 }
-hr{
+
+hr {
     margin-top: 10px;
     margin-bottom: 0;
 }
+
 .cont-name {
     position: absolute;
     font-size: 14px;
@@ -310,6 +323,7 @@ hr{
 
 /* 小图浏览模式 */
 
+
 /*.contentDiv {
     background-color: #fff;
 }*/
@@ -319,17 +333,21 @@ hr{
     margin-top: 5px;
     background-color: #fff;
 }
-.usrres-onediv:first-child{
+
+.usrres-onediv:first-child {
     margin-top: 10px;
 }
+
 .usrres-ckb {
     width: 50px;
 }
+
 
 /*.usrres-onediv .usrres-img {
     position: absolute;
     width: 150px;
 }*/
+
 
 /*.usrres-img img {
     border-radius: 5px;
@@ -358,16 +376,18 @@ hr{
 .subject-logo:after {
     content: url(../../res/img/subject.png);
 }
-.messages-bottom{
+
+.messages-bottom {
     padding-bottom: 10px;
 }
+
 .messages-bottom div {
     display: inline-block;
     color: #787d82;
     font-size: 14px;
-    
 }
-.messages-bottom div[class^='mes-']{
+
+.messages-bottom div[class^='mes-'] {
     margin-right: 18px;
     border-radius: 5px;
     background-color: #EBEBEB;
@@ -378,16 +398,20 @@ hr{
 .mes-ftype {
     display: none !important;
 }
+
 .res-uldname,
-.res-date{
+.res-date {
     float: right;
 }
-.res-uldname{
+
+.res-uldname {
     margin-right: 30px;
 }
-.res-date{
+
+.res-date {
     margin-right: 100px;
 }
+
 .usrres-onediv:hover {
     cursor: pointer;
     box-shadow: 0 0 1px 3px #337ab7;
@@ -448,16 +472,16 @@ hr{
 .ulclose {
     float: right;
 }
-.ulclose:hover{
+
+.ulclose:hover {
     cursor: pointer;
 }
+
 .ulMain {
     position: absolute;
     margin: 15px 30px 30px 70px;
     overflow: hidden;
 }
-
-
 
 .ulmain-top {
     /*margin-top: 5px;*/
@@ -475,9 +499,11 @@ hr{
     font-size: 1.4rem;
     margin-left: 40px;
 }
-.fillin-sjname input{
+
+.fillin-sjname input {
     height: 23px;
 }
+
 
 /* 左边 */
 
@@ -498,9 +524,11 @@ hr{
     margin-left: 10px;
     color: #909993;
 }
-.uld-geo-data .a-upload{
+
+.uld-geo-data .a-upload {
     margin-left: 5px;
 }
+
 .ulmain-left div select option:not(:first-child) {
     color: #000;
 }
@@ -521,14 +549,16 @@ select option:first-child {
 .ulmain-right input {
     display: inline;
 }
-.upfile-pic-default{
+
+.upfile-pic-default {
     position: absolute;
     font-size: 60px;
     color: #ccc;
-    top:105px;
+    top: 105px;
     right: 85px;
     z-index: 1;
 }
+
 .file-pic {
     border: solid 1px #ccc;
     width: 240px;
@@ -538,15 +568,18 @@ select option:first-child {
     margin-bottom: 10px;
     border-radius: 5px;
 }
-.uld-fj{
+
+.uld-fj {
     height: 50px;
     word-break: keep-all;
     text-overflow: ellipsis;
 }
+
 .uld-fj a {
     margin-left: 32px;
 }
-.upfile-list-mes{
+
+.upfile-list-mes {
     font-size: 1.0rem;
     width: 328px;
     height: 80px;
@@ -555,35 +588,39 @@ select option:first-child {
     overflow-x: hidden;
     margin: 0;
 }
-.upfile-list-mes p{
-   /* width: 280px;
+
+.upfile-list-mes p {
+    /* width: 280px;
     word-break: keep-all;
     text-overflow: ellipsis;*/
     margin-bottom: 0;
 }
-.upfile-list-mes .glyphicon-remove:hover{
+
+.upfile-list-mes .glyphicon-remove:hover {
     cursor: pointer;
     color: blue;
 }
+
 .uld-geo-info input,
 .website-url,
-.website-name{
+.website-name {
     margin-left: 8px;
     font-size: 1.2rem;
     width: 180px;
 }
 
-
 .uld-bzxx {
-    margin-top:80px;
+    margin-top: 80px;
 }
 
 .uld-bzxx span {
     vertical-align: top;
 }
-#upstatus{
+
+#upstatus {
     font-size: 1.2rem;
 }
+
 
 /*底部*/
 
@@ -658,9 +695,11 @@ select option:first-child {
     }
 }
 
+
 /*@media screen and (max-width: 1024px) {
   
 }*/
+
 
 /*@media screen and (max-width: 768px) {
  
