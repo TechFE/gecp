@@ -13,6 +13,7 @@ define(function(require, exports, module) {
         $('.edit-btns').fadeIn('slow', function() {
             $(this).css('display', 'block');
         });
+        $('.edit-btns .res-edit-qd-btn').attr('disable', 'disable');
         //修改
         $('.edit-btns').one('click', '.res-edit-btn', function(event) {
             var fileTitle = $('.file-detail-title').text();
@@ -135,31 +136,33 @@ define(function(require, exports, module) {
         });
 
         $('.edit-btns').on('click', '.res-edit-qd-btn', function(event) {
-            var fileTitleEdit = $('.file-detail-title-edit').val(),
-                cdCodeEdit = $('.detial-cdName-edit').val(),
-                cmCodeEdit = $('.detial-cmName-edit').val(),
-                ssnjEdit = $('.detial-ssnj-edit').val(),
-                ssksEdit = $('.detial-ssks-edit').val(),
-                wjlxEdit = $('.detial-wjlx-edit').val(),
-                bzxxEdit = $('.detial-bzxx-edit').val(),
-                locEdit = $('.detial-loc-edit').val();
-            var obj = {};
-            obj.fid = data0.fid;
-            obj.ftype = data0.ftype;
-            obj.cdCodeEdit = cdCodeEdit;
-            obj.cmCodeEdit = cmCodeEdit;
-            obj.ssnjEdit = ssnjEdit;
-            obj.ssksEdit = ssksEdit;
-            obj.wjlxEdit = wjlxEdit;
-            obj.bzxxEdit = bzxxEdit;
-            obj.locEdit = locEdit;
-            if (data0.ftype === '1') {
-                obj.fileTitleEdit = fileTitleEdit;
-            } else if (data0.ftype === '2') {
-                obj.sjTitleEdit = fileTitleEdit;
-            }
+            if ($('.detial-cdName-edit').val()&&$('.detial-cmName-edit').val()) {
+                var fileTitleEdit = $('.file-detail-title-edit').val(),
+                    cdCodeEdit = $('.detial-cdName-edit').val(),
+                    cmCodeEdit = $('.detial-cmName-edit').val(),
+                    ssnjEdit = $('.detial-ssnj-edit').val(),
+                    ssksEdit = $('.detial-ssks-edit').val(),
+                    wjlxEdit = $('.detial-wjlx-edit').val(),
+                    bzxxEdit = $('.detial-bzxx-edit').val(),
+                    locEdit = $('.detial-loc-edit').val();
+                var obj = {};
+                obj.fid = data0.fid;
+                obj.ftype = data0.ftype;
+                obj.cdCodeEdit = cdCodeEdit;
+                obj.cmCodeEdit = cmCodeEdit;
+                obj.ssnjEdit = ssnjEdit;
+                obj.ssksEdit = ssksEdit;
+                obj.wjlxEdit = wjlxEdit;
+                obj.bzxxEdit = bzxxEdit;
+                obj.locEdit = locEdit;
+                if (data0.ftype === '1') {
+                    obj.fileTitleEdit = fileTitleEdit;
+                } else if (data0.ftype === '2') {
+                    obj.sjTitleEdit = fileTitleEdit;
+                }
 
-            dbTool.updateUploadFile2(obj);
+                dbTool.updateUploadFile2(obj);
+            }
         });
         /**
          * [删除资源]
@@ -256,7 +259,7 @@ define(function(require, exports, module) {
                 var filesHtml = '';
                 for (var i = 0, len = filenameArray.length; i < len; i++) {
                     var fileListName = filenameArray[i];
-                    if(/^\d{17}-/.test(fileListName)){
+                    if (/^\d{17}-/.test(fileListName)) {
                         fileListName = fileListName.slice(18);
                     }
                     filesHtml += '<p>' + fileListName + '</p>';
@@ -332,7 +335,7 @@ define(function(require, exports, module) {
                 var filesHtml = '';
                 for (var i = 0, len = filenameArray.length; i < len; i++) {
                     var fileListName = filenameArray[i];
-                    if(/^\d{17}-/.test(fileListName)){
+                    if (/^\d{17}-/.test(fileListName)) {
                         fileListName = fileListName.slice(18);
                     }
                     filesHtml += '<p>' + fileListName + '    <span class="glyphicon glyphicon-remove delfile-icon"></span></p>';

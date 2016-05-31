@@ -8,7 +8,7 @@ define(function(require, exports, module) {
             this.initLayout();
             this.clickSearchResultMenu();
             this.queryFilter2GetDB();
-            this.resContentOpr();//资源点击进入详情
+            this.resContentOpr(); //资源点击进入详情
         },
 
         initLayout: function() {
@@ -55,9 +55,9 @@ define(function(require, exports, module) {
         },
         queryFilter2GetDB: function() {
             var pageSearchText = "";
-            if(!location.search){//空
+            if (!location.search) { //空
                 this.searchFromDB(queryFilter1, -1, pageSearchText, 'getAllNums'); //===>查找全部数据，并且初始化分页
-            }else{
+            } else {
                 var searchTxtSplit = location.search.split('&');
                 var searchTxt = searchTxtSplit[0].slice(7);
                 var searchClass = searchTxtSplit[1].slice(6); //查询的类型
@@ -73,7 +73,7 @@ define(function(require, exports, module) {
                 pageSearchText += searchTextLast;
                 $('.page-global-search-text').val(pageSearchText);
                 queryFilter1 += " filename like '%" + searchTextLast + "%' or fileRename like '%" + searchTextLast + "%' or subjectName like '%" + searchTextLast + "%'";
-                pageSearchText = (pageSearchText&&pageSearchText!=='undefined')?pageSearchText:'';
+                pageSearchText = (pageSearchText && pageSearchText !== 'undefined') ? pageSearchText : '';
                 if (searchClass === 'res') { //查询的是资源
                     this.searchFromDB(queryFilter1, -1, pageSearchText, 'getAllNums'); //===>查找全部数据，并且初始化分页
                 }
@@ -164,11 +164,23 @@ define(function(require, exports, module) {
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
-                    if(/^\d{17}-/.test(fileTitle)){
+                    if (/^\d{17}-/.test(fileTitle)) {
                         fileTitle = fileTitle.slice(18);
                     }
                     if (datai.ftype == 2) {
-                        fileTitle = datai.subjectName || fileTitle;
+                        if (!datai.subjectName) {
+                            var newFileTitle = '';
+                            var fileTitleArray = fileTitle.split(';');
+                            for (var j = 0; j < fileTitleArray.length; j++) {
+                                if (/^\d{17}-/.test(fileTitleArray[j])) {
+                                    fileTitleArray[j] = fileTitleArray[j].slice(18);
+                                }
+                                newFileTitle += fileTitleArray[j] + '&nbsp&nbsp';
+                            }
+                            fileTitle = newFileTitle.slice(0, 50);
+                        } else {
+                            fileTitle = datai.subjectName;
+                        }
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
                     } else {
                         // fileTitle = filename;
@@ -230,7 +242,7 @@ define(function(require, exports, module) {
                 console.log(fid);
                 var config = require('./prjConfig');
                 var subHref = config.subHref();
-                 location.href = subHref+'/modules/res/fileDetial.html?fid='+fid+'&filename=""';
+                location.href = subHref + '/modules/res/fileDetial.html?fid=' + fid + '&filename=""';
             });
         }
     };

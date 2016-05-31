@@ -103,7 +103,7 @@ define(function(require, exports, module) {
                     '<div class="preview"> <a class="file-pre" target="_blank"> 预览</a></div>' +
                     '<div class="user-behaviour-share ub-share">分享</div>';
             }
-            
+
             html = ' <div class="file-detial">' +
                 '<div>课程设计&nbsp&nbsp&nbsp&nbsp<span class="detial-cdName"></span></div>' +
                 '<div>课程模块&nbsp&nbsp&nbsp&nbsp<span class="detial-cmName"></span></div>' +
@@ -117,12 +117,11 @@ define(function(require, exports, module) {
                 '<div class="user-behaviour">' +
                 uBehaviourHtml +
                 '</div>';
-  
+
 
             $('.main-file-messages').html(html);
 
             if (ftype == "2") {
-                $('.file-detail-title').html(subjectName);
                 $('.download-file-btn').css({
                     'color': '#ccc',
                     'cursor': 'default',
@@ -136,10 +135,12 @@ define(function(require, exports, module) {
             } else {
                 var lastIndexOfDot = downloadFileName.lastIndexOf('.');
                 if (lastIndexOfDot > 0) {
-                    downloadFileName = downloadFileName.slice(18, lastIndexOfDot);//0-17是时间戳
-                    downloadFileName = downloadFileName ? downloadFileName : '文件名为空';
+                    downloadFileName = downloadFileName.slice(0, lastIndexOfDot); //0-17是时间戳
                 } else {
-                    downloadFileName = downloadFileName ? downloadFileName.slice(18) : '文件名为空';
+                    downloadFileName = downloadFileName ? downloadFileName : '文件名为空';
+                }
+                if (/^\d{17}-/.test(downloadFileName)) {
+                    downloadFileName = downloadFileName.slice(18);
                 }
                 $('.file-detail-title').html(downloadFileName);
             }
@@ -219,6 +220,9 @@ define(function(require, exports, module) {
             var sflArray = sfl.split(";");
             var flHtml = "<div class='sub-lists-div'><ul class='file-lists'>";
             for (var i = 0; i < sflArray.length; i++) {
+                if (/^\d{17}-/.test(sflArray[i])) {
+                    sflArray[i] = sflArray[i].slice(18);
+                }
                 flHtml += "<li><a class='file-list'>" + sflArray[i] + "</a>";
                 flHtml += "<img class='sublist-dld-logo' src='img/downl.png'></li>";
             }
@@ -234,7 +238,7 @@ define(function(require, exports, module) {
         }
 
         var queryFilter = 'fid=' + fid;
-        queryDB.queryDB2Page(queryFilter, -1, getFileDetail);
+        queryDB.queryDB2Page(queryFilter, -1, getFileDetail); //根据id查询到资源
         /**
          * 根据fid进行查询
          * [getFileDetail 回掉函数]
@@ -269,8 +273,21 @@ define(function(require, exports, module) {
              *分类别处理 是专题还是一般文件
              */
             if (ftype == "2") { //如果是专题的话
+                var newSubjectName="";
+                if (!subjectName) {
+                    var subjectNameArray = downloadFileName.split(';');
+                    for (var i = 0; i < subjectNameArray.length; i++) {
+                        if (/^\d{17}-/.test(subjectNameArray[i])) {
+                            subjectNameArray[i] = subjectNameArray[i].slice(18);
+                            newSubjectName +=subjectNameArray[i]+'   ';
+                        }else{
+                            newSubjectName +=subjectNameArray[i]+'   ';
+                        }
+                    }
+                }
                 $('.file-detail-title').addClass('subject-logo');
-                $('.return-filename').html(subjectName);
+                $('.file-detail-title').html(newSubjectName.slice(0, 25));
+                $('.return-filename').html(newSubjectName.slice(0, 60));
                 // $('.file-type-img-src').attr("src", "img/type/subject.png");
                 $('.subject-list-btn').css('display', 'block');
                 /* [点击 文件列表]*/
@@ -375,11 +392,11 @@ define(function(require, exports, module) {
                 var reg = /\&action=((?:\S)*)$/gi;
                 if (reg.test(shareUrl)) {
                     var length = RegExp.$1.length;
-                    shareUrl = shareUrl.slice(0,-length)+'share';
+                    shareUrl = shareUrl.slice(0, -length) + 'share';
                     // shareUrl.replace(RegExp.$1,"share");
                     console.log(shareUrl);
-                }else{
-                    shareUrl = shareUrl +"&action=share";
+                } else {
+                    shareUrl = shareUrl + "&action=share";
                 }
                 e.clipboardData.clearData();
                 e.clipboardData.setData("text/plain", shareUrl);

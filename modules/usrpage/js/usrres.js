@@ -64,11 +64,24 @@ define(function(require, exports, module) {
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
+
                     if (/^\d{17}-/.test(fileTitle)) {
                         fileTitle = fileTitle.slice(18);
                     }
                     if (datai.ftype == 2) {
-                        fileTitle = datai.subjectName || fileTitle;
+                        if (!datai.subjectName) {
+                            var newFileTitle = '';
+                            var fileTitleArray = fileTitle.split(';');
+                            for (var j = 0; j < fileTitleArray.length; j++) {
+                                if (/^\d{17}-/.test(fileTitleArray[j])) {
+                                    fileTitleArray[j] = fileTitleArray[j].slice(18);
+                                }
+                                newFileTitle += fileTitleArray[j] + '&nbsp&nbsp';
+                            }
+                            fileTitle = newFileTitle.slice(0, 50);
+                        } else {
+                            fileTitle = datai.subjectName;
+                        }
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
                     } else {
                         // fileTitle = filename;
@@ -177,7 +190,19 @@ define(function(require, exports, module) {
                         fileTitle = fileTitle.slice(18);
                     }
                     if (datai.ftype == 2) {
-                        fileTitle = datai.subjectName || fileTitle;
+                        if (!datai.subjectName) {
+                            var newFileTitle = '';
+                            var fileTitleArray = fileTitle.split(';');
+                            for (var j = 0; j < fileTitleArray.length; j++) {
+                                if (/^\d{17}-/.test(fileTitleArray[j])) {
+                                    fileTitleArray[j] = fileTitleArray[j].slice(18);
+                                }
+                                newFileTitle += fileTitleArray[j] + '&nbsp&nbsp';
+                            }
+                            fileTitle = newFileTitle.slice(0, 50);
+                        } else {
+                            fileTitle = datai.subjectName;
+                        }
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
                     } else {
                         messagesTopHtml = '<div class="messages-top">' + fileTitle + '</div>' +
