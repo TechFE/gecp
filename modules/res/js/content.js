@@ -54,7 +54,8 @@ define(function(require, exports, module) {
                     fileImgHtml = "<div><img src='" + decodeURI(picFileURL) + "' class='cont-img' alt='封面'/></div>";
                 } else {
                     //空
-                    fileImgHtml = "<div><img src='img/nr/" + (i + 1) + ".png' class='cont-img' alt='封面'/></div>";
+                    // fileImgHtml = "<div><img src='img/nr/" + (i + 1) + ".png' class='cont-img' alt='封面'/></div>";
+                    fileImgHtml = "<div><img src='img/default.png' class='cont-img' alt='封面'/></div>";
                 }
                 var pfjUtil = require('../../../common/js/prjUtil');
                 pfjUtil.getCharLen();

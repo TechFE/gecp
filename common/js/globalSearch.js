@@ -181,11 +181,11 @@ define(function(require, exports, module) {
                         fileImgHtml = "<div class='usrres-img'><img src='" + decodeURI(picFileURL) + "' class='cont-img' alt='封面'/></div>";
                     } else {
                         //空
-                        var imgNum = i;
-                        if (imgNum >= 15) {
-                            imgNum = imgNum - 10;
-                        }
-                        fileImgHtml = "<div class='usrres-img'><img src='../../modules/res/img/nr/" + (imgNum + 1) + ".png' class='cont-img' alt='封面'/></div>";
+                        // var imgNum = i;
+                        // if (imgNum >= 15) {
+                        //     imgNum = imgNum - 10;
+                        // }
+                        fileImgHtml = "<div class='usrres-img'><img src='../../modules/res/img/default.png' class='cont-img' alt='封面'/></div>";
                     }
                     var wjlx = datai.wjlx == '0' ? "   " : datai.wjlx;
                     var ssnj = datai.ssnj == '0' ? "   " : datai.ssnj;
