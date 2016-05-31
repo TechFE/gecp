@@ -12,17 +12,50 @@ define(function(require, exports, module) {
             d = parseInt(d) < 10 ? '0' + d : d;
             return '' + y + '-' + m + '-' + d;
         },
-        getStandardClock: function() {
+        getStandardTime: function() {
             var time = new Date();
             var h = time.getHours();
             var min = time.getMinutes();
             var s = time.getSeconds();
             var ms = time.getMilliseconds();
+            var msi = parseInt(ms);
             h = parseInt(h) < 10 ? '0' + h : h;
             min = parseInt(min) < 10 ? '0' + min : min;
             s = parseInt(s) < 10 ? '0' + s : s;
             ms = parseInt(ms) < 10 ? '0' + ms : ms;
-            return '' + h + '-' + min + '-' + s+ '-' + ms;
+            if (msi < 10) {
+                msi = '00' + msi;
+            } else if (msi < 100) {
+                msi = '0' + msi;
+            }
+            return '' + h + '-' + min + '-' + s + '-' + msi;
+        },
+        /**
+         * [getTimestamp 时间戳]
+         * @return {[string]} [时间戳字符串17位]
+         */
+        getTimestamp:function() {
+            var time = new Date();
+            var y = time.getFullYear();
+            var m = time.getMonth() + 1;
+            var d = time.getDate();
+            m = parseInt(m) < 10 ? '0' + m : m;
+            d = parseInt(d) < 10 ? '0' + d : d;
+            var h = time.getHours();
+            var min = time.getMinutes();
+            var s = time.getSeconds();
+            var ms = time.getMilliseconds();
+            var msi = parseInt(ms);
+            h = parseInt(h) < 10 ? '0' + h : h;
+            min = parseInt(min) < 10 ? '0' + min : min;
+            s = parseInt(s) < 10 ? '0' + s : s;
+            ms = parseInt(ms) < 10 ? '0' + ms : ms;
+            if (msi < 10) {
+                msi = '00' + msi;
+            } else if (msi < 100) {
+                msi = '0' + msi;
+            }
+            return ''+y+m+d+h+min+s+msi;
         },
         getCharLen: function() {
             /**

@@ -155,13 +155,15 @@ define(function(require, exports, module) {
             obj.locEdit = locEdit;
             if (data0.ftype === '1') {
                 obj.fileTitleEdit = fileTitleEdit;
-            }else if(data0.ftype === '2'){
+            } else if (data0.ftype === '2') {
                 obj.sjTitleEdit = fileTitleEdit;
             }
 
             dbTool.updateUploadFile2(obj);
         });
-
+        /**
+         * [删除资源]
+         */
         $('.edit-btns').on('click', '.res-delete-btn', function(event) {
             var confirmDialog = require('../../../common/subpages/confirmDialog.html');
             $('body').append(confirmDialog);
@@ -170,6 +172,7 @@ define(function(require, exports, module) {
             $('.mymodal-confirm').on('click', function(event) {
                 $('#confirmModal').modal('hide');
                 dbTool.delRecordById("fid", data0.fid);
+                prjUtil.delFileServer();
             });
         });
 
@@ -252,7 +255,11 @@ define(function(require, exports, module) {
                 var filenameArray = filenames.split(';');
                 var filesHtml = '';
                 for (var i = 0, len = filenameArray.length; i < len; i++) {
-                    filesHtml += '<p>' + filenameArray[i] + '</p>';
+                    var fileListName = filenameArray[i];
+                    if(/^\d{17}-/.test(fileListName)){
+                        fileListName = fileListName.slice(18);
+                    }
+                    filesHtml += '<p>' + fileListName + '</p>';
                 }
                 $('.file-lists').html(filesHtml);
             }
@@ -262,7 +269,7 @@ define(function(require, exports, module) {
             var fileLists = [];
             $('.addfile-input').on('change', function(event) {
                 prjUtil.alertDialog("正在上传文件，请稍后！");
-
+                var timestamp = prjUtil.getTimestamp() || '';
                 files = fileInput.files; //应该重新获取
                 // console.log(files);
                 if (data0.ftype === '1' || data0.ftype === '2') {
@@ -282,10 +289,16 @@ define(function(require, exports, module) {
                     $('.file-lists').append(html);
                 }
                 var addFileNames = '';
-                for (var j = 0, flLen = fileLists.length - 1; j < flLen; j++) {
-                    addFileNames += fileLists[j].name + ';';
+                for (var j = 0, flLen = fileLists.length; j < flLen; j++) {
+                    var initialFileName = fileLists[j].name;
+                    Object.defineProperty(fileLists[j], 'name', {
+                        writable: true
+                    });
+                    fileLists[j].name = timestamp + '-' + initialFileName;
+                    console.log(fileLists[j].name);
+                    addFileNames += fileLists[j].name + ";";
                 }
-                addFileNames += fileLists[flLen].name;
+                addFileNames = addFileNames.slice(0, -1);
                 console.log(addFileNames);
                 filePath = 'user'; //上传服务器的文件夹
                 var gUploadFile = new gEcnu.Upload(fileLists, filePath);
@@ -303,7 +316,7 @@ define(function(require, exports, module) {
 
         }
         /**
-         * [addFile 删除文件到资源中]
+         * [delFile 在资源中删除文件]
          */
         function delFile(data0) {
             //input 界面
@@ -314,25 +327,29 @@ define(function(require, exports, module) {
                 '</div>';
             $('.edit-btns').append(fileInputHtml);
             var filenames = data0.filename;
+            var filenameArray = filenames.split(';');
             if (filenames) {
-                var filenameArray = filenames.split(';');
                 var filesHtml = '';
                 for (var i = 0, len = filenameArray.length; i < len; i++) {
-                    filesHtml += '<p>' + filenameArray[i] + '    <span class="glyphicon glyphicon-remove delfile-icon"></span></p>';
+                    var fileListName = filenameArray[i];
+                    if(/^\d{17}-/.test(fileListName)){
+                        fileListName = fileListName.slice(18);
+                    }
+                    filesHtml += '<p>' + fileListName + '    <span class="glyphicon glyphicon-remove delfile-icon"></span></p>';
                 }
                 $('.file-lists-del').html(filesHtml);
 
             }
             $('.edit-btns').on('click', '.delfile-icon', function(event) {
                 var ind = $(this).parent().index();
-                var fileName = $(this).parent().text();
-                // prjUtil.delFileServer(fileName);//文件同名问题
+                var fileName = filenameArray[ind];
+                prjUtil.delFileServer(fileName); //文件同名问题
 
                 $(this).parent().css('display', 'none');
 
-                var filenameArray = data0.filename.split(';');
-                var remainFilename = filenameArray.splice(ind, 1);
-                var editedFilename = filenameArray.join(';');
+                var filenameArray1 = data0.filename.split(';');
+                var remainFilename = filenameArray1.splice(ind, 1);
+                var editedFilename = filenameArray1.join(';');
                 var fieldObj = {
                     'field': 'filename',
                     'data': editedFilename

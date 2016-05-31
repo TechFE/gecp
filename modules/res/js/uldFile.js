@@ -101,12 +101,19 @@ define(function(require, exports, module) {
 
                 files = fileInput.files; //应该重新获取
                 console.log(files);
+                // console.log(files[0].name);
                 // if (ftype === '2') {
-                    files = Array.prototype.slice.call(files); //全部转化为数组
-                    fileLists = fileLists.concat(files);
-
-                    console.log(fileLists);
-                    console.log(fileLists.length);
+                files = Array.prototype.slice.call(files); //全部转化为数组
+                fileLists = fileLists.concat(files);
+                // var initialFileName = fileLists[0].name;
+                // Object.defineProperty(fileLists[0],'name',{
+                //     writable:true
+                // });
+                // fileLists[0].name = 'hello.png';
+                // console.log(initialFileName);
+                // console.log(fileLists[0].name);
+                // console.log(fileLists);
+                // console.log(fileLists.length);
                 // }
                 /*应该保存该fileList，可以继续添加*/
 
@@ -139,14 +146,14 @@ define(function(require, exports, module) {
                     'color': '#337AB7'
                 });
             });
-            
+
             /*点击叉号可以删除要上传的文件*/
             $('.upfile-list-mes').on('click', '.glyphicon-remove', function(event) {
                 console.log($(this).parent().index());
                 var ind = $(this).parent().index();
                 $(this).parent().css('display', 'none');
 
-                fileLists.splice(ind,1);
+                fileLists.splice(ind, 1);
                 console.log(fileLists);
             });
             /************************************************************************************/
@@ -167,6 +174,8 @@ define(function(require, exports, module) {
                 fieldsObj.bzxx = $('#bzxx').val();
                 // fieldsObj.date = new Date().toLocaleDateString();
                 fieldsObj.date = prjUtil.getStandardDate();
+                fieldsObj.time = prjUtil.getStandardTime();
+                fieldsObj.timestamp = prjUtil.getTimestamp();
                 fieldsObj.sjName = $('.fillin-sjname').val(); //专题名  
 
 
@@ -179,6 +188,8 @@ define(function(require, exports, module) {
                     saLevel = fieldsObj.saLevel,
                     bzxx = fieldsObj.bzxx,
                     date = fieldsObj.date,
+                    time = fieldsObj.time,
+                    timestamp = fieldsObj.timestamp,
                     sjName = fieldsObj.sjName;
                 geoInfo = fieldsObj.geoInfo;
                 webSiteName = fieldsObj.webSiteName;
@@ -209,14 +220,22 @@ define(function(require, exports, module) {
                     if (fileLists.length === 0) {
                         alertDialogShow('请选择要上传的附件！');
                         return;
-                    }else {
-                        for (var i = 0; i < fileLists.length - 1; i++) {
+                    } else {
+
+                        for (var i = 0; i < fileLists.length; i++) {
+                            var initialFileName = fileLists[i].name;
+                            Object.defineProperty(fileLists[i], 'name', {
+                                writable: true
+                            });
+                            fileLists[i].name = timestamp+'-'+initialFileName;
+                            console.log(fileLists[i].name);
                             filename += fileLists[i].name + ";";
                         }
-                        filename += fileLists[fileLists.length - 1].name;
-                        //console.log(filename);
+                        // filename += fileLists[fileLists.length - 1].name;
+                        filename = filename.slice(0, -1);
+                        console.log(filename);
                         $('#upstatus').text("正在上传，请稍后......");
-                    } 
+                    }
 
                     filePath = 'user'; //上传服务器的文件夹
 
@@ -232,7 +251,7 @@ define(function(require, exports, module) {
                 } else {
                     filename = webSiteName;
                 }
-                
+
                 /*上传封面到服务器上*/
                 var picFileName = '';
                 var uldPicFile = (function() {
@@ -255,9 +274,9 @@ define(function(require, exports, module) {
                 /***********文件上传End*************************/
                 /**************字段存入数据库中********************/
                 var params = {
-                    Fields: ['ftype', 'fPicFileName', 'subjectName', 'uldname', 'cdCode', 'cmCode', 'clCode', 'saCode', 'ssnj', 'ssks', 'wjlx', 'geoInfo', 'webSiteName', 'webSiteUrl', 'bzxx', 'date', 'filename'],
+                    Fields: ['ftype', 'fPicFileName', 'subjectName', 'uldname', 'cdCode', 'cmCode', 'clCode', 'saCode', 'ssnj', 'ssks', 'wjlx', 'geoInfo', 'webSiteName', 'webSiteUrl', 'bzxx', 'date', 'time', 'filename'],
                     Data: [
-                        [ftype, picFileName, subjectName, uldname, cdCode, cmCode, clCode, saLevel, ssnj, ssks, wjlx, geoInfo, webSiteName, webSiteUrl, bzxx, date, filename]
+                        [ftype, picFileName, subjectName, uldname, cdCode, cmCode, clCode, saLevel, ssnj, ssks, wjlx, geoInfo, webSiteName, webSiteUrl, bzxx, date, time, filename]
                     ]
                 };
                 var sqlServices = new gEcnu.WebSQLServices.SQLServices({

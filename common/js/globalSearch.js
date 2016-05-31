@@ -161,11 +161,12 @@ define(function(require, exports, module) {
                     var lastIndexOfDot = fileTitle.lastIndexOf('.');
                     if (lastIndexOfDot > 0) {
                         fileTitle = fileTitle.slice(0, lastIndexOfDot);
-                        fileTitle = fileTitle ? fileTitle : '文件名为空';
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
-
+                    if(/^\d{17}-/.test(fileTitle)){
+                        fileTitle = fileTitle.slice(18);
+                    }
                     if (datai.ftype == 2) {
                         fileTitle = datai.subjectName || fileTitle;
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';

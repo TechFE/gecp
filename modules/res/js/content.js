@@ -41,14 +41,24 @@ define(function(require, exports, module) {
                     var lastIndexOfDot = fileName.lastIndexOf('.');
                     if (lastIndexOfDot > 0) {
                         fileName = fileName.slice(0, lastIndexOfDot);
-                        fileName = fileName ? fileName : '文件名为空';
                     } else {
                         fileName = fileName ? fileName : '文件名为空';
                     }
                 } else if (datai.ftype == '2') {
-                    fileName = '【专题】' + datai.subjectName;
-                    fileName = fileName == "【专题】" || fileName ? fileName : '专题名为空';
+                    if (datai.subjectName) {
+                        fileName = '【专题】' + datai.subjectName;
+                    } else {
+                        var fileName1 = datai.filename;
+                        if (/^\d{17}-/.test(fileName1)) {
+                            fileName1 = fileName1.slice(18);
+                        }
+                        fileName = '【专题】' + fileName1;
+                    }
                 }
+                if (/^\d{17}-/.test(fileName)) {
+                    fileName = fileName.slice(18);
+                }
+
                 if (datai.fPicFileName) { //如果有封面
                     var picFileURL = getPicFileURL(datai.fPicFileName);
                     fileImgHtml = "<div><img src='" + decodeURI(picFileURL) + "' class='cont-img' alt='封面'/></div>";
@@ -110,13 +120,19 @@ define(function(require, exports, module) {
                     var lastIndexOfDot = fileTitle.lastIndexOf('.');
                     if (lastIndexOfDot > 0) {
                         fileTitle = fileTitle.slice(0, lastIndexOfDot);
-                        fileTitle = fileTitle ? fileTitle : '文件名为空';
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
+                    if (/^\d{17}-/.test(fileTitle)) {
+                        fileTitle = fileTitle.slice(18);
+                    }
 
                     if (datai.ftype == 2) {
-                        fileTitle = datai.subjectName || fileTitle;
+                        if (datai.subjectName) {
+                            fileTitle = datai.subjectName;
+                        } 
+                        fileTitle = fileTitle.slice(0,60);
+                        // fileTitle = datai.subjectName || fileTitle;
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
                     } else {
                         // fileTitle = filename;
@@ -296,8 +312,8 @@ define(function(require, exports, module) {
             }
 
             if (identity === '管理员') {
-                parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName+"&action=edit");
-            }else{
+                parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName + "&action=edit");
+            } else {
                 parent.location.assign(config.subHref() + "/modules/res/fileDetial.html?fid=" + fid + "&filename=" + searchFileName);
             }
         }

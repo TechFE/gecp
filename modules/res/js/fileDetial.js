@@ -103,9 +103,7 @@ define(function(require, exports, module) {
                     '<div class="preview"> <a class="file-pre" target="_blank"> 预览</a></div>' +
                     '<div class="user-behaviour-share ub-share">分享</div>';
             }
-            // if (action === 'edit') {
-
-            // } else {
+            
             html = ' <div class="file-detial">' +
                 '<div>课程设计&nbsp&nbsp&nbsp&nbsp<span class="detial-cdName"></span></div>' +
                 '<div>课程模块&nbsp&nbsp&nbsp&nbsp<span class="detial-cmName"></span></div>' +
@@ -119,8 +117,7 @@ define(function(require, exports, module) {
                 '<div class="user-behaviour">' +
                 uBehaviourHtml +
                 '</div>';
-            // }
-
+  
 
             $('.main-file-messages').html(html);
 
@@ -139,10 +136,10 @@ define(function(require, exports, module) {
             } else {
                 var lastIndexOfDot = downloadFileName.lastIndexOf('.');
                 if (lastIndexOfDot > 0) {
-                    downloadFileName = downloadFileName.slice(0, lastIndexOfDot);
+                    downloadFileName = downloadFileName.slice(18, lastIndexOfDot);//0-17是时间戳
                     downloadFileName = downloadFileName ? downloadFileName : '文件名为空';
                 } else {
-                    downloadFileName = downloadFileName ? downloadFileName : '文件名为空';
+                    downloadFileName = downloadFileName ? downloadFileName.slice(18) : '文件名为空';
                 }
                 $('.file-detail-title').html(downloadFileName);
             }
@@ -260,7 +257,7 @@ define(function(require, exports, module) {
             } else {
                 searchFileName = downloadFileName;
             }
-            searchFileName = searchFileName.slice(0, 40);
+            searchFileName = searchFileName.slice(18, 40);
             fileDetialSource.init(data0); //封面和详情
             cdName = cdName === "null" ? '其它' : cdName;
             cmName = cmName === "null" ? '其它' : cmName;

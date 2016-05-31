@@ -5,8 +5,8 @@ define(function(require, exports, module) {
     var usrresManager = require('./usrresManager'); //管理
     var dbTools = require('./dbOpr');
 
-    
-   
+
+
     var usrResDiv = {
         /**
          * [fyDiv 分页回掉函数]
@@ -28,7 +28,7 @@ define(function(require, exports, module) {
                     if (type == "init") {
                         num = 1;
                     }
-                    dbTools.queryUsrDB2PageDatas(num - 1,self.createResDiv); //按页进行获取数据
+                    dbTools.queryUsrDB2PageDatas(num - 1, self.createResDiv); //按页进行获取数据
                 }
             });
             $('#pagination1').jqPaginator('option', {
@@ -61,11 +61,12 @@ define(function(require, exports, module) {
                     var lastIndexOfDot = fileTitle.lastIndexOf('.');
                     if (lastIndexOfDot > 0) {
                         fileTitle = fileTitle.slice(0, lastIndexOfDot);
-                        fileTitle = fileTitle ? fileTitle : '文件名为空';
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
-
+                    if (/^\d{17}-/.test(fileTitle)) {
+                        fileTitle = fileTitle.slice(18);
+                    }
                     if (datai.ftype == 2) {
                         fileTitle = datai.subjectName || fileTitle;
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
@@ -80,7 +81,7 @@ define(function(require, exports, module) {
                         fileImgHtml = "<div class='usrres-img'><img src='" + decodeURI(picFileURL) + "' class='cont-img' alt='封面'/></div>";
                     } else {
                         //空
-                        fileImgHtml = "<div class='usrres-img'><img src='../res/img/nr/" + (i + 1) + ".png' class='cont-img' alt='封面'/></div>";
+                        fileImgHtml = "<div class='usrres-img'><img src='../res/img/default.png' class='cont-img' alt='封面'/></div>";
                     }
                     var wjlx = datai.wjlx == '0' ? "   " : datai.wjlx;
                     var ssnj = datai.ssnj == '0' ? "   " : datai.ssnj;
@@ -134,7 +135,7 @@ define(function(require, exports, module) {
                     if (type == "init") {
                         num = 1;
                     }
-                    dbTools.usrCollectFile(self.createResCollectDiv,'getPageDataFlag',num - 1); //按页进行获取数据
+                    dbTools.usrCollectFile(self.createResCollectDiv, 'getPageDataFlag', num - 1); //按页进行获取数据
                 }
             });
             $('#pagination2').jqPaginator('option', {
@@ -172,7 +173,9 @@ define(function(require, exports, module) {
                     } else {
                         fileTitle = fileTitle ? fileTitle : '文件名为空';
                     }
-
+                    if (/^\d{17}-/.test(fileTitle)) {
+                        fileTitle = fileTitle.slice(18);
+                    }
                     if (datai.ftype == 2) {
                         fileTitle = datai.subjectName || fileTitle;
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
@@ -272,9 +275,9 @@ define(function(require, exports, module) {
 
         $('.usr-page-main').on('click', '.usrres-collect', function(event) {
             // dbTools.usrCollectFile(collectResDiv.createResCollectDiv);
-            dbTools.usrCollectFile(function(){
-                collectResDiv.collectFyDiv.apply(collectResDiv,arguments);
-            },'getAllDataFlag');
+            dbTools.usrCollectFile(function() {
+                collectResDiv.collectFyDiv.apply(collectResDiv, arguments);
+            }, 'getAllDataFlag');
             $('.usr-main-right #pagination1').css('display', 'none');
             $('.usr-main-right #pagination2').css('display', 'block');
             toResDetail();
@@ -283,15 +286,15 @@ define(function(require, exports, module) {
         });
         $('.usr-page-main').on('click', '.usrres-title', function(event) {
             $('.usr-main-right #pagination1').css('display', 'block');
-             $('.usr-main-right #pagination2').css('display', 'none');
+            $('.usr-main-right #pagination2').css('display', 'none');
             $('.top-manager-btn').css('display', 'block');
             $('.usrres-onediv input').css('display', 'block');
             editDetail(); //只有在点击【我的资源】才能编辑
             // console.log(usrResDiv.fyDiv.call(usrResDiv,maxPage));
             // dbTools.queryUsrDB2Datas(usrResDiv.fyDiv); //查询资源并且分页
             // dbTools.queryUsrDB2Datas(usrResDiv.fyDiv.apply(usrResDiv,arguments)); //查询资源并且分页
-            dbTools.queryUsrDB2Datas(function(){
-                usrResDiv.fyDiv.apply(usrResDiv,arguments);
+            dbTools.queryUsrDB2Datas(function() {
+                usrResDiv.fyDiv.apply(usrResDiv, arguments);
             }); //查询资源并且分页
             usrresManager.init(); //管理
         });
