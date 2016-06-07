@@ -276,8 +276,8 @@ define(function(require, exports, module) {
          * 点击进入详情--进行修改
          */
         var editDetail = function() {
-            $('.usrres-divs').on('click', '.usrres-onediv', function(event) {
-                var fid = $(this).attr('data-fid');
+            $('.usrres-divs').on('click', '.usrres-img,.usrres-messages', function(event) {
+                var fid = $(this).parent().attr('data-fid');
                 var config = require('../../../common/js/prjConfig');
                 var subHref = config.subHref();
                 location.href = subHref + '/modules/res/fileDetial.html?fid=' + fid + '&filename=""&action=edit';

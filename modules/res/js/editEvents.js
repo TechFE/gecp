@@ -136,7 +136,7 @@ define(function(require, exports, module) {
         });
 
         $('.edit-btns').on('click', '.res-edit-qd-btn', function(event) {
-            if ($('.detial-cdName-edit').val()&&$('.detial-cmName-edit').val()) {
+            if ($('.detial-cdName-edit').val() && $('.detial-cmName-edit').val()) {
                 var fileTitleEdit = $('.file-detail-title-edit').val(),
                     cdCodeEdit = $('.detial-cdName-edit').val(),
                     cmCodeEdit = $('.detial-cmName-edit').val(),
@@ -175,12 +175,18 @@ define(function(require, exports, module) {
             $('.mymodal-confirm').on('click', function(event) {
                 $('#confirmModal').modal('hide');
                 dbTool.delRecordById("fid", data0.fid);
-                prjUtil.delFileServer();
+                var filenames = data0.filename;
+                console.log(data0.filename);
+                if (filenames) {
+                    var filenameArray = filenames.split(';');
+                    for (var i = 0, len = filenameArray.length; i < len; i++) {
+                         prjUtil.delFileServer(filenameArray[i]);
+                    }
+                }
             });
         });
 
         if (data0.ftype == '1') {
-            console.log('====');
             $('.res-addfile-btn').css({
                 'background-color': '#ccc',
                 'border-color': '#ccc'

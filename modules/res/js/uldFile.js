@@ -7,16 +7,15 @@
 /***************上传文件 保存到数据库中**********************/
 
 define(function(require, exports, module) {
-    // $(document).ready(function() {
-
-    var winSize = {
-        cHeight: function(height) {
-            return (screen.height - height - 160) / 2;
-        },
-        cWidth: function(width) {
-            return (screen.width - width) / 2;
-        }
-    };
+    /* var winSize = {
+     cHeight: function(height) {
+         return (screen.height - height - 160) / 2;
+     },
+     cWidth: function(width) {
+         return (screen.width - width) / 2;
+     }
+ };
+*/
     var cookie = require('../../../common/js/cookie');
     var prjUtil = require('../../../common/js/prjUtil');
     var uldname = cookie.getCookie('username');
@@ -34,10 +33,10 @@ define(function(require, exports, module) {
                 $('.uploadDetial').fadeIn('slow', function() {
                     $(this).css('display', 'block');
                 });
-                var cW = winSize.cWidth($('.uploadDetial').width());
-                var cH = winSize.cHeight($('.uploadDetial').height());
-                $('.uploadDetial').css('top', cH);
-                $('.uploadDetial').css('left', cW);
+                // var cW = winSize.cWidth($('.uploadDetial').width());
+                // var cH = winSize.cHeight($('.uploadDetial').height());
+                // $('.uploadDetial').css('top', cH);
+                // $('.uploadDetial').css('left', cW);
             });
             // 关闭按钮
             $('.ulclose').click(function() {
@@ -82,9 +81,17 @@ define(function(require, exports, module) {
             });
             $('.uploadDetial').on('change', '.fillin-sjname input', function(event) {
                 subjectName = $('.fillin-sjname input').val();
-                console.log(subjectName);
             });
 
+            $('.website-name,.website-url').on('change', function(event) {
+                $('#upload-wjlx option').eq(5).attr('selected', 'true');
+                if ($(this).val()) {
+                    $('.upfile').attr('disabled', 'disabled');
+                    $('.upfile').css({
+                        'background': '#ccc'
+                    });
+                }
+            });
             $('.uld-file').on('click', function(event) { //专题
                 $('.fillin-sjname').fadeOut('slow', function() {
                     $(this).css('visibility', 'hidden');
@@ -101,20 +108,44 @@ define(function(require, exports, module) {
 
                 files = fileInput.files; //应该重新获取
                 console.log(files);
-                // console.log(files[0].name);
-                // if (ftype === '2') {
+                if (ftype === '1') {
+                    var filename = files[0].name;
+                    var ind = filename.lastIndexOf('.');
+                    var fileType;
+                    if (ind > -1) {
+                        fileType = filename.slice(ind + 1);
+                    }
+                    console.log(fileType);
+                    switch (fileType) {
+                        case "png":
+                        case "jpg":
+                        case "gif":
+                            $('#upload-wjlx').eq(1).attr('selected', 'true');
+                            break;
+                        case "doc":
+                        case "docx":
+                        case "xls":
+                        case "lsx":
+                        case "pdf":
+                        case "ppt":
+                        case "ptx":
+                        case "txt":
+                            $('#upload-wjlx').eq(2).attr('selected', 'true');
+                            break;
+                        case "mp3":
+                            $('#upload-wjlx').eq(3).attr('selected', 'true');
+                            break;
+                        case "mp4":
+                        case "mov":
+                        case "avi":
+                        case "mvb":
+                        case "3gp":
+                            $('#upload-wjlx').eq(4).attr('selected', 'true');
+                            break;
+                    }
+                }
                 files = Array.prototype.slice.call(files); //全部转化为数组
                 fileLists = fileLists.concat(files);
-                // var initialFileName = fileLists[0].name;
-                // Object.defineProperty(fileLists[0],'name',{
-                //     writable:true
-                // });
-                // fileLists[0].name = 'hello.png';
-                // console.log(initialFileName);
-                // console.log(fileLists[0].name);
-                // console.log(fileLists);
-                // console.log(fileLists.length);
-                // }
                 /*应该保存该fileList，可以继续添加*/
 
                 if (files.length !== 0) {
@@ -132,10 +163,6 @@ define(function(require, exports, module) {
             });
 
             $('.upfile-list-mes .glyphicon-remove').eq(0).hover(function(event) {
-                // var e = event||window.event;
-                // console.log(e.clientX);
-                // console.log(e.clientY);
-                // console.log('1');
                 $(this).css({
                     'cursor': 'pointer',
                     'color': 'blue'
@@ -227,7 +254,7 @@ define(function(require, exports, module) {
                             Object.defineProperty(fileLists[i], 'name', {
                                 writable: true
                             });
-                            fileLists[i].name = timestamp+'-'+initialFileName;
+                            fileLists[i].name = timestamp + '-' + initialFileName;
                             console.log(fileLists[i].name);
                             filename += fileLists[i].name + ";";
                         }
@@ -303,22 +330,13 @@ define(function(require, exports, module) {
     function dbByFlag(flag) {
         var confirmDialog = require('../../../common/subpages/confirmDialog.html');
         $('body').append(confirmDialog);
-        console.log("flag = " + flag);
         if (flag == 1) {
             $('.modal-body').text("上传成功！");
             $('#confirmModal').modal('show');
+            $('.mymodal-cancel').css('display', 'none');
             $('.mymodal-confirm').on('click', function(event) {
                 //成功后就关闭窗口
-                $('.uploadDetial').fadeOut('slow', function() {
-                    $('.uploadbg').css('display', 'none');
-                });
-                $('.uploadDetial').fadeOut('slow', function() {
-                    $('.uploadDetial').css('display', 'none');
-                });
                 window.location.reload(true);
-                $('.pagination .last').click();
-                $('#confirmModal').modal('hide');
-
             });
         } else {
             $('.modal-body').text("上传失败！");

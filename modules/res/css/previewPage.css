@@ -7,12 +7,10 @@ body{
 }
 
 .main-wrapper{
-	
 	background-color: #fff;
 	margin:  0 auto ;
 	margin-top: 50px;
 	width: 85%;
-	/*height: 1500px;	*/
 }
 
 .pdf-control{

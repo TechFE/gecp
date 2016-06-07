@@ -200,20 +200,14 @@ define(function(require, exports, module) {
                     type: 'POST',
                     // data: 'req=getzip&fn=upload/'+fileName+'&fn2='+fileName+'.zip'
                     // data: 'req=getfile&fn=upload/' + fileName,
-                    data: 'fn=upload/' + fileName,
+                    data: 'fn=upload/user/' + fileName,
                     success: function(content) {
                         console.log(content);
                         //var blob = new Blob([content], { "type": 'text' }); //HTML 5 API 下载的时候注意type类型
                         //console.log(blob);
-                        var textHtml = "<pre class='textResult' id='textResult'>123</pre>";
+                        var textHtml = "<pre class='textResult' id='textResult'></pre>";
                         $('.main-content').html(textHtml);
                         $('#textResult').html(content);
-                        var textHeight = $('#textResult').height();
-
-                        $('.main-wrapper').css('height', textHeight + 50);
-
-                        //localStorage.setItem(fileName, blob);
-
                     }
                 })
                 .done(function() {
@@ -262,9 +256,7 @@ define(function(require, exports, module) {
                     '<button id="toright" class="btn-primary">右移</button><button id="toup" class="btn-primary">上移</button><button id="todown" class="btn-primary">下移</button>' +
                     '<button id="scale2Big" class="btn-primary">放大</button><button id="scale2Small" class="btn-primary">缩小</button></div>';
                 $('.main-content').html(html);
-                var height = $('#my-canvas').height();
-                console.log(height);
-                $('.main-wrapper').css('height', height + 250);
+    
                 var canvas = document.getElementById('my-canvas');
                 if (canvas === null) {
                     return false;
@@ -284,10 +276,8 @@ define(function(require, exports, module) {
                     '<audio class="audio-div" preload="auto" controls autoplay>' +
                     '您的浏览器不支持音频播放，请使用360浏览器或者火狐、Chrome浏览器。' +
                     '</audio></div>';
-                $('.main-wrapper').css('height', '500px');
                 $('.main-content').html(audioHtml);
                 $('.audio-div').attr('src', fileURL);
-
                 break;
             case "mp4":
             case "mov":
@@ -299,7 +289,6 @@ define(function(require, exports, module) {
                     '您的浏览器不支持视频播放，请使用360浏览器或者火狐、Chrome浏览器' +
                     '</video>' +
                     '</div>';
-                $('.main-wrapper').css('height', '800px');
                 $('.main-content').html(videoHtml);
                 $('.video-div').attr('src', fileURL);
                 break;

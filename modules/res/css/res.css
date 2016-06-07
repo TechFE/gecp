@@ -448,10 +448,12 @@ hr {
 /*************上传文件详情***************************/
 
 .uploadDetial {
-    /*上传专题*/
     display: none;
     position: absolute;
+    top: 3%;
+    left: 17%;
     width: 860px;
+    /*width: 80%;*/
     height: 550px;
     background-color: #FFFFFF;
 }

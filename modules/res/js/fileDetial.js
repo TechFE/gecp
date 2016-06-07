@@ -205,8 +205,7 @@ define(function(require, exports, module) {
                     $('.file-type-img-src').attr("src", "img/type/zip.png");
                     break;
                 default:
-                    //var node = document.getElementById('file-type-img-src');
-                    // node.parentNode.romoveChild(node);
+                    $('.file-type-img-src').attr("src", "img/default.png");
 
             }
         },
