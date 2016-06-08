@@ -1,119 +1,91 @@
+@charset "UTF-8";
 html {
-    font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
 body {
-    margin-top: 50px;
-    font-family: '微软雅黑';
-    background-color: #F5F5F5;
-}
+  margin-top: 50px;
+  font-family: '微软雅黑';
+  background-color: #F5F5F5; }
 
 .course-detail-wraper {
-    min-height: 600px;
-}
-
+  min-height: 600px; }
 
 /* 上 */
-
 .course-detail-top {
-    width: 100%;
-    height: 180px;
-    background-image: url('../img/courseDetailTop.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.course-detail-top div {
+  width: 100%;
+  height: 180px;
+  background-image: url("../img/courseDetailTop.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+  .course-detail-top div {
     margin: 0 auto;
-    width: 85%;
-}
+    width: 85%; }
 
 .cd-return-area {
-    padding-top: 20px;
-    color: #B4BCBA;
-}
+  padding-top: 20px;
+  color: #B4BCBA; }
 
 .course-detail-title {
-    font-size: 2.2rem;
-    color: #CCDDE8;
-    padding-top: 20px;
-}
-
-.course-detail-a div {
-    position: absolute;
-    /*display: inline-block;*/
-    top: 185px;
-}
-
-.course-detail-a div:nth-child(2) {
-    margin-left: 70px;
-}
-
-.course-detail-a span[class^='glyphicon'] {
-    margin-right: 5px;
-}
+  font-size: 2.2rem;
+  color: #CCDDE8;
+  padding-top: 20px; }
 
 .course-detail-a {
-    color: #fff;
-}
-
+  color: #fff; }
+  .course-detail-a div {
+    position: absolute;
+    /*display: inline-block;*/
+    top: 185px; }
+  .course-detail-a div:nth-child(2) {
+    margin-left: 70px; }
+  .course-detail-a span[class^='glyphicon'] {
+    margin-right: 5px; }
 
 /* 主体部分 */
-
 .course-detail-main {
-    margin: 0 auto;
-    width: 85%;
-    margin-top: 10px;
-    background-color: #fff;
-}
+  margin: 0 auto;
+  width: 85%;
+  margin-top: 10px;
+  background-color: #fff; }
 
 .attend-course {
-    float: right;
-    margin-top: 5px;
-    margin-right: 5px;
-}
-
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px; }
 
 /* 分栏目的主体内容 */
-.course-detail-pane li a{
-	font-size: 1.8rem;
-}
-.course-tab-content div {
-    min-height: 400px;
-    padding: 15px;
-}
+.course-detail-pane li a {
+  font-size: 1.8rem; }
 
-.course-tab-content p{
-	font-family: '宋体';
-    font-size: 1.4rem;
-    color: #847B6B;
-    margin-left: 15px;
-}
-.course-tab-content h4{
-	font-family: '宋体';
-	font-size: 1.6rem;
-	color: #524C42;
-}
-.course-tab-content h4{
-	/*font-weight: bold;*/
-}
+.course-tab-content div {
+  min-height: 400px;
+  padding: 15px; }
+
+.course-tab-content p {
+  font-family: '宋体';
+  font-size: 1.4rem;
+  color: #847B6B;
+  margin-left: 15px; }
+
+.course-tab-content h4 {
+  font-family: '宋体';
+  font-size: 1.6rem;
+  color: #524C42; }
 
 /* 评论模块 */
-#assess-module{
-	width:85%;
-	margin: 0 auto;
-	background-color: #fff;
-	margin-top: -41px;
-}
-.assess-title{
-	/* display: none; */
-	border-top:solid 1px #ccc;
-}
+#assess-module {
+  width: 85%;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: -41px; }
 
-#pagination1{
-	margin-left: 35%;
-}
+.assess-title {
+  /* display: none; */
+  border-top: solid 1px #ccc; }
+
+#pagination1 {
+  margin-left: 35%; }
+
 /* 评论模块End */
 #footer {
-    margin-top: 60px;
-}
+  margin-top: 60px; }

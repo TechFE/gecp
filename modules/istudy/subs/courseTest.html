@@ -1,0 +1,112 @@
+<div class="course-test-title">
+    <span class="glyphicon glyphicon-pencil"></span> 课程测试
+    <select name="chapter" id="course-test-chapter-select">
+        <option value="0">选择章</option>
+        <option value="ch1">第一章</option>
+        <option value="ch2">第二章</option>
+        <option value="ch3">第三章</option>
+        <option value="ch4">第四章</option>
+        <option value="ch5">第五章</option>
+        <option value="ch6">第六章</option>
+        <option value="ch7">第七章</option>
+        <option value="ch8">第八章</option>
+        <option value="ch9">第九章</option>
+        <option value="ch10">第十章</option>
+        <option value="ch11">第十一章</option>
+        <option value="ch12">第十二章</option>
+        <option value="ch13">第十三章</option>
+        <option value="ch14">第十四章</option>
+        <option value="ch15">第十五章</option>
+    </select>
+    <select name="section" id="course-test-section-select">
+        <option value="0">选择节</option>
+        <option value="sec1">第一节</option>
+        <option value="sec2">第二节</option>
+        <option value="sec3">第三节</option>
+        <option value="sec4">第四节</option>
+        <option value="sec5">第五节</option>
+        <option value="sec6">第六节</option>
+        <option value="sec7">第七节</option>
+        <option value="sec8">第八节</option>
+        <option value="sec9">第九节</option>
+        <option value="sec10">第十节</option>
+        <option value="sec11">第十一节</option>
+        <option value="sec12">第十二节</option>
+        <option value="sec13">第十三节</option>
+        <option value="sec14">第十四节</option>
+        <option value="sec15">第十五节</option>
+    </select>
+</div>
+<div class="row">
+    <div class="col-md course-info-module course-test-div">
+        <div class="course-info-top">
+            单选题
+        </div>
+        <textarea class="form-control ct-radio-question" rows="3" placeholder="请输入题目"></textarea>
+        <input type="radio" value="">
+        <input type="text" class="radio-option1">
+        <br>
+        <input type="radio" value="">
+        <input type="text" class="radio-option2">
+        <br>
+        <input type="radio" value="">
+        <input type="text" class="radio-option3">
+        <br>
+        <input type="radio" value="">
+        <input type="text" class="radio-option4">
+        <br> 请选择正确答案:
+        <select name="" id="ct-radio-right-answer">
+            <option value="0">选择</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select>
+        <div class="submit-btn">
+            <button type="button" class="btn btn-primary">保存</button>
+            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+        </div>
+    </div>
+    <div class="col-md course-info-module course-test-div">
+        <div class="course-info-top">
+            多选题
+        </div>
+        <textarea class="form-control ct-checkbox-question" rows="3" placeholder="请输入题目"></textarea>
+        <input type="checkbox" value="">
+        <input type="text" class="checkbox-option1">
+        <br>
+        <input type="checkbox" value="">
+        <input type="text" class="checkbox-option2">
+        <br>
+        <input type="checkbox" value="">
+        <input type="text" class="checkbox-option3">
+        <br>
+        <input type="checkbox" value="">
+        <input type="text" class="checkbox-option4">
+        <br> 请输入正确答案:
+        <input name="" id="ct-checkbox-right-answer" placeholder="例如：ABD">
+        <div class="submit-btn">
+            <button type="button" class="btn btn-primary">保存</button>
+            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md course-info-module course-test-div">
+        <div class="course-info-top">
+            主观题
+        </div>
+        <textarea class="form-control subjectivity-question" rows="4" placeholder="请输入题目"></textarea>
+        参考答案:
+        <textarea class="form-control reference-answer" rows="4" placeholder="请输入题目参考答案"></textarea>
+        <div class="submit-btn">
+            <button type="button" class="btn btn-primary">保存</button>
+            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+        </div>
+    </div>
+</div>
+
+<div class="ct-goback-btn">
+    <button type="button" class="btn btn-primary ct-back-btn">上一步</button>
+    <input type="submit" class="btn btn-primary submit-all" value="全部提交"></input>
+</div>

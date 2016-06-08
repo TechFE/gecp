@@ -1,0 +1,127 @@
+@import 'mixin';
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin-top: 60px;
+    font-family: $fontFamily;
+    background-color: #f5f5f5;
+}
+
+.istudy-tea-wraper {
+    margin: 0 auto;
+    width: 85%;
+    min-height: 600px;
+}
+
+.course-top {
+    height: 30px;
+    border-bottom: 2px solid #edf1f2;
+    p {
+        display: inline-block;
+        font-size:1.6rem;
+        margin-right: 20px;
+    }
+    .active-title {
+        font-family: $fontFamily;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: $wordTitleColor;
+    }
+    // .course-tea-title{
+    //     @extend .course-tea-title1;
+    // }
+}
+
+.istudy-page {
+    float: right;
+    margin-top: -8px;
+}
+
+
+/* 课程信息录入主要内容 */
+.course-name-div{
+    font-size: 1.6rem;
+    input{
+        font-size:1.2rem;
+        width: 350px;
+    }
+}
+.course-info {
+    margin-top: -15px;
+    .row {
+        margin-top: 20px;
+    }
+    .row .col-md {
+        width: 48%;
+        box-sizing: border-box;
+    }
+    .row > div:nth-child(1) {
+        margin-right: 2%;
+    }
+    .row div {
+        display: inline-block;
+        background-color: #fff;
+    }
+    .row >div {
+        border: 1px solid #ddd;
+        position: relative;
+        padding: 15px;
+    }
+    textarea {
+        font-size: 12px;
+    }
+    .row .col-md > p {
+        float: right;
+        color: #CDCDCD;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+}
+
+.course-info-top {
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    border-bottom: solid 1px #F8E7C8;
+}
+
+.course-div .course-info-top {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-family: '宋体';
+    color: #756C5E;
+}
+
+.course-set {
+    margin-top: 11px;
+    margin-bottom: 10px;
+}
+
+.course-set-div select {
+    margin-right: 10px;
+    margin-bottom: 8px;
+    width: 14.5%;
+    height: 26px;
+    font-size: 1.0rem;
+}
+
+.course-info-module input[type='date'] {
+    width: 29.5%;
+}
+
+
+.cs-goback-btn,
+.uld-goback-btn,
+.ct-goback-btn{
+    width: 100%;
+    padding: 3px !important;
+    margin-top: 20px;
+    text-align: center;
+    background-color:#fff;
+}
+#footer {
+    margin-top: 30px;
+}

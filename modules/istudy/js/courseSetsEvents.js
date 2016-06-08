@@ -5,7 +5,7 @@
 
 define(function(require, exports, module) {
 
-    var courseSetEvents = {
+    var courseSetsEvents = {
         changeEvents: function() {
             var self = this;
             $('.course-intro-text').on('change', function(event) {
@@ -243,5 +243,5 @@ define(function(require, exports, module) {
         $('.modal-body').text(value);
     }
 
-    module.exports = courseSetEvents;
+    module.exports = courseSetsEvents;
 });

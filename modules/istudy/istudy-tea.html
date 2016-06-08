@@ -11,313 +11,34 @@
 <body>
     <div class="istudy-tea-wraper mainframe">
         <div class="course-top">
-            <p class="course-tea-title">课程设置:</p>
+            <p class="course-tea-title1 active-title">1.课程设置</p>
+            <p class="course-tea-title2">2.上传资源</p>
+            <p class="course-tea-title3">3.设置测试题</p>
             <button type="button" class="btn btn-primary istudy-page">自主学习主页</button>
         </div>
-        <form>
-            <div class="course-info">
-                <div class="row">
-                    <div class="col-md course-info-module course-div">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-blackboard"></span> 课程介绍
-                        </div>
-                        <textarea class="form-control course-intro-text" rows="5" placeholder="请输入有关本课程的介绍"></textarea>
-                        <p>0/400</p>
-                    </div>
-                    <div class="col-md course-info-module course-div">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-user"></span> 教师介绍
-                        </div>
-                        <textarea class="form-control course-teaintro-text" rows="5" placeholder="请输入有关教师的介绍"></textarea>
-                        <p>0/400</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md course-info-module course-div">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-list-alt"></span> 课程目标
-                        </div>
-                        <textarea class="form-control course-aims-text" rows="5" placeholder="请输入课程目标"></textarea>
-                        <p>0/400</p>
-                    </div>
-                    <div class="col-md course-info-module course-div">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-th-list"></span> 课程大纲
-                        </div>
-                        <textarea class="form-control course-outline-text" rows="5" placeholder="请输入课程大纲"></textarea>
-                        <p>0/400</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md course-info-module course-set-div course-div">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-volume-up"></span> 课程通告
-                        </div>
-                        <textarea class="form-control course-notification-text" rows="3" placeholder="请输入课程通告"></textarea>
-                        <div class="course-info-top course-set">
-                            <span class="glyphicon glyphicon-cog"></span> 课程设置
-                        </div>
-                        课程设置：
-                        <select name="difficulty-set" class="difficulty-set">
-                            <option value="0">难度系数</option>
-                            <option value="sample">简单</option>
-                            <option value="middle">中等</option>
-                            <option value="hard">较难</option>
-                            <option value="harder">困难</option>
-                        </select>
-                        <select name="grade-set" class="grade-set">
-                            <option value="0">所属年级</option>
-                            <option value="grade7">七年级</option>
-                            <option value="grade8">八年级</option>
-                            <option value="grade9">九年级</option>
-                            <option value="grade10">高一</option>
-                            <option value="grade11">高二</option>
-                            <option value="grade12">高三</option>
-                        </select>
-                        <select name="cmcode" id="cmcode-set">
-                            <option value="0">课程模块</option>
-                            <option value="ZRDL">自然地理</option>
-                            <option value="RWDL">人文地理</option>
-                            <option value="DQKX">地球科学基础</option>
-                            <option value="QYFZ">区域发展</option>
-                            <option value="ZHGA">资源环境与国家安全</option>
-                            <option value="HYDL">海洋地理</option>
-                            <option value="LYDL">旅游地理</option>
-                            <option value="ZRZF">自然灾害与防治</option>
-                            <option value="TWJC">天文学基础</option>
-                            <option value="CXQG">城乡与区域规划</option>
-                            <option value="HJBH">环境保护</option>
-                            <option value="ZZDL">政治地理</option>
-                            <option value="DXJY">地理信息技术应用</option>
-                            <option value="YWKC">地理野外考察</option>
-                            <option value="CSQT">其它</option>
-                        </select>
-                        <select name="sacode" id="sacode-set">
-                            <option value="0">学业要求</option>
-                            <option value="RDGN">人地观念</option>
-                            <option value="ZHSW">综合思维</option>
-                            <option value="QYRZ">区域认知</option>
-                            <option value="DLSJ">地理实践能力</option>
-                        </select>
-                        <select name="salevel" id="salevel-set">
-                            <option value="0">要求水平</option>
-                            <option value="SP1">水平1</option>
-                            <option value="SP2">水平2</option>
-                            <option value="SP3">水平3</option>
-                            <option value="SP4">水平4</option>
-                            <option value="SP5">水平5</option>
-                        </select>
-                        <br> 学习时间：
-                        <input type="date" class="study-date1"> -
-                        <input type="date" class="study-date2">
-                    </div>
-                    <div class="col-md course-info-module course-div course-upload">
-                        <div class="course-info-top">
-                            <span class="glyphicon glyphicon-open"></span> 上传课程
-                        </div>
-                        <div class="course-upload-div">
-                            课程名称: &nbsp&nbsp
-                            <input type="text" class="course-name" placeholder="输入整个课程名称... ...">
-                            <a class="a-course upcourse-pic">
-                                <input type="file" value="上传附件" class="upcourse-pic" id="upcourse-pic" accept="image/*">上传整个课程封面
-                            </a>
-                            <br>
-                            <br>
-                            <select name="chapter" id="chapter-select">
-                                <option value="0">选择章</option>
-                                <option value="ch1">第一章</option>
-                                <option value="ch2">第二章</option>
-                                <option value="ch3">第三章</option>
-                                <option value="ch4">第四章</option>
-                                <option value="ch5">第五章</option>
-                                <option value="ch6">第六章</option>
-                                <option value="ch7">第七章</option>
-                                <option value="ch8">第八章</option>
-                                <option value="ch9">第九章</option>
-                                <option value="ch10">第十章</option>
-                                <option value="ch11">第十一章</option>
-                                <option value="ch12">第十二章</option>
-                                <option value="ch13">第十三章</option>
-                                <option value="ch14">第十四章</option>
-                                <option value="ch15">第十五章</option>
-                            </select>
-                            <select name="section" id="section-select">
-                                <option value="0">选择节</option>
-                                <option value="sec1">第一节</option>
-                                <option value="sec2">第二节</option>
-                                <option value="sec3">第三节</option>
-                                <option value="sec4">第四节</option>
-                                <option value="sec5">第五节</option>
-                                <option value="sec6">第六节</option>
-                                <option value="sec7">第七节</option>
-                                <option value="sec8">第八节</option>
-                                <option value="sec9">第九节</option>
-                                <option value="sec10">第十节</option>
-                                <option value="sec11">第十一节</option>
-                                <option value="sec12">第十二节</option>
-                                <option value="sec13">第十三节</option>
-                                <option value="sec14">第十四节</option>
-                                <option value="sec15">第十五节</option>
-                            </select>
-                            <input type="text" class="course-section-name" placeholder="输入该章节的课程名称... ...">
-                            <a class="a-course upfile">
-                                <input type="file" value="上传附件" class="upfile" id="upfile">分章节上传附件
-                            </a>
-                            <br>
-                            <br>
-                            <!-- <div class="course-pic"></div> -->
-                            <div class="course-uld-finished">
-                                <p>第一章第一节：</p>
-                                <p>第一章第二节：</p>
-                                <p>第二章第二节：</p>
-                                <p>第三章第三节：</p>
-                                <p>第四章第四节：</p>
-                            </div>
-                        </div>
-                        <!-- course-upload-div -->
-                        <button type="button" class="btn btn-primary course-uld-sumbit">提交上传的资源</button>
-                    </div>
-                </div>
-                <div class="course-test-title">
-                    <span class="glyphicon glyphicon-pencil"></span> 课程测试
-                    <select name="chapter" id="course-test-chapter-select">
-                        <option value="0">选择章</option>
-                        <option value="ch1">第一章</option>
-                        <option value="ch2">第二章</option>
-                        <option value="ch3">第三章</option>
-                        <option value="ch4">第四章</option>
-                        <option value="ch5">第五章</option>
-                        <option value="ch6">第六章</option>
-                        <option value="ch7">第七章</option>
-                        <option value="ch8">第八章</option>
-                        <option value="ch9">第九章</option>
-                        <option value="ch10">第十章</option>
-                        <option value="ch11">第十一章</option>
-                        <option value="ch12">第十二章</option>
-                        <option value="ch13">第十三章</option>
-                        <option value="ch14">第十四章</option>
-                        <option value="ch15">第十五章</option>
-                    </select>
-                    <select name="section" id="course-test-section-select">
-                        <option value="0">选择节</option>
-                        <option value="sec1">第一节</option>
-                        <option value="sec2">第二节</option>
-                        <option value="sec3">第三节</option>
-                        <option value="sec4">第四节</option>
-                        <option value="sec5">第五节</option>
-                        <option value="sec6">第六节</option>
-                        <option value="sec7">第七节</option>
-                        <option value="sec8">第八节</option>
-                        <option value="sec9">第九节</option>
-                        <option value="sec10">第十节</option>
-                        <option value="sec11">第十一节</option>
-                        <option value="sec12">第十二节</option>
-                        <option value="sec13">第十三节</option>
-                        <option value="sec14">第十四节</option>
-                        <option value="sec15">第十五节</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <div class="col-md course-info-module course-test-div">
-                        <div class="course-info-top">
-                            单选题
-                        </div>
-                        <textarea class="form-control ct-radio-question" rows="3" placeholder="请输入题目"></textarea>
-                        <input type="radio" value="">
-                        <input type="text" class="radio-option1">
-                        <br>
-                        <input type="radio" value="">
-                        <input type="text" class="radio-option2">
-                        <br>
-                        <input type="radio" value="">
-                        <input type="text" class="radio-option3">
-                        <br>
-                        <input type="radio" value="">
-                        <input type="text" class="radio-option4">
-                        <br> 请选择正确答案:
-                        <select name="" id="ct-radio-right-answer">
-                            <option value="0">选择</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                        </select>
-                        <div class="submit-btn">
-                            <button type="button" class="btn btn-primary">直接提交</button>
-                            <button type="button" class="btn btn-primary">提交并再输入一题</button>
-                        </div>
-                    </div>
-                    <div class="col-md course-info-module course-test-div">
-                        <div class="course-info-top">
-                            多选题
-                        </div>
-                        <textarea class="form-control ct-checkbox-question" rows="3" placeholder="请输入题目"></textarea>
-                        <input type="checkbox" value="">
-                        <input type="text" class="checkbox-option1">
-                        <br>
-                        <input type="checkbox" value="">
-                        <input type="text" class="checkbox-option2">
-                        <br>
-                        <input type="checkbox" value="">
-                        <input type="text" class="checkbox-option3">
-                        <br>
-                        <input type="checkbox" value="">
-                        <input type="text" class="checkbox-option4">
-                        <br> 请输入正确答案:
-                        <input name="" id="ct-checkbox-right-answer" placeholder="例如：ABD">
-                        <div class="submit-btn">
-                            <button type="button" class="btn btn-primary">直接提交</button>
-                            <button type="button" class="btn btn-primary">提交并再输入一题</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md course-info-module course-test-div">
-                        <div class="course-info-top">
-                            主观题
-                        </div>
-                        <textarea class="form-control subjectivity-question" rows="4" placeholder="请输入题目"></textarea>
-                        参考答案:
-                        <textarea class="form-control reference-answer" rows="4" placeholder="请输入题目参考答案"></textarea>
-                        <div class="submit-btn">
-                            <button type="button" class="btn btn-primary">直接提交</button>
-                            <button type="button" class="btn btn-primary">提交并再输入一题</button>
-                        </div>
-                    </div>
-                    <div class="col-md course-info-module course-test-div">
-                        <div class="course-info-top">
-                            注意：上面内容没有完全保存，请点击保存全部内容
-                        </div>
-                        <div class="submit-btn">
-                            <!-- <button type="button" class="btn btn-primary submit-all">保存全部内容</button> -->
-                            <input type="submit" class="btn btn-primary submit-all" value="保存全部内容"></input>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!-- course-info -->
-    </div>
-    <div id="footer"></div>
-    <script src="../../common/bootstrap/js/jquery.js"></script>
-    <script src="../../common/bootstrap/js/bootstrap.js"></script>
-    <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
-    <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
-    <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
-    <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
-    <script type="text/javascript">
-    seajs.config({
-        base: "./common/",
-    });
+        <!-- <form> -->
+        <div class="course-info">
+        </div>
+        <div id="footer"></div>
+        <script src="../../common/bootstrap/js/jquery.js"></script>
+        <script src="../../common/bootstrap/js/bootstrap.js"></script>
+        <script src="../../common/js/jqPaginator.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gUpload.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gWebSQL.js" type="text/javascript"></script>
+        <script src="../../common/jslib/gWebSQLScript.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../../common/js/sea-debug.js"></script>
+        <script type="text/javascript" src="../../common/js/seajs-css-debug.js"></script>
+        <script type="text/javascript" src="../../common/js/seajs-text-debug.js"></script>
+        <script type="text/javascript">
+        seajs.config({
+            base: "./common/",
+        });
 
-    seajs.use("./js/istudyTeaMain"); //入口   /istudy/istudyTeaMain.js
-    </script>
+        seajs.use("./js/istudyTeaMain"); //入口   /istudy/istudyTeaMain.js
+        </script>
 </body>
 
 </html>

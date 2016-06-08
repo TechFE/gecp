@@ -1,0 +1,94 @@
+.course-upload {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    min-height: 300px;
+}
+
+.a-course {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    display: inline;
+    zoom: 1;
+    word-break: keep-all;
+    input {
+        position: absolute;
+        font-size: 10px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        height: 30px;
+        filter: alpha(opacity=0);
+        cursor: pointer
+    }
+    &:hover {
+        color: #444;
+        background: #eee;
+        border-color: #ccc;
+        text-decoration: none
+    }
+}
+
+.course-upload-div {
+    margin-top: 5px;
+    min-height: 160px;
+    width: 100%;
+    select {
+        width: 15%;
+    }
+    p {
+        margin: 0;
+        line-height: 1.0;
+    }
+    a {
+        margin-right: 8px;
+    }
+}
+
+.course-pic {
+    border: solid 1px #ccc;
+    width: 240px;
+    height: 135px;
+    margin-left: 106px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.course-pic-default {
+    position: absolute;
+    font-size: 60px;
+    color: #ccc;
+    top: 200px;
+    left: 304px;
+    z-index: 1;
+}
+
+.course-section-name {
+    margin: 10px;
+    width: 300px;
+}
+
+.course-uld-sumbit {
+    margin-top: 25px;
+    float: right;
+}
+
+.course-uld-finished {
+    margin-top: -15px;
+}
+
+.course-uld-finished p {
+    line-height: 1.5;
+    font-size: 1.0rem;
+    margin-left: 10px;
+    color: #337AB7;
+}

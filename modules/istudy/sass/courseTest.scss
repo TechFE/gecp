@@ -1,0 +1,37 @@
+/* 课程测试 */
+
+.course-test-title {
+    font-size: 1.6rem;
+    font-family: '宋体';
+    color: #756C5E;
+    margin:18px 0 -16px -16px;
+    background-color:#fff;
+    select {
+        font-family: '微软雅黑';
+        font-size: 1.4rem;
+        color: #333;
+    }
+}
+
+.course-test-div textarea {
+    margin-bottom: 5px;
+}
+
+.course-test-div input[type='text'] {
+    border: 0;
+    border-bottom: solid 1px #ccc;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+#ct-radio-right-answer {
+    width: 40px;
+}
+
+.course-test-div .submit-btn {
+    float: right;
+}
+
+#ct-checkbox-right-answer {
+    width: 20%;
+}

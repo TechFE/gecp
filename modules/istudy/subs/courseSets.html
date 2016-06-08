@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md course-name-div">
+        课程名称 : &nbsp&nbsp
+        <input type="text" class="course-name" placeholder="输入整个课程名称... ...">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md course-info-module course-div">
+        <div class="course-info-top">
+            <span class="glyphicon glyphicon-blackboard"></span> 课程介绍
+        </div>
+        <textarea class="form-control course-intro-text" rows="5" placeholder="请输入有关本课程的介绍"></textarea>
+        <p>0/400</p>
+    </div>
+    <div class="col-md course-info-module course-div">
+        <div class="course-info-top">
+            <span class="glyphicon glyphicon-user"></span> 教师介绍
+        </div>
+        <textarea class="form-control course-teaintro-text" rows="5" placeholder="请输入有关教师的介绍"></textarea>
+        <p>0/400</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md course-info-module course-div">
+        <div class="course-info-top">
+            <span class="glyphicon glyphicon-list-alt"></span> 课程目标
+        </div>
+        <textarea class="form-control course-aims-text" rows="5" placeholder="请输入课程目标"></textarea>
+        <p>0/400</p>
+    </div>
+    <div class="col-md course-info-module course-div">
+        <div class="course-info-top">
+            <span class="glyphicon glyphicon-th-list"></span> 课程大纲
+        </div>
+        <textarea class="form-control course-outline-text" rows="5" placeholder="请输入课程大纲"></textarea>
+        <p>0/400</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md course-info-module course-set-div course-div">
+        <div class="course-info-top">
+            <span class="glyphicon glyphicon-volume-up"></span> 课程通告
+        </div>
+        <textarea class="form-control course-notification-text" rows="3" placeholder="请输入课程通告"></textarea>
+        <div class="course-info-top course-set">
+            <span class="glyphicon glyphicon-cog"></span> 课程设置
+        </div>
+        课程设置：
+        <select name="difficulty-set" class="difficulty-set">
+            <option value="0">难度系数</option>
+            <option value="sample">简单</option>
+            <option value="middle">中等</option>
+            <option value="hard">较难</option>
+            <option value="harder">困难</option>
+        </select>
+        <select name="grade-set" class="grade-set">
+            <option value="0">所属年级</option>
+            <option value="grade7">七年级</option>
+            <option value="grade8">八年级</option>
+            <option value="grade9">九年级</option>
+            <option value="grade10">高一</option>
+            <option value="grade11">高二</option>
+            <option value="grade12">高三</option>
+        </select>
+        <select name="cmcode" id="cmcode-set">
+            <option value="0">课程模块</option>
+            <option value="ZRDL">自然地理</option>
+            <option value="RWDL">人文地理</option>
+            <option value="DQKX">地球科学基础</option>
+            <option value="QYFZ">区域发展</option>
+            <option value="ZHGA">资源环境与国家安全</option>
+            <option value="HYDL">海洋地理</option>
+            <option value="LYDL">旅游地理</option>
+            <option value="ZRZF">自然灾害与防治</option>
+            <option value="TWJC">天文学基础</option>
+            <option value="CXQG">城乡与区域规划</option>
+            <option value="HJBH">环境保护</option>
+            <option value="ZZDL">政治地理</option>
+            <option value="DXJY">地理信息技术应用</option>
+            <option value="YWKC">地理野外考察</option>
+            <option value="CSQT">其它</option>
+        </select>
+        <select name="sacode" id="sacode-set">
+            <option value="0">学业要求</option>
+            <option value="RDGN">人地观念</option>
+            <option value="ZHSW">综合思维</option>
+            <option value="QYRZ">区域认知</option>
+            <option value="DLSJ">地理实践能力</option>
+        </select>
+        <select name="salevel" id="salevel-set">
+            <option value="0">要求水平</option>
+            <option value="SP1">水平1</option>
+            <option value="SP2">水平2</option>
+            <option value="SP3">水平3</option>
+            <option value="SP4">水平4</option>
+            <option value="SP5">水平5</option>
+        </select>
+        <br> 学习时间：
+        <input type="date" class="study-date1"> -
+        <input type="date" class="study-date2">
+    </div>
+    <!-- </form> -->
+    <div class="cs-goback-btn">
+        <!-- <button type="button" class="btn btn-primary back-btn">上一步</button> -->
+        <input type="submit" class="btn btn-primary cs-go-btn" value="下一步"></input>
+    </div>

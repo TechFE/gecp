@@ -1,0 +1,64 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin-top: 60px;
+    font-family: '微软雅黑';
+    min-width: 1000px;
+}
+
+.istudy-wraper {
+    margin: 0 auto;
+    width: 85%;
+    min-height: 600px;
+}
+
+.sea-top p {
+    display: inline-block;
+}
+
+.tea-course-set {
+    float: right;
+    margin-top: -8px;
+}
+
+.course-sea-title {
+    font-family: '微软雅黑';
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #286090;
+}
+
+.sea-main {
+    position: relative;
+    margin-top: -5px;
+    padding-bottom: 33px;
+    border-top: 2px solid #edf1f2;
+    border-bottom: 2px solid #edf1f2;
+    div {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    span {
+        color: #333;
+    }
+    input[type='text'] {
+        border: solid 1px #337ab7;
+        font-size: 12px;
+        width: 110px;
+    }
+    select {
+        border: solid 1px #337ab7;
+        color: #333;
+        font-size: 12px;
+        width: 110px;
+    }
+    button {
+        float: right;
+        margin-left: 15px;
+        margin-top: 2px;
+    }
+}

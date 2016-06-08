@@ -3,17 +3,18 @@
  */
 
 define(function(require, exports, module) {
-    var courseSetEvents = require('./courseSetEvents');
+    var courseSetsEvents = require('./courseSetsEvents');
     var courseSet = {
         init: function() {
+            //执行三步骤的js文件
             this.changeEvents();
             this.submitEvents();
         },
         changeEvents: function() {
-            courseSetEvents.changeEvents(); //变化就存在localStorage中
+            courseSetsEvents.changeEvents(); //变化就存在localStorage中
         },
         submitEvents:function(){
-            courseSetEvents.submitEvents(); //提交存放到数据库中
+            courseSetsEvents.submitEvents(); //提交存放到数据库中
         }
     };
 
