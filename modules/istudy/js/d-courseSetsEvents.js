@@ -7,48 +7,7 @@ define(function(require, exports, module) {
 
     var courseSetsEvents = {
         changeEvents: function() {
-            var self = this;
-            $('.course-intro-text').on('change', function(event) {
-                console.log($(this).val());
-                localStorage.setItem('course-intro', $(this).val());
-            });
-            $('.course-teaintro-text').on('change', function(event) {
-                localStorage.setItem('course-teaintro', $(this).val());
-            });
-            $('.course-aims-text').on('change', function(event) {
-                localStorage.setItem('course-aims', $(this).val());
-            });
-            $('.course-outline-text').on('change', function(event) {
-                localStorage.setItem('course-outline', $(this).val());
-            });
-            $('.course-notification-text').on('change', function(event) {
-                localStorage.setItem('course-notification', $(this).val());
-            });
-            $('.difficulty-set').on('change', function(event) {
-                localStorage.setItem('difficulty-set', $(this).val());
-            });
-            $('.grade-set').on('change', function(event) {
-                localStorage.setItem('grade-set', $(this).val());
-            });
-            $('#cmcode-set').on('change', function(event) {
-                localStorage.setItem('cmcode-set', $(this).val());
-            });
-            $('#saCode-set').on('change', function(event) {
-                localStorage.setItem('saCode-set', $(this).val());
-            });
-            $('#saLevel-set').on('change', function(event) {
-                localStorage.setItem('saLevel-set', $(this).val());
-            });
-
-            $('.study-date1').on('change', function(event) {
-                localStorage.setItem('study-date1', $(this).val());
-            });
-            $('.study-date2').on('change', function(event) {
-                localStorage.setItem('study-date2', $(this).val());
-            });
-            $('.course-name').on('change', function(event) {
-                localStorage.setItem('course-name', $(this).val());
-            });
+            
             $('#chapter-select').on('change', function(event) {
                 localStorage.setItem('chapter-select', $(this).val());
             });

@@ -4,7 +4,7 @@
     </div>
     <div class="course-upload-div">
         上传课程封面:&nbsp&nbsp&nbsp&nbsp
-        <a class="a-course upcourse-pic">
+        <a class="a-course">
             <input type="file" value="上传附件" class="upcourse-pic" id="upcourse-pic" accept="image/*">选择整个课程封面
         </a>
         <p>
@@ -15,7 +15,7 @@
             <span class="glyphicon glyphicon-cloud-upload course-pic-default"></span>
         </div>
         上传课程资源:&nbsp&nbsp&nbsp&nbsp
-        <select name="chapter" id="chapter-select">
+        <select name="chapter" class="chapter-select">
             <option value="0">选择章</option>
             <option value="ch1">第一章</option>
             <option value="ch2">第二章</option>
@@ -33,7 +33,7 @@
             <option value="ch14">第十四章</option>
             <option value="ch15">第十五章</option>
         </select>
-        <select name="section" id="section-select">
+        <select name="section" class="section-select">
             <option value="0">选择节</option>
             <option value="sec1">第一节</option>
             <option value="sec2">第二节</option>
@@ -51,23 +51,20 @@
             <option value="sec14">第十四节</option>
             <option value="sec15">第十五节</option>
         </select>
-        <input type="text" class="course-section-name" placeholder="输入该章节的课程名称... ...">
-        <a class="a-course upfile">
-            <input type="file" value="上传附件" class="upfile" id="upfile">选择该章节资源
+        <input type="text" class="course-section-name" placeholder="输入该章节的课程名称【默认是上传的文件名】">
+        <a class="a-course ">
+            <input type="file" value="上传附件" class="uld-coursefile" id="uld-coursefile">选择该章节资源
         </a>
         <br>
         <br>
         <!-- <div class="course-pic"></div> -->
         <div class="course-uld-finished">
-            <p>第一章第一节：</p>
-            <p>第一章第二节：</p>
-            <p>第二章第二节：</p>
-            <p>第三章第三节：</p>
-            <p>第四章第四节：</p>
+          
         </div>
     </div>
 </div>
 <div class="uld-goback-btn">
     <button type="button" class="btn btn-primary uld-back-btn">上一步</button>
     <input type="submit" class="btn btn-primary uld-go-btn" value="下一步"></input>
+    <input type="submit" class="btn btn-primary uld-submit-btn" value="保存并提交"></input>
 </div>

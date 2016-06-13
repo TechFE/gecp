@@ -1,3 +1,7 @@
+@charset "UTF-8";
+.uld-go-btn {
+  display: none; }
+
 .course-upload {
   margin-top: 20px;
   padding: 10px;
@@ -26,6 +30,7 @@
     top: 0;
     opacity: 0;
     height: 30px;
+    width: 123px;
     filter: alpha(opacity=0);
     cursor: pointer; }
   .a-course:hover {
@@ -78,3 +83,21 @@
   font-size: 1.0rem;
   margin-left: 10px;
   color: #337AB7; }
+
+.course-remove:hover {
+  color: blue;
+  cursor: pointer; }
+
+/* 上传文件等待*/
+.uld-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1000px;
+  background-color: rgba(1, 1, 1, 0.5); }
+
+.uld-bg-img {
+  position: absolute;
+  left: 48%;
+  top: 30%; }

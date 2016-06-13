@@ -34,7 +34,7 @@ define(function(require, exports, module) {
          * [getTimestamp 时间戳]
          * @return {[string]} [时间戳字符串17位]
          */
-        getTimestamp:function() {
+        getTimestamp: function() {
             var time = new Date();
             var y = time.getFullYear();
             var m = time.getMonth() + 1;
@@ -55,7 +55,7 @@ define(function(require, exports, module) {
             } else if (msi < 100) {
                 msi = '0' + msi;
             }
-            return ''+y+m+d+h+min+s+msi;
+            return '' + y + m + d + h + min + s + msi;
         },
         getCharLen: function() {
             /**
@@ -131,6 +131,43 @@ define(function(require, exports, module) {
                         console.log("complete");
                     });
             }
+        },
+        /**
+         * [uldBase64 按照base64进行上传文件]
+         * @param  {[string]} fileName  [文件名]
+         * @param  {[base64]} base64Con [base64内容]
+         * @param  {[string]} path      [存储路径]
+         */
+        uldBase64: function(fileName, base64Con,path,dtd,callback) {
+            if(!path){
+                path = 'user/picFile/';
+            }
+            $.ajax({
+                    url: gEcnu.config.geoserver + 'fileserver',
+                    type: 'POST', //不能使用GET
+                    async: false,
+                    // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                    data: {
+                        'req': 'putbase64',
+                        'fn': 'upload/' + path + fileName,
+                        'con': base64Con
+                    }
+                })
+                .done(function() {
+                    if(dtd){
+                        dtd.resolve();
+                    }
+                    if(callback){
+                        callback();
+                    }
+                    console.log("success");
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
         },
         /**
          * [alertDialogShow alert]
