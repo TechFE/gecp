@@ -27,4 +27,14 @@
   float: right; }
 
 #ct-checkbox-right-answer {
-  width: 20%; }
+  width: 30px; }
+
+.radques-save-btn,
+.mulques-save-btn,
+.subques-save-btn {
+  display: none; }
+
+.ct-radio-state,
+.ct-checkbox-state,
+.ct-subjectivity-state {
+  color: red; }

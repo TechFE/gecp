@@ -25,20 +25,20 @@ define(function(require, exports, module) {
                 }
             });
             var Params = {
-                'Fields': ["cName", "cCreateDate","cPicName","cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cFinishDuringDate", "cSectionFiles"],
+                'Fields': ["cName", "cCreateDate", "cPicName", "cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cFinishDuringDate", "cSectionFiles"],
                 'Data': [
-                    [courseSetObj.cName,courseSetObj.cCreateDate,courseSetObj.cPicName, courseSetObj.cIntro, courseSetObj.cTeaIntro, courseSetObj.cAims, courseSetObj.cOutline, courseSetObj.cNotification, courseSetObj.cDifficultySet, courseSetObj.cGradeSet, courseSetObj.cCmCodeSet,
+                    [courseSetObj.cName, courseSetObj.cCreateDate, courseSetObj.cPicName, courseSetObj.cIntro, courseSetObj.cTeaIntro, courseSetObj.cAims, courseSetObj.cOutline, courseSetObj.cNotification, courseSetObj.cDifficultySet, courseSetObj.cGradeSet, courseSetObj.cCmCodeSet,
                         courseSetObj.cSaCodeSet, courseSetObj.cSaLevelSet, courseSetObj.cStudyDuring, courseSetObj.cSectionFiles
                     ]
                 ]
             };
             sqlServices.processAscyn("ADD", "gecp2", "courses", Params);
         },
-        queryDatasFromDB: function(tableName, queryFields,queryFilter,callbackFunc) {
+        queryDatasFromDB: function(tableName, queryFields, queryFilter, callbackFunc) {
             if (!queryFilter) {
                 queryFilter = '1=1';
             }
-            if(!queryFields){
+            if (!queryFields) {
                 queryFields = '*';
             }
             var sqlServices = new gEcnu.WebSQLServices.SQLServices({
@@ -58,7 +58,35 @@ define(function(require, exports, module) {
                 'filter': queryFilter
             };
             sqlServices.processAscyn("SQLQUERY", "gecp2", lyrOrSQL);
-        }
+        },
+        addData2DB_cTest: function(cTestObj,callback) {
+            console.log(cTestObj);
+
+            var sqlServices = new gEcnu.WebSQLServices.SQLServices({
+                'processCompleted': function(data) {
+                    if(callback){
+                        callback();
+                    }
+                    alertDialogShow("新建测试题成功");
+                    $('.modal-close').on('click', function(event) {
+                        window.location.reload();
+                    });
+
+                },
+                'processFailed': function() {
+                    console.log("dbOpr.js文件下数据库操作失败！");
+                }
+            });
+            var Params = {
+                'Fields': ["csId", "radQues", "mulQues", "subjQues"],
+                'Data': [
+                    [
+                        cTestObj.csId, cTestObj.radQues, cTestObj.mulQues, cTestObj.subjQues
+                    ]
+                ]
+            };
+            sqlServices.processAscyn("ADD", "gecp2", "cTest", Params);
+        },
 
 
 

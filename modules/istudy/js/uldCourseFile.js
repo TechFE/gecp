@@ -30,19 +30,19 @@ define(function(require, exports, module) {
                 // self.uldCoursePic2Server();
                 // self.uldCourseFile2Server();
                 self.finishUldCourse2Server();
-                // sessionStorage.setItem('course-name', '');
-                // sessionStorage.setItem('course-intro-text', '');
-                // sessionStorage.setItem('course-teaintro-text', '');
-                // sessionStorage.setItem('course-aims-text', '');
-                // sessionStorage.setItem('course-outline-text', '');
-                // sessionStorage.setItem('course-notification-text', '');
-                // sessionStorage.setItem('difficulty-set', '');
-                // sessionStorage.setItem('grade-set', '');
-                // sessionStorage.setItem('cmcode-set', '');
-                // sessionStorage.setItem('saCode-set', '');
-                // sessionStorage.setItem('salevel-set', '');
-                // sessionStorage.setItem('study-date1', '');
-                // sessionStorage.setItem('study-date2', '');
+                sessionStorage.setItem('course-name', '');
+                sessionStorage.setItem('course-intro-text', '');
+                sessionStorage.setItem('course-teaintro-text', '');
+                sessionStorage.setItem('course-aims-text', '');
+                sessionStorage.setItem('course-outline-text', '');
+                sessionStorage.setItem('course-notification-text', '');
+                sessionStorage.setItem('difficulty-set', '');
+                sessionStorage.setItem('grade-set', '');
+                sessionStorage.setItem('cmcode-set', '');
+                sessionStorage.setItem('saCode-set', '');
+                sessionStorage.setItem('salevel-set', '');
+                sessionStorage.setItem('study-date1', '');
+                sessionStorage.setItem('study-date2', '');
             });
 
         },

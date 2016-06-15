@@ -191,6 +191,18 @@ define(function(require, exports, module) {
         sampleDecode: function(value) {
             return decodeURIComponent(atob(value));
         },
+        /**
+         * [conv2oneLine 转化为一行，换行的地方可以选择是否换位<br>]
+         * @param  {[string]} val [要转化的字符串]
+         * @return {[type]}     [description]
+         */
+        conv2oneLine:function(val,isToBr){
+            if(!!isToBr){
+                // val.replace(/[\x0a|\cJ]/g,'<br>')
+                return  val.replace(/\n/,'<br>');
+            }
+            return val.replace(/\n/,'');
+        }
     };
 
     module.exports = prjUtil;

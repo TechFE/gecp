@@ -34,12 +34,14 @@ define(function(require, exports, module) {
                 $('.course-tea-title3').addClass('course-top active-title');
                 var courseTestHtml = require('../subs/courseTest.html');
                 require('../css/courseTest.css');
+                var courseTest = require('./courseTest');
                 var b = uldCourseFile.checkValidate();
                 if (!b) {
                     event.preventDefault();
                     return;
                 } else {
                     $('.course-info').html(courseTestHtml); //到3
+                    courseTest.init();
                 }
             });
             $('body').on('click', '.uld-back-btn', function(event) {

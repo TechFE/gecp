@@ -1,6 +1,6 @@
 <div class="course-test-title">
     <span class="glyphicon glyphicon-pencil"></span> 课程测试
-    <select name="chapter" id="course-test-chapter-select">
+    <select name="chapter" class="ctest-chapter-select">
         <option value="0">选择章</option>
         <option value="ch1">第一章</option>
         <option value="ch2">第二章</option>
@@ -18,7 +18,7 @@
         <option value="ch14">第十四章</option>
         <option value="ch15">第十五章</option>
     </select>
-    <select name="section" id="course-test-section-select">
+    <select name="section" class="ctest-section-select">
         <option value="0">选择节</option>
         <option value="sec1">第一节</option>
         <option value="sec2">第二节</option>
@@ -55,16 +55,17 @@
         <input type="radio" value="">
         <input type="text" class="radio-option4">
         <br> 请选择正确答案:
-        <select name="" id="ct-radio-right-answer">
+        <select name="" class="ct-radio-right-answer">
             <option value="0">选择</option>
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
             <option value="D">D</option>
         </select>
+        <span class="ct-radio-state"></span>
         <div class="submit-btn">
-            <button type="button" class="btn btn-primary">保存</button>
-            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+            <button type="button" class="btn btn-primary radques-save-btn">保存</button>
+            <!-- <button type="button" class="btn btn-primary radques-save-next-btn">保存并再输入一题</button> -->
         </div>
     </div>
     <div class="col-md course-info-module course-test-div">
@@ -84,10 +85,11 @@
         <input type="checkbox" value="">
         <input type="text" class="checkbox-option4">
         <br> 请输入正确答案:
-        <input name="" id="ct-checkbox-right-answer" placeholder="例如：ABD">
+        <input name="" class="ct-checkbox-right-answer" placeholder="例如：ABD">
+        <span class="ct-checkbox-state"></span>
         <div class="submit-btn">
-            <button type="button" class="btn btn-primary">保存</button>
-            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+            <button type="button" class="btn btn-primary mulques-save-btn">保存</button>
+            <!-- <button type="button" class="btn btn-primary mulques-save-next-btn">保存并再输入一题</button> -->
         </div>
     </div>
 </div>
@@ -99,14 +101,15 @@
         <textarea class="form-control subjectivity-question" rows="4" placeholder="请输入题目"></textarea>
         参考答案:
         <textarea class="form-control reference-answer" rows="4" placeholder="请输入题目参考答案"></textarea>
+        <span class="ct-subjectivity-state"></span>
         <div class="submit-btn">
-            <button type="button" class="btn btn-primary">保存</button>
-            <button type="button" class="btn btn-primary">保存并再输入一题</button>
+            <button type="button" class="btn btn-primary subques-save-btn">保存</button>
+            <!-- <button type="button" class="btn btn-primary subques-save-next-btn">保存并再输入一题</button> -->
         </div>
     </div>
 </div>
 
 <div class="ct-goback-btn">
     <button type="button" class="btn btn-primary ct-back-btn">上一步</button>
-    <input type="submit" class="btn btn-primary submit-all" value="全部提交"></input>
+    <button type="button" class="btn btn-primary submit-all" >全部提交</button>
 </div>
