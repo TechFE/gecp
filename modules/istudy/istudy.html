@@ -11,10 +11,16 @@
 <body>
     <div class="istudy-wraper mainframe">
         <div class="sea-top">
-            <p class="course-sea-title">课程检索:</p>
-            <button type="button" class="btn btn-primary tea-course-set">教师课程设置</button>
+            <p class="course-sea-title">全部课程:</p>
+            <div id="tea-course-set-div"></div>
+            <script id="isStudyTemp" type="text/html">
+                {{if identity == '管理员'}}
+                <button type="button" class="btn btn-primary tea-course-set">教师课程设置</button>
+                {{/if}}
+            </script>
+            <!-- <button type="button" class="btn btn-primary tea-course-set">教师课程设置</button> -->
         </div>
-        <div class="sea-main">
+        <!-- <div class="sea-main">
             <div>
                 <span>按照年级查询:</span>
                 <select name="grade-sea">
@@ -49,26 +55,43 @@
                 </select>
             </div>
             <div>
-            	<span>按照老师姓名查询:</span>
-            	<input type="text" placeholder="请输入老师姓名... ...">
-            </div>
-            <div>
-            	<span>按照课程名称查询:</span>
-            	<input type="text" placeholder="请输入课程名称... ...">
-            </div>
-            <br>
+                <span>关键词查询:</span>
+                <input type="text" placeholder="请输入关键词查询... ...">
+            </div> -->
+        <!-- <div>
+                <span>按照课程名称查询:</span>
+                <input type="text" placeholder="请输入课程名称... ...">
+            </div> -->
+        <!--  <br>
             <button type="button" class="btn btn-primary reset-sea btn-sm">重置</button>
-            <button type="button" class="btn btn-primary confirm-sea btn-sm">查询</button>
+            <button type="button" class="btn btn-primary confirm-sea btn-sm">查询</button> -->
+        <!-- </div> -->
+        <div class="istudy-toolkits">
+            <div class="sortdivs">
+                <div class="sort-by-time">时间<span class="glyphicon glyphicon-arrow-up"></span></div>
+                <div class="sort-by-fate">&nbsp&nbsp&nbsp&nbsp评分<span class="glyphicon glyphicon-arrow-down"></span></div>
+                <div class="sort-by-download">&nbsp&nbsp&nbsp&nbsp参与量<span class="glyphicon glyphicon-arrow-down"></span></div>
+            </div>
+            <div class="course-search-ul">
+                <input type="text" class="course-search-text" placeholder=" 在结果中搜索">
+                <span class="glyphicon glyphicon-search course-search-icon"></span>
+            </div>
+            <div class="look-style">
+                <div class="big-look-style"><span class="glyphicon glyphicon-th-large"></span>&nbsp缩略图&nbsp</div>
+                <div class="small-look-style"><span class="glyphicon glyphicon-th-list"></span>&nbsp列表&nbsp</div>
+            </div>
         </div>
         <!--主要内容-->
-        <div id="course-divs">
-        	
+        <div id="course-divs" class="course-divs">
         </div>
-    </div><!-- 最外层-->
+        <ul class="pagination" id="pagination1"></ul>
+    </div>
+    <!-- 最外层-->
     <div id="footer"></div>
     <script src="../../common/bootstrap/js/jquery.js"></script>
     <script src="../../common/bootstrap/js/bootstrap.js"></script>
     <script src="../../common/jsext/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/jsext/template-debug.js" type="text/javascript"></script>
     <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
     <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>
     <script src="../../common/jslib/gUtil.js" type="text/javascript"></script>

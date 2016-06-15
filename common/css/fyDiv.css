@@ -1,0 +1,10 @@
+/* 分页 */
+
+.pagination {
+    margin-left: 38%;
+}
+
+.pagination li a {
+    font-family: '宋体';
+    font-size: 1.4rem;
+}

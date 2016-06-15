@@ -418,17 +418,17 @@ hr {
     /*box-shadow: 1px -1px 38px 10px rgba(0, 0, 0, 0.2);*/
 }
 
-
+/* 小图模式End */
 /* 分页 */
 
-.pagination {
+/*.pagination {
     margin-left: 38%;
 }
 
 .pagination li a {
     font-family: '宋体';
     font-size: 1.4rem;
-}
+}*/
 
 
 /*************上传文件背景层************************/

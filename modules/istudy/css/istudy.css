@@ -5,49 +5,84 @@ html {
 body {
   margin-top: 60px;
   font-family: '微软雅黑';
-  min-width: 1000px; }
+  min-width: 1000px;
+  background-color: #F5F5F5; }
+
+.sea-top {
+  background-color: #F5F5F5; }
 
 .istudy-wraper {
   margin: 0 auto;
   width: 85%;
-  min-height: 600px; }
+  min-height: 600px;
+  margin-top: -5px; }
 
 .sea-top p {
   display: inline-block; }
 
-.tea-course-set {
+#tea-course-set-div {
+  display: inline-block;
   float: right;
-  margin-top: -8px; }
+  margin-top: -3px; }
 
 .course-sea-title {
-  font-family: '微软雅黑';
+  font-family: "微软雅黑";
   font-size: 1.6rem;
   font-weight: bold;
   color: #286090; }
 
-.sea-main {
-  position: relative;
-  margin-top: -5px;
-  padding-bottom: 33px;
-  border-top: 2px solid #edf1f2;
-  border-bottom: 2px solid #edf1f2; }
-  .sea-main div {
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 15px;
-    margin-right: 15px; }
-  .sea-main span {
-    color: #333; }
-  .sea-main input[type='text'] {
-    border: solid 1px #337ab7;
-    font-size: 12px;
-    width: 110px; }
-  .sea-main select {
-    border: solid 1px #337ab7;
+/********************** 工具栏 ******************************/
+.istudy-toolkits {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  height: 25px; }
+  .istudy-toolkits .sortdivs {
+    position: absolute;
+    font-size: 1.4rem;
     color: #333;
-    font-size: 12px;
-    width: 110px; }
-  .sea-main button {
-    float: right;
-    margin-left: 15px;
-    margin-top: 2px; }
+    left: 118px;
+    top: 90px; }
+  .istudy-toolkits .sortdivs > div {
+    display: inline-block;
+    margin-right: 15px; }
+  .istudy-toolkits .sortdivs > div:hover {
+    color: #337AB7;
+    cursor: pointer; }
+  .istudy-toolkits .sortdivs span {
+    font-size: 1.2rem; }
+  .istudy-toolkits .sortdivs-clk {
+    color: #337AB7; }
+  .istudy-toolkits .course-search-ul {
+    position: absolute;
+    top: 90px;
+    left: 400px;
+    /*z-index: 9999;*/ }
+  .istudy-toolkits .course-search-text {
+    background-color: #fff;
+    height: 23px;
+    width: 130px;
+    font-size: 1.4rem;
+    outline-color: blue;
+    border: solid 1px #f5f5f5; }
+  .istudy-toolkits .course-search-icon {
+    position: absolute;
+    color: #9d9d9d;
+    top: 5px;
+    right: 5px; }
+  .istudy-toolkits .course-search-icon:hover {
+    cursor: pointer;
+    color: #ccc; }
+  .istudy-toolkits .look-style {
+    position: absolute;
+    right: 104px;
+    top: 90px;
+    font-size: 1.4rem;
+    color: #333; }
+  .istudy-toolkits .look-style div {
+    display: inline-block; }
+  .istudy-toolkits .look-style div:hover {
+    color: #337AB7;
+    cursor: pointer; }
+
+/*******************工具栏 ****************************/

@@ -182,6 +182,8 @@ define(function(require, exports, module) {
 
         },
         fyDiv: function(maxPage, queryFilter, isBySearch) {
+            require('../../../common/css/fyDiv.css');
+            
             /*****分页功能**********************/
             var currentPageNum = parseInt(sessionStorage.getItem('currentPageNum')) || 1;
 

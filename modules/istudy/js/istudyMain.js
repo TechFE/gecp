@@ -14,7 +14,19 @@ define(function(require){
     var identity = prjUtil.sampleDecode(localStorage.getItem('identity'));
     // console.log(identity);
    
-    $('.tea-course-set').on('click',function(event) {
+    $('.istudy-wraper').on('click','.tea-course-set',function(event) {
     	window.location.href = "istudy-tea.html";
     });
+
+    //使用模板引擎
+    var data = {
+        title:'课程主页',
+        identity:identity,
+    };
+    var html = template('isStudyTemp',data);//script的id
+    // console.log(html);
+    document.getElementById('tea-course-set-div').innerHTML = html;
+
+    var istudy = require('./istudy');
+    istudy.init();
 });

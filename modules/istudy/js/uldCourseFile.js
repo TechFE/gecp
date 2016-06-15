@@ -3,6 +3,7 @@
  */
 define(function(require, exports, module) {
     var prjUtil = require('../../../common/js/prjUtil');
+    var cookie = require('../../../common/js/cookie');
     var cCommonMethods = require('./courseCommon');
     var dbOprTools = require('./dbOpr');
     var dtd = $.Deferred(); // 新建一个Deferred对象
@@ -50,6 +51,7 @@ define(function(require, exports, module) {
             var courseSetsObj = {};
             courseSetsObj.cName = sessionStorage.getItem('course-name') || "";
             courseSetsObj.cCreateDate = prjUtil.getStandardDate();
+            courseSetsObj.cCreateUser = cookie.getCookie('username') || "";
             courseSetsObj.cPicName = coursePicName;
             courseSetsObj.cIntro = sessionStorage.getItem('course-intro-text') || "";
             courseSetsObj.cTeaIntro = sessionStorage.getItem('course-teaintro-text') || "";
@@ -216,11 +218,11 @@ define(function(require, exports, module) {
                 // filename = filename.slice(0, -1);
                 // console.log(filename);
             }
+            var courseSetsObj = self.getCourseSetsObj();
 
             filePath = 'course/file'; //上传服务器的文件夹
             var gUploadFile = new gEcnu.Upload(fileLists, filePath);
             gUploadFile.processAscyn(function() {
-                var courseSetsObj = self.getCourseSetsObj();
                 // console.log(courseSetsObj);
                 // console.log(courseSetsObj.cSectionFiles);
                 self.add2CourseDB(courseSetsObj); //上传至数据库
