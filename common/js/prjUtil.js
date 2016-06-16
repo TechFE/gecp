@@ -202,7 +202,8 @@ define(function(require, exports, module) {
                 return  val.replace(/\n/,'<br>');
             }
             return val.replace(/\n/,'');
-        }
+        },
+       
     };
 
     module.exports = prjUtil;

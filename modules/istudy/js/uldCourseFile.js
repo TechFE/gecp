@@ -65,7 +65,7 @@ define(function(require, exports, module) {
             courseSetsObj.cSaLevelSet = sessionStorage.getItem('saLevel-set') || "";
             courseSetsObj.cStudyDate1 = sessionStorage.getItem('study-date1') || "";
             courseSetsObj.cStudyDate2 = sessionStorage.getItem('study-date2') || "";
-            courseSetsObj.cStudyDuring = courseSetsObj.cStudyDate1 + "--" + courseSetsObj.cStudyDate2;
+            courseSetsObj.cStudyDuring = courseSetsObj.cStudyDate1 + " - " + courseSetsObj.cStudyDate2;
             courseSetsObj.cSectionName = sessionStorage.getItem('course-section-name') || "";
             courseSetsObj.cSectionFiles = '' + fileJsonText;
             // courseSetsObj.cSectionFiles = '[{"courseName":"20160612195522468-010500 日本.jpg","chapter":"1","section":"1"},{"courseName":"20160612195522471-011000 泰国.jpg","chapter":"1","section":"2"}]';

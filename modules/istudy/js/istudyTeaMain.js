@@ -5,6 +5,11 @@
  */
 define(function(require) {
     var navheader = require("../../../common/js/navheader");
+    var prjConfig = require("../../../common/js/prjConfig");
+    var cookie = require("../../../common/js/cookie");
+    if (!cookie.getCookie('username')) {
+        location.href = prjConfig.subHref() + '/modules/login/login.html';
+    }
     navheader.init();
     $('.navbar-nav li a').css('color', '#9d9d9d');
     $('.navbar-nav li:nth(2) a').css('color', '#fff');

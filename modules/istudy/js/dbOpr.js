@@ -25,17 +25,17 @@ define(function(require, exports, module) {
                 }
             });
             var Params = {
-                'Fields': ["cName", "cCreateDate","cCreateUser", "cPicName", "cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cFinishDuringDate", "cSectionFiles"],
+                'Fields': ["cName", "cCreateDate","cCreateUser", "cPicName", "cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cDuringStartTime", "cDuringStopTime","cSectionFiles"],
                 'Data': [
                     [courseSetObj.cName, courseSetObj.cCreateDate,courseSetObj.cCreateUser,courseSetObj.cPicName, courseSetObj.cIntro, courseSetObj.cTeaIntro, courseSetObj.cAims, courseSetObj.cOutline, courseSetObj.cNotification, courseSetObj.cDifficultySet, courseSetObj.cGradeSet, courseSetObj.cCmCodeSet,
-                        courseSetObj.cSaCodeSet, courseSetObj.cSaLevelSet, courseSetObj.cStudyDuring, courseSetObj.cSectionFiles
+                        courseSetObj.cSaCodeSet, courseSetObj.cSaLevelSet, courseSetObj.cStudyDate1, courseSetObj.cStudyDate1,courseSetObj.cSectionFiles
                     ]
                 ]
             };
             sqlServices.processAscyn("ADD", "gecp2", "courses", Params);
         },
         /**
-         * [queryDatasFromDB 已经写死了，只用在courses表]
+         * [queryDatasFromDB 已经写死，只用在courses表]
          * @param  {[type]} tableName    [description]
          * @param  {[type]} queryFields  [description]
          * @param  {[type]} queryFilter  [description]

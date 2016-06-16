@@ -103,8 +103,6 @@ define(function(require, exports, module) {
     		$('body').append(courseContentSmallTpl);
     		var courseContentSmall=template('courseContentSmall',tplData);
     		console.log('smallLookStyle');
-    		console.log(courseContentSmall);
-    		// document.querySelector('#course-divs').innerHTML ='';
     		document.querySelector('#course-divs').innerHTML = courseContentSmall;
     	}
     }

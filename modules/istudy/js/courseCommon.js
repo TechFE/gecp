@@ -9,7 +9,7 @@ define(function(require, exports, module) {
          * @param  {[string]} eleClassName [元素类名]
          */
         input2Storage: function(eleClassName) {
-            $('.' + eleClassName).on('change', function(event) {
+            $('.course-info').on('change','.' + eleClassName, function(event) {
                 sessionStorage.setItem(eleClassName, $(this).val());
             });
         },

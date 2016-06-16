@@ -1,5 +1,5 @@
  <script id="courseContentBig" type="text/html">
- 	<ul>
+ 	<ul class="big-ul">
  		{{each courseObjs as cObj i}}
  	 		<li class='content-one' data-fid={{cObj.CID}}>
  	 		{{if cObj.CPICNAME}}
