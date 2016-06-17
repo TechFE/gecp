@@ -4,12 +4,14 @@
  */
 define(function(require, exports, module) {
     var dbTools = require('./dbOpr');
+    var config = require('../../../common/js/prjConfig');
     var istudy = {
         init: function() {
-        	this.initMainLayout();
-        	this.changeLookStyle();
+            this.initMainLayout();
+            this.changeLookStyle();
+            this.gotoCourseDetail();
         },
-        initMainLayout:function(queryFilter){
+        initMainLayout: function(queryFilter) {
             var self = this;
             //从数据库中查询课程数据
             // var queryFilter = "cId = 1";
@@ -42,7 +44,7 @@ define(function(require, exports, module) {
                     if (isBySearch == 'bySearch' && type == "init") { //如果是点击搜索就不要在这里重复初始化了
                         return;
                     }
-                    dbTools.queryDatasFromDB('courses', '*', queryFilter, getOnePageData,'getOnePageData',num-1); //请求全部数据，初始化分页器
+                    dbTools.queryDatasFromDB('courses', '*', queryFilter, getOnePageData, 'getOnePageData', num - 1); //请求全部数据，初始化分页器
 
                 }
             });
@@ -58,8 +60,8 @@ define(function(require, exports, module) {
             });
             /*****分页功能End**********************/
         },
-        changeLookStyle:function(){
-        	var lookStyle = sessionStorage.getItem('courseLookStyle');
+        changeLookStyle: function() {
+            var lookStyle = sessionStorage.getItem('courseLookStyle');
             if (lookStyle == "small") {
                 $('.big-look-style').css('color', '#333');
                 $('.small-look-style').css('color', '#337AB7');
@@ -80,31 +82,38 @@ define(function(require, exports, module) {
                 location.reload();
             });
         },
+        gotoCourseDetail: function() {
+            $('.istudy-wraper').on('click', '.content-one,.content-one-small', function(event) {
+                var cId = $(this).attr('data-cid');
+                var searchCourseName = $(this).find('.cont-title').text();
+                parent.location.assign(config.subHref() + "/modules/istudy/courseDetail.html?cid=" + cId + "&courseName='" + searchCourseName+"'");
+            });
+        },
 
     };
 
-    function getOnePageData(data){
-    	console.log('回掉函数：');
-    	console.log(data);
-    	var tplData ={
-    		courseObjs:data,
-    		picFileURL:gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/course/coursePic/' ,
-    	};
-    	//两种浏览方式，两个模板
+    function getOnePageData(data) {
+        console.log('回掉函数：');
+        console.log(data);
+        var tplData = {
+            courseObjs: data,
+            picFileURL: gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/course/coursePic/',
+        };
+        //两种浏览方式，两个模板
         var lookStyle = sessionStorage.getItem('courseLookStyle');
-   		require('../css/courseContentPages.css');
-    	if(lookStyle === 'big'||!lookStyle){
-    		var courseContentBigTpl = require('../tpl/courseContentBig.tpl');
-    		$('body').append(courseContentBigTpl);
-    		var courseContentBig=template('courseContentBig',tplData);
-    		document.querySelector('#course-divs').innerHTML = courseContentBig;
-    	}else if(lookStyle === 'small'){
-    		var courseContentSmallTpl = require('../tpl/courseContentSmall.tpl');
-    		$('body').append(courseContentSmallTpl);
-    		var courseContentSmall=template('courseContentSmall',tplData);
-    		console.log('smallLookStyle');
-    		document.querySelector('#course-divs').innerHTML = courseContentSmall;
-    	}
+        require('../css/courseContentPages.css');
+        if (lookStyle === 'big' || !lookStyle) {
+            var courseContentBigTpl = require('../tpl/courseContentBig.tpl');
+            $('body').append(courseContentBigTpl);
+            var courseContentBig = template('courseContentBig', tplData);
+            document.querySelector('#course-divs').innerHTML = courseContentBig;
+        } else if (lookStyle === 'small') {
+            var courseContentSmallTpl = require('../tpl/courseContentSmall.tpl');
+            $('body').append(courseContentSmallTpl);
+            var courseContentSmall = template('courseContentSmall', tplData);
+            console.log('smallLookStyle');
+            document.querySelector('#course-divs').innerHTML = courseContentSmall;
+        }
     }
     module.exports = istudy;
 });

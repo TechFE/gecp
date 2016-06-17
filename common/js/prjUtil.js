@@ -138,8 +138,8 @@ define(function(require, exports, module) {
          * @param  {[base64]} base64Con [base64内容]
          * @param  {[string]} path      [存储路径]
          */
-        uldBase64: function(fileName, base64Con,path,dtd,callback) {
-            if(!path){
+        uldBase64: function(fileName, base64Con, path, dtd, callback) {
+            if (!path) {
                 path = 'user/picFile/';
             }
             $.ajax({
@@ -154,10 +154,10 @@ define(function(require, exports, module) {
                     }
                 })
                 .done(function() {
-                    if(dtd){
+                    if (dtd) {
                         dtd.resolve();
                     }
-                    if(callback){
+                    if (callback) {
                         callback();
                     }
                     console.log("success");
@@ -196,14 +196,65 @@ define(function(require, exports, module) {
          * @param  {[string]} val [要转化的字符串]
          * @return {[type]}     [description]
          */
-        conv2oneLine:function(val,isToBr){
-            if(!!isToBr){
+        conv2oneLine: function(val, isToBr) {
+            if (!!isToBr) {
                 // val.replace(/[\x0a|\cJ]/g,'<br>')
-                return  val.replace(/\n/,'<br>');
+                return val.replace(/\n/, '<br>');
             }
-            return val.replace(/\n/,'');
+            return val.replace(/\n/, '');
         },
-       
+        /**
+         * [compare sort的比较函数]
+         * @return {[Number]} [1 -1 0]
+         */
+        compare: function() {
+            var arg = arguments;
+            var len = arg.length;
+            var flag;
+            return function(obj1, obj2) {
+
+                for (var i = 0; i < len; i++) {
+                    val1 = obj1[arg[i]];
+                    val2 = obj2[arg[i]];
+
+                    if (val2 < val1) {
+                        flag = 1;
+                        break;
+                    } else if (val2 > val1) {
+                        flag = -1;
+                        break;
+                    } else { //相等的时候比较第二个
+                        flag = 0;
+                    }
+                }
+                return flag;
+            };
+        },
+        // function compare() {
+        //  var arg = arguments;
+        //     return function(obj1, obj2) {
+        //         var val1 = obj1[arg[0]];
+        //         var val2 = obj2[arg[0]];
+        //         //先比较对象第一个属性
+        //         if (val2 < val1) {
+        //             return 1;
+        //         } else if (val2 > val1) {
+        //             return -1;
+        //         } else { //相等的时候比较第二个
+        //          // return 0;
+        //             var value1 = obj1[arg[1]];
+        //             var value2 = obj2[arg[1]];
+        //             if (value2 < value1) {
+        //                 return 1;
+        //             } else if (value2 > value1) {
+        //                 return -1;
+        //             } else {
+        //                 return 0;
+        //             }
+        //         }
+        //     };
+        // }
+
     };
 
     module.exports = prjUtil;

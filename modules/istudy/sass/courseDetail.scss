@@ -96,12 +96,14 @@ body {
 
 
 /* 评论模块 */
-
+.assess-title{
+    display: none;
+}
 #assess-module {
     width: 85%;
     margin: 0 auto;
     background-color: #fff;
-    margin-top: -41px;
+    margin-top: -36px;
 }
 
 .assess-title {

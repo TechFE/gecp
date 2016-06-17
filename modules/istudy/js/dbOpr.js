@@ -25,14 +25,35 @@ define(function(require, exports, module) {
                 }
             });
             var Params = {
-                'Fields': ["cName", "cCreateDate","cCreateUser", "cPicName", "cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cDuringStartTime", "cDuringStopTime","cSectionFiles"],
+                'Fields': ["cName", "cCreateDate", "cCreateUser", "cPicName", "cIntro", "cTeacherIntro", "cAims", "cOutline", "cNotification", "cDifficulty", "cGrade", "cmCode", "saCode", "saLevel", "cDuringStartTime", "cDuringStopTime", "cSectionFiles"],
                 'Data': [
-                    [courseSetObj.cName, courseSetObj.cCreateDate,courseSetObj.cCreateUser,courseSetObj.cPicName, courseSetObj.cIntro, courseSetObj.cTeaIntro, courseSetObj.cAims, courseSetObj.cOutline, courseSetObj.cNotification, courseSetObj.cDifficultySet, courseSetObj.cGradeSet, courseSetObj.cCmCodeSet,
-                        courseSetObj.cSaCodeSet, courseSetObj.cSaLevelSet, courseSetObj.cStudyDate1, courseSetObj.cStudyDate1,courseSetObj.cSectionFiles
+                    [courseSetObj.cName, courseSetObj.cCreateDate, courseSetObj.cCreateUser, courseSetObj.cPicName, courseSetObj.cIntro, courseSetObj.cTeaIntro, courseSetObj.cAims, courseSetObj.cOutline, courseSetObj.cNotification, courseSetObj.cDifficultySet, courseSetObj.cGradeSet, courseSetObj.cCmCodeSet,
+                        courseSetObj.cSaCodeSet, courseSetObj.cSaLevelSet, courseSetObj.cStudyDate1, courseSetObj.cStudyDate1, courseSetObj.cSectionFiles
                     ]
                 ]
             };
             sqlServices.processAscyn("ADD", "gecp2", "courses", Params);
+        },
+        addData2DB_cAttendStu: function(cAttendStu) {
+            console.log(cAttendStu);
+
+            var sqlServices = new gEcnu.WebSQLServices.SQLServices({
+                'processCompleted': function(data) {
+                  
+                },
+                'processFailed': function() {
+                    console.log("dbOpr.js文件下数据库操作失败！");
+                }
+            });
+            var Params = {
+                'Fields': ["uid", "csId"],
+                'Data': [
+                    [
+                        cAttendStu.uid,cAttendStu.csId
+                    ]
+                ]
+            };
+            sqlServices.processAscyn("ADD", "gecp2", "cAttendStu", Params);
         },
         /**
          * [queryDatasFromDB 已经写死，只用在courses表]
@@ -128,8 +149,31 @@ define(function(require, exports, module) {
             };
             sqlServices.processAscyn("ADD", "gecp2", "cTest", Params);
         },
-
-
+        /**
+         * [queryDBByField 根据字段查询表]
+         * @param  {[type]} tableName  [表名]
+         * @param  {[type]} queryField [需要查到的字段]
+         * @return {[type]}            [description]
+         */
+        queryDBByField: function(tableName, queryField, queryFilter, callback) {
+            var sqlservice = new gEcnu.WebSQLServices.SQLServices({
+                'processCompleted': function(data) {
+                    console.log(data); //回调函数里返回数据
+                    if (callback) {
+                        callback(data);
+                    }
+                },
+                'processFailed': function() {
+                    console.log('istudy数据库操作有错误');
+                }
+            });
+            var lyrOrSQL = {
+                'lyr': tableName,
+                'fields': queryField,
+                'filter': queryFilter
+            };
+            sqlservice.processAscyn("SQLQUERY", "gecp2", lyrOrSQL);
+        },
 
         /**/
     };

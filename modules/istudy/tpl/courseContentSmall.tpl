@@ -1,9 +1,9 @@
  <script id="courseContentSmall" type="text/html">
  	<ul>
  		{{each courseObjs as cObj i}}
- 	 		<li class='content-one-small' data-fid={{cObj.CID}}>
+ 	 		<li class='content-one-small' data-cid={{cObj.CID}}>
  	 			<div class="course-messages">
- 	 				<div class="messages-top">{{cObj.CNAME}}</div>
+ 	 				<div class="messages-top cont-title">{{cObj.CNAME}}</div>
  	 				<div class="messages-bottom">
  	 					{{if cObj.CGRADE}}
  	 					<div class="mes-cgrade">{{cObj.CGRADE}}</div>

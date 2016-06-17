@@ -1,7 +1,7 @@
  <script id="courseContentBig" type="text/html">
  	<ul class="big-ul">
  		{{each courseObjs as cObj i}}
- 	 		<li class='content-one' data-fid={{cObj.CID}}>
+ 	 		<li class='content-one' data-cid={{cObj.CID}}>
  	 		{{if cObj.CPICNAME}}
  	 			<div><img src='{{picFileURL+cObj.CPICNAME}}' class='cont-img' alt='封面'/></div>
  	 		{{else}}

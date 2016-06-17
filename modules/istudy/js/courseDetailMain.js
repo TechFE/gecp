@@ -10,8 +10,7 @@ define(function(require) {
     $('.navbar-nav li:nth(2) a').css('color', '#fff');
 
     var assessModue = require('../../res/js/assessModule');
-    // var fid = sessionStorage.getItem('fid');
-    var cid = 1;
+    var cid = window.location.search.slice(5,6);
     var tableFields = {};
     tableFields.fidValue = cid;
     tableFields.id = "ccId"; //表中对应的字段名
@@ -32,6 +31,8 @@ define(function(require) {
     // assessModue.initLayout('#assess');
     $('.course-detail-pane li').on('click', function(event) {
         console.log($(this).text());
+        console.log($(this).index());
+        sessionStorage.setItem('cDetailPaneLiIndex',$(this).index());
         if ($(this).text() == '评价') {
             $('#assess-module').fadeIn('slow', function() {
                 $('.course-tab-content div:last').css('display', 'none');
@@ -44,6 +45,14 @@ define(function(require) {
         }
 
     });
+    // var cDetailPaneLiIndex = sessionStorage.getItem('cDetailPaneLiIndex');
+    // if(cDetailPaneLiIndex){
+    //     $('.course-detail-pane li').removeClass('active');
+    //     $('.course-detail-pane li').eq(cDetailPaneLiIndex).addClass('active');
+    //     $('.course-detail-pane li').eq(cDetailPaneLiIndex).click();
+    // }
+    var courseDetail =  require('./courseDetail');   
+    courseDetail.init();
 
 
 });
