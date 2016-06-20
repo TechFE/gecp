@@ -1,3 +1,4 @@
+@import 'varible';
 html {
     font-size: 62.5%;
 }
@@ -25,11 +26,25 @@ body {
         margin: 0 auto;
         width: 85%;
     }
+    .course-detail-a >div{
+        width: 60px;
+        &:hover {
+            cursor: pointer;
+            color: $globalThemeMainColor;
+        }
+    }
 }
 
 .cd-return-area {
     padding-top: 20px;
     color: #B4BCBA;
+}
+
+.return-istudy {
+    &:hover {
+        cursor: pointer;
+        color: #fff;
+    }
 }
 
 .course-detail-title {
@@ -96,9 +111,11 @@ body {
 
 
 /* 评论模块 */
-.assess-title{
+
+.assess-title {
     display: none;
 }
+
 #assess-module {
     width: 85%;
     margin: 0 auto;

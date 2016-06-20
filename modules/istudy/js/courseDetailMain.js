@@ -10,7 +10,8 @@ define(function(require) {
     $('.navbar-nav li:nth(2) a').css('color', '#fff');
 
     var assessModue = require('../../res/js/assessModule');
-    var cid = window.location.search.slice(5,6);
+    var serachArray = window.location.search.split('&');
+    var cid = serachArray[0].slice(5);
     var tableFields = {};
     tableFields.fidValue = cid;
     tableFields.id = "ccId"; //表中对应的字段名

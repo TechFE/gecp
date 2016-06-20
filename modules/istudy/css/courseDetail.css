@@ -20,10 +20,19 @@ body {
   .course-detail-top div {
     margin: 0 auto;
     width: 85%; }
+  .course-detail-top .course-detail-a > div {
+    width: 60px; }
+    .course-detail-top .course-detail-a > div:hover {
+      cursor: pointer;
+      color: #337AB7; }
 
 .cd-return-area {
   padding-top: 20px;
   color: #B4BCBA; }
+
+.return-istudy:hover {
+  cursor: pointer;
+  color: #fff; }
 
 .course-detail-title {
   font-size: 2.2rem;

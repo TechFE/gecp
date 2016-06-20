@@ -4,9 +4,11 @@
 
 define(function(require, exports, module) {
     var prjUtil = require('../../../common/js/prjUtil');
+    var prjConfig = require('../../../common/js/prjConfig');
     var dbTools = require('./dbOpr');
     var serachArray = window.location.search.split('&');
     var cid = serachArray[0].slice(5);
+    var courseName = serachArray[1].slice(11);
     console.log(cid);
     var cDetail = {
         init: function() {
@@ -18,7 +20,7 @@ define(function(require, exports, module) {
             dbTools.queryDBByField('courses', '*', queryFilter, getMesDataFromDB);
         },
         initLayout: function(data0) {
-            $('.cd-return-area').html('课程学习 > ' + data0.CNAME);
+            $('.cd-return-area').html('<span class="return-istudy">课程学习 </span> > ' + data0.CNAME);
             $('.course-detail-title').html(data0.CNAME);
             $('.cd-course-intro-p').html(data0.CINTRO);
             $('.cd-course-teainfo-p').html(data0.CTEACHERINTRO);
@@ -50,6 +52,12 @@ define(function(require, exports, module) {
                 cMenuHtml += chapterTitle + '<p>第' + courseJson[i].section + '节&nbsp' + courseNamei + '</p>';
             }
             $('.course-menu').html(cMenuHtml);
+
+            $('.course-detail-wraper').on('click', '.return-istudy', function(event) {
+                location.href = prjConfig.subHref()+'/modules/istudy/istudy.html';
+            });
+
+
             //    var tplData = {
             //    	chapter:chapterArray,
             //    	section:sectionArray,
@@ -74,6 +82,7 @@ define(function(require, exports, module) {
                     //写入数据库cAttendStu
                     dbTools.addData2DB_cAttendStu(cAttendStu);
                 }
+                location.href = prjConfig.subHref()+'/modules/istudy/courseVideo.html?cid='+cid+'courseName='+courseName;
             });
         },
     };
