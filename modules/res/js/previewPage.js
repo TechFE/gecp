@@ -229,13 +229,15 @@ define(function(require, exports, module) {
     function previewPage() {
         var cookie = require('../../../common/js/cookie');
         var username = cookie.getCookie('username'); //用户名
-        var fileName = location.search.split('&')[1].slice(3);
+        var fileName = decodeURIComponent(location.search.split('&')[1].slice(3));
+        // var fileName = location.search.split('&')[1].slice(3);
+        console.log(fileName);
         var lastDotInd = fileName.lastIndexOf('.');
         console.log(lastDotInd);
         // var fileType = fileName.slice(-3);
         var fileType = fileName.slice(lastDotInd+1);
         console.log(fileType);
-        var filePath = gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'user' +'/';
+        var filePath = gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/user/';
         var fileURL = filePath + fileName;
         console.log(fileURL);
         // $('.main-content').html('<p class="tip-text">浏览器不支持此文件预览，请下载后查阅!</p>');

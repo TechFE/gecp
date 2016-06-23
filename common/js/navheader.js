@@ -1,16 +1,17 @@
 define(function(require, exports, module) {
     var config = require('./prjConfig');
+    var cookie = require('./cookie');
     var subHref = config.subHref();
 
     var navheader = {
         init: function() {
             var self = this;
+            this.checkIsLogin();
             this.layout();
             this.loginRegister();
             this.changePage();
             this.loginInOut();
             this.usrcenter();
-
             $('.global-search').on('click', function(event) {
                 self.toGlobalSearchPage();
             });
@@ -26,7 +27,13 @@ define(function(require, exports, module) {
 
             // });
         },
-
+        checkIsLogin:function(){
+            var username = cookie.getCookie('username');
+            if(!username&&!/^\/gecp$|^\/gecp(?:\/|\/index.html)$/.test(location.pathname)){
+                sessionStorage.setItem('oldLocationHref',location.href);
+                location.href = subHref+"/modules/login/login.html";
+            }
+        },
         layout: function() {
             //上
             var headerHtml = require('../subpages/navheader.html');

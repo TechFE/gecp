@@ -108,8 +108,12 @@ define(function(require, exports, module) {
 
                 files = fileInput.files; //应该重新获取
                 console.log(files);
+                var filename = files[0].name;
+                if(/[\&|\;]/.test(filename)){
+                    alertDialogShow('对不起！文件名不能含有&或者;,请修改文件名后重新上传');
+                    return;
+                }
                 if (ftype === '1') {
-                    var filename = files[0].name;
                     var ind = filename.lastIndexOf('.');
                     var fileType;
                     if (ind > -1) {
@@ -186,7 +190,8 @@ define(function(require, exports, module) {
             /************************************************************************************/
             //确定===>传入数据库
             $('#ulQd').click(function() {
-
+                var waitHtml = '<div class="uld-bg"><img alt="正在加载,请稍后... ..." class="uld-bg-img" src="img/wait.gif"></div>';
+                $('body').append(waitHtml);
                 var fieldsObj = {};
                 fieldsObj.cdCode = $('#upload-cdcode').val();
                 fieldsObj.cmCode = $('#upload-cmcode').val();
@@ -269,8 +274,9 @@ define(function(require, exports, module) {
                     var gUploadFile = new gEcnu.Upload(fileLists, filePath);
                     gUploadFile.processAscyn(function() {
                         $('#upstatus').text("上传成功!");
-                        flag = flag + 1;
-                        console.log('文件上传' + flag);
+                        $('.uld-bg,.uld-bg-img').css('display', 'none');
+                        // flag = flag + 1;
+                        dbByFlag('1');//因为这个上传的文件比较大，所以最后上传成功
                     }, function() {
                         $('#upstatus').text("上传失败!");
                         console.log('文件上传' + flag);
@@ -318,7 +324,6 @@ define(function(require, exports, module) {
                     }
                 });
                 sqlServices.processAscyn("ADD", "gecp2", "uploadFile2", params);
-                dbByFlag(flag);
             }); //点击确定按钮   逻辑代码结束
         },
 

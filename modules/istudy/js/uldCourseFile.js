@@ -151,7 +151,7 @@ define(function(require, exports, module) {
                     //等待
                     var waitHtml = '<div class="uld-bg"><img alt="正在加载,请稍后... ..." class="uld-bg-img" src="img/wait.gif"></div>';
                     $('body').append(waitHtml);
-                    self.uldCoursePic2Server(); //小于3M的图片，忽略判断
+                    self.uldCoursePic2Server(); //小于3M的图片，时间较短，忽略判断
                     self.uldCourseFile2Server(dtd);　　　　　　
                     console.log("执行完毕！");　　　　　　
                     // dtd.resolve(); // 改变Deferred对象的执行状态

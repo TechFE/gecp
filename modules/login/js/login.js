@@ -34,11 +34,16 @@ define(function(require, exports, module) {
                 var user_pwd = data[0].password;
                 var userId = data[0].uid;
                 var identity = data[0].identity;
-                localStorage.setItem('userId',userId);
-                localStorage.setItem('identity',prjUtil.sampleEncode(identity));
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('identity', prjUtil.sampleEncode(identity));
                 if (pwd == user_pwd) {
                     cookie.setCookie('username', username, 7);
-                    window.location.href = "../../index.html";
+                    var oldLocationHref = sessionStorage.getItem('oldLocationHref', location.href);
+                    if (oldLocationHref) {
+                        location.href = oldLocationHref;
+                    } else {
+                        location.href = "../../index.html";
+                    }
                 } else {
                     alertDialogShow("用户名或者密码不正确！");
                 }

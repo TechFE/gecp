@@ -8,7 +8,7 @@ define(function(require, exports, module) {
             this.initLayout();
             this.clickSearchResultMenu();
             this.queryFilter2GetDB();
-            this.resContentOpr(); //资源点击进入详情
+            this.gotoResContent(); //资源点击进入详情
         },
 
         initLayout: function() {
@@ -234,9 +234,9 @@ define(function(require, exports, module) {
             $('.search-result-div').append(totalHtml);
         },
         /**
-         * [resContentOpr 点击条目进入详情]
+         * [gotoResContent 点击条目进入详情]
          */
-        resContentOpr: function() {
+        gotoResContent: function() {
             $('.search-result-div').on('click', '.usrres-onediv', function(event) {
                 var fid = $(this).attr('data-fid');
                 console.log(fid);

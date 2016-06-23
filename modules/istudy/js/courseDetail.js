@@ -82,7 +82,7 @@ define(function(require, exports, module) {
                     //写入数据库cAttendStu
                     dbTools.addData2DB_cAttendStu(cAttendStu);
                 }
-                location.href = prjConfig.subHref()+'/modules/istudy/courseVideo.html?cid='+cid+'courseName='+courseName;
+                location.href = prjConfig.subHref()+'/modules/istudy/courseVideo.html?cid='+cid+'&courseName='+courseName;
             });
         },
     };

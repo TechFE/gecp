@@ -15,7 +15,7 @@ define(function(require) {
     var tableFields = {};
     tableFields.fidValue = cid;
     tableFields.id = "ccId"; //表中对应的字段名
-    tableFields.fId = "cId";
+    tableFields.fId = "cIdF";
     tableFields.person = "ccPerson";
     tableFields.content = "ccContent";
     tableFields.rate = "ccRate";

@@ -32,8 +32,14 @@
         font-size: 1.4rem;
         color: #999999;
     }
-    .content-one span[class^='glyphicon'] {
-        font-size: 1.2rem;
+    .content-one {
+        span[class^='glyphicon'] {
+            font-size: 1.2rem;
+        }
+        span.num-avgrate {
+            display: inline-block;
+            margin-left: -15px;
+        }
     }
     .cont-img {
         width: 100%;
@@ -127,18 +133,18 @@
             border-radius: 5px;
             background-color: #EBEBEB;
         }
-
     }
 }
-  .mes-cintro {
-      position:absolute;
-      max-width: 400px;
-      overflow: hidden;
-      text-align: baseline;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      word-break: break-all;
-  }
+
+.mes-cintro {
+    position: absolute;
+    max-width: 400px;
+    overflow: hidden;
+    text-align: baseline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
 
 .course-uldname,
 .course-date {

@@ -130,8 +130,8 @@ define(function(require, exports, module) {
                     if (datai.ftype == 2) {
                         if (datai.subjectName) {
                             fileTitle = datai.subjectName;
-                        } 
-                        fileTitle = fileTitle.slice(0,60);
+                        }
+                        fileTitle = fileTitle.slice(0, 60);
                         // fileTitle = datai.subjectName || fileTitle;
                         messagesTopHtml = '<div class="messages-top subject-logo">' + fileTitle + '</div>';
                     } else {
@@ -183,10 +183,10 @@ define(function(require, exports, module) {
         },
         fyDiv: function(maxPage, queryFilter, isBySearch) {
             require('../../../common/css/fyDiv.css');
-            
+
             /*****分页功能**********************/
             var currentPageNum = parseInt(sessionStorage.getItem('currentPageNum')) || 1;
-
+            currentPageNum = currentPageNum < maxPage ? currentPageNum : maxPage;
             maxPage = maxPage == 0 ? 1 : maxPage;
             $.jqPaginator('#pagination1', {
                 totalPages: maxPage,
@@ -262,9 +262,9 @@ define(function(require, exports, module) {
         // var username = cookie.getCookie('username');
         var config = require('../../../common/js/prjConfig');
         var fid, filename;
-        if (username == "") {
+        /*if (username == "") {
             parent.location.assign(config.subHref() + "/modules/login/login.html");
-        }
+        }*/
 
         $('#contentDiv').on('click', '.content-one', function(event) {
             fid = $(this).attr('data-fid');

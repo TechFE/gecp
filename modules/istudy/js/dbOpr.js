@@ -67,7 +67,8 @@ define(function(require, exports, module) {
          */
         queryDatasFromDB: function(tableName, queryFields, queryFilter, callbackFunc, action, pageNum) {
             var onePageNums = 12; //一页12个
-            if (!queryFilter || action === 'fyDiv') {
+            console.log(queryFilter);
+            if (!queryFilter/*|| action === 'fyDiv'*/) {
                 queryFilter = '1=1';
             }
             if (!queryFields) {
@@ -78,18 +79,16 @@ define(function(require, exports, module) {
             if (cSortItemSession) {
                 switch (cSortItemSession) {
                     case "timeDown": //升序
-                        sortItemName = 'date'; /*'date(a.date)';*/
+                        sortItemName = 'cCreateDate'; /*'date(a.date)';*/
                         break;
                     case "timeUp": //降序
-                        sortItemName = 'date DESC';
+                        sortItemName = 'cCreateDate DESC';
                         break;
                     case "fate": //评分
                         sortItemName = 'avgRate DESC';
                         break;
-                    case "downloads": //下载量   其实评分也可以这样类似写
-                        // lyrVal='((uploadFile2 join cDesign on uploadFile2.cdCode = cDesign.cdCode) as ud left join cMoudle on ud.cmCode=cMoudle.cmCode) as a left join ubDownload on a.fid = ubDownload.userDownloadFileId';
-                        // fieldsVal = 'fid,fPicFileName,ftype,subjectName,uldname,a.cdCode,cdName,a.cmCode,cmName,clCode,saCode,ssnj,ssks,wjlx,date,filename,fileRename,bzxx,fcomments,userDownloadFileId,count(userDownloadFileId) fileDownloadNums';
-                        sortItemName = 'attendNums DESC';
+                    case "attendNums": 
+                        sortItemName = 'caNums DESC';
                         break;
                 }
             }
@@ -104,7 +103,7 @@ define(function(require, exports, module) {
                     console.log(data);
                     if (callbackFunc && data) {
                         if (action === 'fyDiv') {
-                            callbackFunc(Math.ceil(data.length / onePageNums));
+                            callbackFunc(Math.ceil(data.length / onePageNums),queryFilter);
                         } else {
                             callbackFunc(data);
                         }
