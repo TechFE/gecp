@@ -92,7 +92,14 @@ define(function(require, exports, module) {
                     //写入数据库cAttendStu
                     dbTools.addData2DB_cAttendStu(cAttendStu);
                 }
-                location.href = prjConfig.subHref()+'/modules/istudy/courseVideo.html?cid='+cid+'&courseName='+courseName;
+                var lastPName = sessionStorage.getItem('cFileName');
+                var cFileNameSearch;
+                if(lastPName){
+                     cFileNameSearch = '&pname='+lastPName;
+                }else{
+                    cFileNameSearch ="";
+                }
+                location.href = prjConfig.subHref()+'/modules/istudy/courseVideo.html?cid='+cid+'&courseName='+courseName+cFileNameSearch;
             });
         },
     };

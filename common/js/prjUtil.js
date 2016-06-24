@@ -266,14 +266,36 @@ define(function(require, exports, module) {
             }
             if (fileName) {
                 var fileUrl;
+                // fileName = encodeURIComponent(fileName);
                 try{
-                    fileUrl = encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + path +'/'+ fileName);
+                    fileUrl = /*decodeURI(location.origin+*/gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + path +'/'+ fileName;
                 }catch(e){
-                     fileUrl = encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'course/file' +'/'+ fileName);
+                     fileUrl = /*decodeURI(location.origin+*/gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'course/file' +'/'+ fileName;
                 }
                 return fileUrl;
             }
         },
+        /*getFileBinaryByAjax:function(fileName,path){
+            var self =this;
+            var fileUrl = this.getFileUrlByName(fileName,path);
+            $.ajax({
+                url: fileUrl,
+                // type: 'default GET (Other values: POST)',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                // data: {param1: 'value1'},
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        },*/
+
     };
 
     module.exports = prjUtil;

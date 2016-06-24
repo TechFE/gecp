@@ -33,12 +33,14 @@ body {
   display: -webkit-flex;
   background-color: #000; }
   .video-main-div .video-div-left {
-    flex: 1; }
+    flex: 1;
+    padding: 20px; }
     .video-main-div .video-div-left .cvideo {
       vertical-align: middle;
       width: 100%; }
   .video-main-div .video-div-right {
     width: 300px;
+    min-width: 250px;
     padding: 10px 0 10px 20px;
     color: #fff;
     background-color: #2A303C; }

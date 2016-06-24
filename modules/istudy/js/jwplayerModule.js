@@ -2,16 +2,22 @@
  * jwplayer播放插件
  */
 define(function(require, exports, module) {
-    var jwplayer = {
+    var jwplayerMod = {
         init: function() {
-        	this.setupPlayer();
+            // this.setupPlayer();
         },
-        setupPlayer: function() {
-            jwplayer('myplayer').setup({
-                file: 'testfile/H264_640x480_AAC(LC).mp4',
-                width: '640',
-                height: '480'
+        setupPlayer: function(fileUrl) {
+        	console.log(decodeURI(fileUrl));
+            jwplayer("myplayer").setup({
+                file: decodeURI(fileUrl),
+                // "file": "../../assert/第1讲：Axure原型作品演示.mp4",
+                "height": 600,
+                "width": 800,
+                "autostart": true,
+                "preload":"auto",
             });
         },
     };
+
+    module.exports = jwplayerMod;
 });

@@ -9,7 +9,10 @@ define(function(require, exports, module) {
             this.getDataFromDB();
             this.returnClickEvents();
             this.cMenuClickEvents();
-            var cFileName = sessionStorage.getItem('cFileName');
+            
+            var lSearchArray = location.search.split('&');
+            var cFileName =  lSearchArray[2].slice(6);
+            sessionStorage.setItem('cFileName',cFileName);
             if (cFileName) {
                 this.refresh2PlayVideo(cFileName);
             }
@@ -35,7 +38,7 @@ define(function(require, exports, module) {
             // var cVideoTpl = require('../tpl/courseVideo.tpl');
             // $('body').append(cVideoTpl);
             var cVideoTpl2Html = template('cVideoTpl', tplData);
-            $('.course-video-wraper').html(cVideoTpl2Html);
+            $('.return-area-div').prepend(cVideoTpl2Html);
             /*课程目录*/
             var courseDetail = require('./courseDetail');
             courseDetail.parseCourseMenu(data0, '.course-menu-div');
@@ -51,14 +54,32 @@ define(function(require, exports, module) {
             $('.course-video-wraper').on('click', '.course-menu-div p', function(event) {
                 var cFileName = $(this).attr('data-cName');
                 console.log(cFileName);
-                sessionStorage.setItem('cFileName', cFileName);
-                window.location.reload();
+                // sessionStorage.setItem('cFileName', cFileName);
+                var locationHref = location.href;
+                var locationSearch = location.search;
+                if(/&pname=/.test(locationSearch)){
+                	var pnamePos = locationHref.indexOf('&pname=');
+                	location.href = locationHref.slice(0,pnamePos+7)+cFileName;
+                }else{
+                	location.href = locationHref+'&pname='+cFileName;
+                }
+                // window.location.reload();
+                
             });
         },
         refresh2PlayVideo: function(cFileName) {
+        	/*var getDir = new gEcnu.GetDir('upload');
+        	console.log(getDir);
+        	getDir.processAscyn(function(data){
+        		console.log(data);
+        	},function(){});*/
             var fileUrl = prjUtil.getFileUrlByName(cFileName, 'course/file');
-            console.log(fileUrl);
+            // console.log(fileUrl);
             $('.cvideo').attr('src', fileUrl);
+            // var jwplayerM = require('./jwplayerModule');
+            // jwplayerM.setupPlayer('../../../../data/userdata/upload/course/file/20160616154209827-第1讲：Axure原型作品演示.mp4');
+            // jwplayerM.setupPlayer(fileUrl);
+
             // sessionStorage.setItem('cFileName', '');
         },
     };
