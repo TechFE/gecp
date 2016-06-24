@@ -1,3 +1,3 @@
-<script id="cVideoTpl" type="text/html">
+<!-- <script id="cVideoTpl" type="text/html">
 	123
-</script>
+</script> -->

@@ -5,17 +5,37 @@
     <meta charset="UTF-8">
     <title>地理教育云平台-课程学习视频</title>
     <link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../common/jsext/nanoScrollerJS/css/nanoscroller.css" rel="stylesheet">
     <link rel="stylesheet" href="css/courseVideo.css">
 </head>
 
 <body>
     <div class="course-video-wraper mainframe">
-    	
+        <script id="cVideoTpl" type="text/html">
+            <div class="return-area"><a>课程学习</a> > <span>{{cObj.CNAME}}</span></div>
+            <h3>{{cObj.CNAME}}</h3>
+            <div class="video-main-div">
+                <div class="video-div-left">
+                    <div id='myplayer' class="cvideo"></div>
+                    <!--  <video class="cvideo" preload="auto"  poster="img/poster.jpg" controls autoplay>
+                        '您的浏览器不支持视频播放，请使用360浏览器或者火狐、Chrome浏览器'
+                    </video> -->
+                </div>
+                <div class="video-div-right nano">
+                    <span class="glyphicon glyphicon-th-list"></span>&nbsp&nbsp目录
+                    <hr>
+                    <div class="course-menu-div nano-content">
+                    </div>
+                </div>
+            </div>
+        </script>
     </div>
     <div id="footer"></div>
     <script src="../../common/bootstrap/js/jquery.js"></script>
     <script src="../../common/bootstrap/js/bootstrap.js"></script>
     <script src="../../common/jsext/jqPaginator.js" type="text/javascript"></script>
+    <script src="../../common/jsext/nanoScrollerJS/js/jquery.nanoscroller.js" type="text/javascript"></script>
+    <script src="../../common/jsext/jwplayer-7.4.4/jwplayer.js" type="text/javascript"></script>
     <script src="../../common/jsext/template-debug.js" type="text/javascript"></script>
     <script src="../../common/jslib/gClass.js" type="text/javascript"></script>
     <script src="../../common/jslib/gConfig.js" type="text/javascript"></script>

@@ -19,12 +19,13 @@ define(function(require, exports, module) {
             var queryFilter = 'cid=' + cid;
             dbTools.queryDBByField('courses', '*', queryFilter, getMesDataFromDB);
         },
-        initLayout: function(data0) {
-            $('.cd-return-area').html('<span class="return-istudy">课程学习 </span> > ' + data0.CNAME);
-            $('.course-detail-title').html(data0.CNAME);
-            $('.cd-course-intro-p').html(data0.CINTRO);
-            $('.cd-course-teainfo-p').html(data0.CTEACHERINTRO);
-            var courseJsonText = data0.CSECTIONFILES;
+        /**
+         * [parseCourseMenu 解析课程的目录]
+         * @param  {[type]} cObj    [课程对象]
+         * @param  {[type]} menuPos [要放置的位置]
+         */
+        parseCourseMenu:function(cObj,menuPos){
+                var courseJsonText = cObj.CSECTIONFILES;
             var courseJson = JSON.parse(courseJsonText.replace(/'/g, '"'));
             courseJson.sort(prjUtil.compare("chapter", "section"));
             console.log(courseJson);
@@ -49,9 +50,18 @@ define(function(require, exports, module) {
                         courseNamei = courseNamei.slice(0, lastDotInd);
                     }
                 }
-                cMenuHtml += chapterTitle + '<p>第' + courseJson[i].section + '节&nbsp' + courseNamei + '</p>';
+                cMenuHtml += chapterTitle + '<p data-cname="'+courseJson[i].courseName+'">第' + courseJson[i].section + '节&nbsp' + courseNamei + '</p>';
             }
-            $('.course-menu').html(cMenuHtml);
+            $(menuPos).html(cMenuHtml);
+        },
+        initLayout: function(data0) {
+            var self = this;
+            $('.cd-return-area').html('<span class="return-istudy">课程学习 </span> > ' + data0.CNAME);
+            $('.course-detail-title').html(data0.CNAME);
+            $('.cd-course-intro-p').html(data0.CINTRO);
+            $('.cd-course-teainfo-p').html(data0.CTEACHERINTRO);
+            
+            self.parseCourseMenu(data0,'.course-menu');
 
             $('.course-detail-wraper').on('click', '.return-istudy', function(event) {
                 location.href = prjConfig.subHref()+'/modules/istudy/istudy.html';

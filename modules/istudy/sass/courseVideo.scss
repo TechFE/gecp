@@ -1,4 +1,122 @@
-.course-video-wraper{
-	margin-top:50px;
-	min-height:600px;
+@import 'varible';
+body {
+    font-family: $fontFamily;
+    background-color: $globalBackgroundColor;
+    min-width: 1000px;
+}
+
+.course-video-wraper {
+    width: $mainWidth;
+    background-color: $mainBgColor;
+    margin: 0 auto;
+    margin-top: 50px;
+    min-height: 800px;
+}
+
+.return-area {
+    color: #9d9d9d;
+    padding: 8px 8px 8px 15px;
+    a {
+        color: #9d9d9d;
+        font-size: 1.2rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.course-video-wraper h3 {
+    // font-weight: bold;
+    font-family: $fontFamily;
+    font-size: 2.4rem;
+    padding-left: 15px;
+    margin: 5px 0 15px 0;
+}
+
+
+/* 视频主模块 */
+
+// .video-main-div {
+//     background-color: #000;
+//     .video-div-left {
+//         display: inline-block;
+//         padding: 0 10px 0 15px;
+//         width: 80%;
+//         .cvideo {
+//         	vertical-align: middle;
+//             width: 100%;
+//             // height: 505px;
+//         }
+//     }
+//     .video-div-right {
+//         display: inline-block;
+//         width: 19.5%; 
+//         min-height: 370px;
+//         // height: 510px;
+//         vertical-align: top;
+//         color: #fff;
+//         background-color: #2A303C;
+//     }
+// }
+.video-main-div {
+    display: flex;
+    display: -webkit-flex;
+    background-color: #000;
+    .video-div-left {
+        flex: 1;
+        .cvideo {
+            vertical-align: middle;
+            width: 100%;
+        }
+    }
+    .video-div-right {
+        width: 300px;
+        padding: 10px 0 10px 20px;
+        color: #fff;
+        background-color: #2A303C;
+        span {
+            font-size: 1.6rem;
+        }
+        hr {
+            color: #ccc;
+            margin: 5px 0 15px -13px;
+        }
+    }
+}
+
+
+/* 课程目录 */
+
+.course-menu-div {
+	margin-top:25px;
+    max-height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    h4 {
+        font-size: 1.6rem;
+        padding: 10px;
+    }
+    p {
+    	margin-left: 10px;
+        font-size: 1.2rem;
+        &:hover{
+        	cursor: pointer;
+        	color: $globalThemeMainColor;
+        }
+    }
+}
+
+.nano {
+    background: #bba;
+    width: 500px;
+    height: 500px;
+    .nano-content {
+        padding: 10px;
+    }
+    .nano-pane {
+        background: #888;
+    }
+    .nano-slider {
+        background: #111;
+    }
 }

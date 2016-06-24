@@ -254,7 +254,26 @@ define(function(require, exports, module) {
         //         }
         //     };
         // }
-
+        /**
+         * [getFileUrlByName 根据文件名查找文件全路径]
+         * @param  {[type]} fileName [文件名]
+         * @param  {[type]} path     [查找文件路径]
+         * @return {[type]}          [文件全路径]
+         */
+        getFileUrlByName:function(fileName,path){
+            if(!path){
+                path = 'user';
+            }
+            if (fileName) {
+                var fileUrl;
+                try{
+                    fileUrl = encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + path +'/'+ fileName);
+                }catch(e){
+                     fileUrl = encodeURI(gEcnu.config.geoserver + 'fileserver?req=getfile&fn=upload/' + 'course/file' +'/'+ fileName);
+                }
+                return fileUrl;
+            }
+        },
     };
 
     module.exports = prjUtil;

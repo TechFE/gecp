@@ -1,34 +1,67 @@
 /**
  * 课程视频模块
  */
-define(function(require,exports,module){
-	var courseVideo ={
-		init:function(){
-			this.getDataFromDB();
-		},
-		getDataFromDB:function(){
-			var self =this;
-			var searchArray = location.search.split('&');
-			var cId = searchArray[0].slice(5);
-			console.log(cId);
-			var dbTools = require('./dbOpr');
-			dbTools.queryDBByField('courses_total','*','cId='+cId,self.useDataFromDB);
-		},
-		useDataFromDB:function(data){
-			console.log(data);
-			var data0 = data[0];
-			courseVideo.initLayout(data0);
-		},
-		initLayout:function(data0){
-			// var tplData ={
-			// 	courseObj:data0
-			// };
-			// var cVideoTpl = require('../tpl/courseVideo.tpl');
-			// $('body').append(cVideoTpl);
-			// var cVideoTpl2Html =template('cVideoTpl',tplData);
-			// $('.course-video-wraper').html(cVideoTpl2Html);
-		},
-	};
+define(function(require, exports, module) {
+    var prjUtil = require('../../../common/js/prjUtil');
+    var prjConfig = require('../../../common/js/prjConfig');
+    var courseVideo = {
+        init: function() {
+            this.getDataFromDB();
+            this.returnClickEvents();
+            this.cMenuClickEvents();
+            var cFileName = sessionStorage.getItem('cFileName');
+            if (cFileName) {
+                this.refresh2PlayVideo(cFileName);
+            }
+        },
+        getDataFromDB: function() {
+            var self = this;
+            var searchArray = location.search.split('&');
+            var cId = searchArray[0].slice(5);
+            console.log(cId);
+            var dbTools = require('./dbOpr');
+            dbTools.queryDBByField('courses_total', '*', 'cId=' + cId, self.useDataFromDB);
+        },
+        useDataFromDB: function(data) {
+            console.log(data);
+            var data0 = data[0];
+            courseVideo.initLayout(data0);
+        },
+        initLayout: function(data0) {
 
-	module.exports = courseVideo;
+            var tplData = {
+                cObj: data0
+            };
+            // var cVideoTpl = require('../tpl/courseVideo.tpl');
+            // $('body').append(cVideoTpl);
+            var cVideoTpl2Html = template('cVideoTpl', tplData);
+            $('.course-video-wraper').html(cVideoTpl2Html);
+            /*课程目录*/
+            var courseDetail = require('./courseDetail');
+            courseDetail.parseCourseMenu(data0, '.course-menu-div');
+            $(".nano").nanoScroller(); //滚动条
+        },
+        returnClickEvents: function() {
+            $('.course-video-wraper').on('click', '.return-area a', function(event) {
+                var subHref = prjConfig.subHref() + '/modules/istudy/courseDetail.html' + location.search;
+                location.href = subHref;
+            });
+        },
+        cMenuClickEvents: function() {
+            $('.course-video-wraper').on('click', '.course-menu-div p', function(event) {
+                var cFileName = $(this).attr('data-cName');
+                console.log(cFileName);
+                sessionStorage.setItem('cFileName', cFileName);
+                window.location.reload();
+            });
+        },
+        refresh2PlayVideo: function(cFileName) {
+            var fileUrl = prjUtil.getFileUrlByName(cFileName, 'course/file');
+            console.log(fileUrl);
+            $('.cvideo').attr('src', fileUrl);
+            // sessionStorage.setItem('cFileName', '');
+        },
+    };
+
+    module.exports = courseVideo;
 });

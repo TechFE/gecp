@@ -1,3 +1,76 @@
+@charset "UTF-8";
+/* 例如返回div的颜色 */
+body {
+  font-family: "微软雅黑";
+  background-color: #F5F5F5;
+  min-width: 1000px; }
+
 .course-video-wraper {
+  width: 85%;
+  background-color: #fff;
+  margin: 0 auto;
   margin-top: 50px;
-  min-height: 600px; }
+  min-height: 800px; }
+
+.return-area {
+  color: #9d9d9d;
+  padding: 8px 8px 8px 15px; }
+  .return-area a {
+    color: #9d9d9d;
+    font-size: 1.2rem; }
+    .return-area a:hover {
+      cursor: pointer; }
+
+.course-video-wraper h3 {
+  font-family: "微软雅黑";
+  font-size: 2.4rem;
+  padding-left: 15px;
+  margin: 5px 0 15px 0; }
+
+/* 视频主模块 */
+.video-main-div {
+  display: flex;
+  display: -webkit-flex;
+  background-color: #000; }
+  .video-main-div .video-div-left {
+    flex: 1; }
+    .video-main-div .video-div-left .cvideo {
+      vertical-align: middle;
+      width: 100%; }
+  .video-main-div .video-div-right {
+    width: 300px;
+    padding: 10px 0 10px 20px;
+    color: #fff;
+    background-color: #2A303C; }
+    .video-main-div .video-div-right span {
+      font-size: 1.6rem; }
+    .video-main-div .video-div-right hr {
+      color: #ccc;
+      margin: 5px 0 15px -13px; }
+
+/* 课程目录 */
+.course-menu-div {
+  margin-top: 25px;
+  max-height: 450px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  .course-menu-div h4 {
+    font-size: 1.6rem;
+    padding: 10px; }
+  .course-menu-div p {
+    margin-left: 10px;
+    font-size: 1.2rem; }
+    .course-menu-div p:hover {
+      cursor: pointer;
+      color: #337AB7; }
+
+.nano {
+  background: #bba;
+  width: 500px;
+  height: 500px; }
+  .nano .nano-content {
+    padding: 10px; }
+  .nano .nano-pane {
+    background: #888; }
+  .nano .nano-slider {
+    background: #111; }
