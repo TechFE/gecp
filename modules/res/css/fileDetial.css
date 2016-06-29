@@ -130,13 +130,14 @@ body {
     background-image: url(../img/up.png);
     background-repeat: no-repeat;
     background-position: 78px 11px;
-    background-color: #666699;
+    background-color: #337AB7;
     color: #fff;
 }
 
 .subject-list-btn:hover {
     cursor: pointer;
-    background-color: #666699;
+    color: #fff;
+    background-color: #337AB7;
 }
 
 .subject-list-btnclk:hover {

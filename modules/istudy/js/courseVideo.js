@@ -52,6 +52,7 @@ define(function(require, exports, module) {
         },
         cMenuClickEvents: function() {
             $('.course-video-wraper').on('click', '.course-menu-div p', function(event) {
+            	
                 var cFileName = $(this).attr('data-cName');
                 console.log(cFileName);
                 // sessionStorage.setItem('cFileName', cFileName);

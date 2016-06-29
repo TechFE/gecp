@@ -253,6 +253,7 @@ define(function(require, exports, module) {
                 ftype = data0.ftype,
                 subjectName = data0.subjectName;
 
+            console.log(downloadFileName);
             /*初始化 返回 资源详情页资源介绍部分*/
             var searchFileName;
             if (fileRename && fileRename !== 'null') {
@@ -260,7 +261,11 @@ define(function(require, exports, module) {
             } else {
                 searchFileName = downloadFileName;
             }
-            searchFileName = searchFileName.slice(18, 40);
+            if (/^\d{17}-/.test(searchFileName)) {
+                searchFileName = searchFileName.slice(18, 40);
+            }
+            console.log(searchFileName);
+
             fileDetialSource.init(data0); //封面和详情
             cdName = cdName === "null" ? '其它' : cdName;
             cmName = cmName === "null" ? '其它' : cmName;
@@ -272,17 +277,20 @@ define(function(require, exports, module) {
              *分类别处理 是专题还是一般文件
              */
             if (ftype == "2") { //如果是专题的话
-                var newSubjectName="";
+                var newSubjectName = "";
                 if (!subjectName) {
                     var subjectNameArray = downloadFileName.split(';');
                     for (var i = 0; i < subjectNameArray.length; i++) {
                         if (/^\d{17}-/.test(subjectNameArray[i])) {
                             subjectNameArray[i] = subjectNameArray[i].slice(18);
-                            newSubjectName +=subjectNameArray[i]+'   ';
-                        }else{
-                            newSubjectName +=subjectNameArray[i]+'   ';
+                            newSubjectName += subjectNameArray[i] + '   ';
+                        } else {
+                            newSubjectName += subjectNameArray[i] + '   ';
                         }
                     }
+                }else{
+                    newSubjectName = subjectName;
+                    console.log(newSubjectName);
                 }
                 $('.file-detail-title').addClass('subject-logo');
                 $('.file-detail-title').html(newSubjectName.slice(0, 25));
